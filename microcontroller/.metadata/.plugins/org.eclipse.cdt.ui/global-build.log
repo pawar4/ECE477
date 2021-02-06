@@ -1,0 +1,233 @@
+13:08:15 **** Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Building file: ../startup/startup_stm32l1xx_mdp.S
+Building file: ../src/syscalls.c
+Building file: ../Utilities/stm32l_discovery_lcd.c
+Building file: ../src/system_stm32l1xx.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_adc.c
+Building file: ../StdPeriph_Driver/src/misc.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_aes.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"startup/startup_stm32l1xx_mdp.d" -MT"startup/startup_stm32l1xx_mdp.o" -o "startup/startup_stm32l1xx_mdp.o" "../startup/startup_stm32l1xx_mdp.S"
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/syscalls.d" -MT"src/syscalls.o" -o "src/syscalls.o" "../src/syscalls.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"Utilities/stm32l_discovery_lcd.d" -MT"Utilities/stm32l_discovery_lcd.o" -o "Utilities/stm32l_discovery_lcd.o" "../Utilities/stm32l_discovery_lcd.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/system_stm32l1xx.d" -MT"src/system_stm32l1xx.o" -o "src/system_stm32l1xx.o" "../src/system_stm32l1xx.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_adc.d" -MT"StdPeriph_Driver/src/stm32l1xx_adc.o" -o "StdPeriph_Driver/src/stm32l1xx_adc.o" "../StdPeriph_Driver/src/stm32l1xx_adc.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/misc.d" -MT"StdPeriph_Driver/src/misc.o" -o "StdPeriph_Driver/src/misc.o" "../StdPeriph_Driver/src/misc.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_aes.d" -MT"StdPeriph_Driver/src/stm32l1xx_aes.o" -o "StdPeriph_Driver/src/stm32l1xx_aes.o" "../StdPeriph_Driver/src/stm32l1xx_aes.c"
+Finished building: ../startup/startup_stm32l1xx_mdp.S
+../Utilities/stm32l_discovery_lcd.c: In function 'LCD_contrast':
+../Utilities/stm32l_discovery_lcd.c:228:5: warning: implicit declaration of function 'Delay' [-Wimplicit-function-declaration]
+     Delay(100);
+     ^~~~~
+ 
+Building file: ../StdPeriph_Driver/src/stm32l1xx_aes_util.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_aes_util.d" -MT"StdPeriph_Driver/src/stm32l1xx_aes_util.o" -o "StdPeriph_Driver/src/stm32l1xx_aes_util.o" "../StdPeriph_Driver/src/stm32l1xx_aes_util.c"
+Finished building: ../src/system_stm32l1xx.c
+Finished building: ../StdPeriph_Driver/src/misc.c
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_aes.c
+Finished building: ../src/main.c
+ 
+ 
+Finished building: ../Utilities/stm32l_discovery_lcd.c
+Finished building: ../src/syscalls.c
+ 
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_adc.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_comp.c
+ 
+ 
+ 
+Building file: ../StdPeriph_Driver/src/stm32l1xx_crc.c
+ 
+Invoking: MCU GCC Compiler
+Building file: ../StdPeriph_Driver/src/stm32l1xx_dac.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_dma.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_exti.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_dbgmcu.c
+Invoking: MCU GCC Compiler
+Building file: ../StdPeriph_Driver/src/stm32l1xx_flash.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_comp.d" -MT"StdPeriph_Driver/src/stm32l1xx_comp.o" -o "StdPeriph_Driver/src/stm32l1xx_comp.o" "../StdPeriph_Driver/src/stm32l1xx_comp.c"
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+Invoking: MCU GCC Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_crc.d" -MT"StdPeriph_Driver/src/stm32l1xx_crc.o" -o "StdPeriph_Driver/src/stm32l1xx_crc.o" "../StdPeriph_Driver/src/stm32l1xx_crc.c"
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_dac.d" -MT"StdPeriph_Driver/src/stm32l1xx_dac.o" -o "StdPeriph_Driver/src/stm32l1xx_dac.o" "../StdPeriph_Driver/src/stm32l1xx_dac.c"
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_dbgmcu.d" -MT"StdPeriph_Driver/src/stm32l1xx_dbgmcu.o" -o "StdPeriph_Driver/src/stm32l1xx_dbgmcu.o" "../StdPeriph_Driver/src/stm32l1xx_dbgmcu.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_dma.d" -MT"StdPeriph_Driver/src/stm32l1xx_dma.o" -o "StdPeriph_Driver/src/stm32l1xx_dma.o" "../StdPeriph_Driver/src/stm32l1xx_dma.c"
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_exti.d" -MT"StdPeriph_Driver/src/stm32l1xx_exti.o" -o "StdPeriph_Driver/src/stm32l1xx_exti.o" "../StdPeriph_Driver/src/stm32l1xx_exti.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_flash.d" -MT"StdPeriph_Driver/src/stm32l1xx_flash.o" -o "StdPeriph_Driver/src/stm32l1xx_flash.o" "../StdPeriph_Driver/src/stm32l1xx_flash.c"
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_aes_util.c
+ 
+Building file: ../StdPeriph_Driver/src/stm32l1xx_flash_ramfunc.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_flash_ramfunc.d" -MT"StdPeriph_Driver/src/stm32l1xx_flash_ramfunc.o" -o "StdPeriph_Driver/src/stm32l1xx_flash_ramfunc.o" "../StdPeriph_Driver/src/stm32l1xx_flash_ramfunc.c"
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_comp.c
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_crc.c
+ 
+ 
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_dac.c
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_dbgmcu.c
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_exti.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_fsmc.c
+ 
+ 
+ 
+Building file: ../StdPeriph_Driver/src/stm32l1xx_gpio.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_flash.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_i2c.c
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_dma.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_iwdg.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_lcd.c
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+ 
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_fsmc.d" -MT"StdPeriph_Driver/src/stm32l1xx_fsmc.o" -o "StdPeriph_Driver/src/stm32l1xx_fsmc.o" "../StdPeriph_Driver/src/stm32l1xx_fsmc.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_gpio.d" -MT"StdPeriph_Driver/src/stm32l1xx_gpio.o" -o "StdPeriph_Driver/src/stm32l1xx_gpio.o" "../StdPeriph_Driver/src/stm32l1xx_gpio.c"
+Invoking: MCU GCC Compiler
+ 
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Building file: ../StdPeriph_Driver/src/stm32l1xx_opamp.c
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_i2c.d" -MT"StdPeriph_Driver/src/stm32l1xx_i2c.o" -o "StdPeriph_Driver/src/stm32l1xx_i2c.o" "../StdPeriph_Driver/src/stm32l1xx_i2c.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_iwdg.d" -MT"StdPeriph_Driver/src/stm32l1xx_iwdg.o" -o "StdPeriph_Driver/src/stm32l1xx_iwdg.o" "../StdPeriph_Driver/src/stm32l1xx_iwdg.c"
+Building file: ../StdPeriph_Driver/src/stm32l1xx_pwr.c
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+Invoking: MCU GCC Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_lcd.d" -MT"StdPeriph_Driver/src/stm32l1xx_lcd.o" -o "StdPeriph_Driver/src/stm32l1xx_lcd.o" "../StdPeriph_Driver/src/stm32l1xx_lcd.c"
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+Invoking: MCU GCC Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_opamp.d" -MT"StdPeriph_Driver/src/stm32l1xx_opamp.o" -o "StdPeriph_Driver/src/stm32l1xx_opamp.o" "../StdPeriph_Driver/src/stm32l1xx_opamp.c"
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_pwr.d" -MT"StdPeriph_Driver/src/stm32l1xx_pwr.o" -o "StdPeriph_Driver/src/stm32l1xx_pwr.o" "../StdPeriph_Driver/src/stm32l1xx_pwr.c"
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_flash_ramfunc.c
+ 
+Building file: ../StdPeriph_Driver/src/stm32l1xx_rcc.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_gpio.c
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_rcc.d" -MT"StdPeriph_Driver/src/stm32l1xx_rcc.o" -o "StdPeriph_Driver/src/stm32l1xx_rcc.o" "../StdPeriph_Driver/src/stm32l1xx_rcc.c"
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_fsmc.c
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_iwdg.c
+ 
+ 
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_i2c.c
+ 
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_opamp.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_rtc.c
+ 
+Building file: ../StdPeriph_Driver/src/stm32l1xx_sdio.c
+Building file: ../StdPeriph_Driver/src/stm32l1xx_spi.c
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_lcd.c
+ 
+Invoking: MCU GCC Compiler
+Building file: ../StdPeriph_Driver/src/stm32l1xx_syscfg.c
+Invoking: MCU GCC Compiler
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_pwr.c
+Invoking: MCU GCC Compiler
+ 
+Building file: ../StdPeriph_Driver/src/stm32l1xx_tim.c
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_rtc.d" -MT"StdPeriph_Driver/src/stm32l1xx_rtc.o" -o "StdPeriph_Driver/src/stm32l1xx_rtc.o" "../StdPeriph_Driver/src/stm32l1xx_rtc.c"
+Invoking: MCU GCC Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_sdio.d" -MT"StdPeriph_Driver/src/stm32l1xx_sdio.o" -o "StdPeriph_Driver/src/stm32l1xx_sdio.o" "../StdPeriph_Driver/src/stm32l1xx_sdio.c"
+ 
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+Invoking: MCU GCC Compiler
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_spi.d" -MT"StdPeriph_Driver/src/stm32l1xx_spi.o" -o "StdPeriph_Driver/src/stm32l1xx_spi.o" "../StdPeriph_Driver/src/stm32l1xx_spi.c"
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+Building file: ../StdPeriph_Driver/src/stm32l1xx_usart.c
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_syscfg.d" -MT"StdPeriph_Driver/src/stm32l1xx_syscfg.o" -o "StdPeriph_Driver/src/stm32l1xx_syscfg.o" "../StdPeriph_Driver/src/stm32l1xx_syscfg.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_tim.d" -MT"StdPeriph_Driver/src/stm32l1xx_tim.o" -o "StdPeriph_Driver/src/stm32l1xx_tim.o" "../StdPeriph_Driver/src/stm32l1xx_tim.c"
+Building file: ../StdPeriph_Driver/src/stm32l1xx_wwdg.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_usart.d" -MT"StdPeriph_Driver/src/stm32l1xx_usart.o" -o "StdPeriph_Driver/src/stm32l1xx_usart.o" "../StdPeriph_Driver/src/stm32l1xx_usart.c"
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"StdPeriph_Driver/src/stm32l1xx_wwdg.d" -MT"StdPeriph_Driver/src/stm32l1xx_wwdg.o" -o "StdPeriph_Driver/src/stm32l1xx_wwdg.o" "../StdPeriph_Driver/src/stm32l1xx_wwdg.c"
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_rcc.c
+ 
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_syscfg.c
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_sdio.c
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_rtc.c
+ 
+ 
+ 
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_spi.c
+ 
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_wwdg.c
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_tim.c
+ 
+ 
+Finished building: ../StdPeriph_Driver/src/stm32l1xx_usart.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1716	   1080	    324	   3120	    c30	blink.elf
+ 
+13:08:38 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+13:10:52 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1732	   1080	    324	   3136	    c40	blink.elf
+ 

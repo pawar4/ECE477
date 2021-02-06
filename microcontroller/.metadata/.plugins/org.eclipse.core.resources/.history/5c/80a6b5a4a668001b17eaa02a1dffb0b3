@@ -27,10 +27,8 @@ int main(void)
 
 	while(1) {
 		GPIO_SetBits(GPIOB, GPIO_Pin_7);
-		GPIO_SetBits(GPIOB, GPIO_Pin_6);
 		for(int i = 0; i <= 500000; i++);
 		GPIO_ResetBits(GPIOB, GPIO_Pin_7);
-		GPIO_ResetBits(GPIOB, GPIO_Pin_6);
 		for(int i = 0; i <= 500000; i++);
 	}
 }
