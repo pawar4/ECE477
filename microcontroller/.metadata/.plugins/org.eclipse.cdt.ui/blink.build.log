@@ -1,0 +1,23 @@
+13:10:52 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1732	   1080	    324	   3136	    c40	blink.elf
+ 
+
+13:10:56 Build Finished (took 3s.170ms)
+
