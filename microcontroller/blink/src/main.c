@@ -18,6 +18,8 @@
 
 int main(void)
 {
+	//*************************** Making two LEDs blink ***********************///
+
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
 
 	GPIO_InitTypeDef Init_Periph;
@@ -36,4 +38,67 @@ int main(void)
 		GPIO_ResetBits(GPIOB, GPIO_Pin_6);
 		for(int i = 0; i <= 500000; i++);
 	}
+
+	//*************************************************************************///
+
+
+	//**************************Setting up USART for Bluetooth (HC-05) *******************//
+
+/*	GPIO_InitTypeDef  GPIO_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE); //Enabling GPIOA ports
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE); //Enabling USART1
+
+    GPIO_PinAFConfig (GPIOA, GPIO_PinSource9, GPIO_AF_USART1);   //Setting PA9 to Alternate function for USART
+    GPIO_PinAFConfig (GPIOA, GPIO_PinSource10, GPIO_AF_USART1);
+
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_400KHz;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+    //USART settings
+    USART_InitStructure.USART_BaudRate = 38400;
+    USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+    USART_InitStructure.USART_StopBits = USART_StopBits_1;
+    USART_InitStructure.USART_Parity = USART_Parity_No;
+    USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+    USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+
+    USART_Init(USART1, &USART_InitStructure);     //Initialize UART settings
+
+    USART_Cmd(USART1, ENABLE);    //Enable UART
+
+//    while(1)
+//    {
+//    	if(USART1->SR & USART_SR_RXNE) //if there is data to be READ
+//    	{
+//    		char temp = USART1->DR;
+//    		USART1->DR = temp;
+//    		while(!(USART1->SR & USART_SR_TC));
+//    	}
+//    }
+
+*/
+    //*******************************************************************************************///
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
