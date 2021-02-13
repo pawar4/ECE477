@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import MapView from "react-native-maps";
 
 function HomeScreen() {
     return (
@@ -14,17 +16,28 @@ function HomeScreen() {
 }
 
 function GPSScreen() {
+    const [region, setRegion] = useState({
+        latitude: 51.5079145,
+        longitude: -0.0899163,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01 
+    });
+
     return (
-    <View style={{ flex: 1, flexDirection: 'column'}} >
-        <View style= {{ flex: 1, 
-                        backgroundColor: 'powderblue', 
-                        justifyContent: 'center',
-                        alignItems: 'center'}}>
-        <Text>Display Map and GPS here</Text>
+        <MapView 
+            style={{  flex: 1  }} 
+            region={region}
+            onRegionChangeComplete={region => setRegion(region)}
+            showsUserLocation={true}
+            followsUserLocation={true}
+        />
+    );
+}
+
+function SettingScreen() {
+    return (
+        <View style={{flex: 1}}>
         </View>
-        <View style= {{ flex: 1, 
-                        backgroundColor: 'skyblue' }}/>
-    </View>
     );
 }
 
@@ -35,6 +48,7 @@ function MyTabs() {
     <Tab.Navigator>
         <Tab.Screen name='Home' component={HomeScreen} />
         <Tab.Screen name='GPS' component={GPSScreen} />
+        <Tab.Screen name="Settings" component={SettingScreen} />
     </Tab.Navigator>
     );
 }
@@ -46,3 +60,22 @@ export default function App() {
     </NavigationContainer>
     );
 }
+
+// const App = () => {
+//     const [region, setRegion] = useState({
+//         latitude: 51.5079145,
+//         longitude: -0.0899163,
+//         latitudeDelta: 0.01,
+//         longitudeDelta: 0.01 
+//     });
+
+//     return (
+//         <MapView 
+//             style={{  flex: 1  }} 
+//             region={region}
+//             onRegionChangeComplete={region => setRegion(region)}
+//         />
+//     );
+// }
+
+// export default App;
