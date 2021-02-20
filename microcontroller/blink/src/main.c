@@ -14,13 +14,14 @@
 #include "stm32l1xx_gpio.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 			
 
 int main(void)
 {
 	//*************************** Making two LEDs blink ***********************///
 
-	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+	/*RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
 
 	GPIO_InitTypeDef Init_Periph;
 	Init_Periph.GPIO_Pin = GPIO_Pin_7 | GPIO_Pin_6;
@@ -33,37 +34,42 @@ int main(void)
 	while(1) {
 		GPIO_SetBits(GPIOB, GPIO_Pin_7);
 		GPIO_SetBits(GPIOB, GPIO_Pin_6);
-		for(int i = 0; i <= 500000; i++);
+		//for(int i = 0; i <= 500000; i++);
+		for(int i = 0; i <= 1000000; i++);
 		GPIO_ResetBits(GPIOB, GPIO_Pin_7);
 		GPIO_ResetBits(GPIOB, GPIO_Pin_6);
-		for(int i = 0; i <= 500000; i++);
-	}
+		//for(int i = 0; i <= 500000; i++);
+		for(int i = 0; i <= 1000000; i++);
+	}*/
 
 	//*************************************************************************///
 
 
-	//**************************Setting up USART for Bluetooth (HC-05) *******************//
+	//**************************Setting up USART*******************//
 
-/*	GPIO_InitTypeDef  GPIO_InitStructure;
+	GPIO_InitTypeDef  GPIO_InitStructure;
 	USART_InitTypeDef USART_InitStructure;
+
+	char send_message[20] = "ECE477 IS EASY\r";
+	char receive_message[18] = "";
 
 	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE); //Enabling GPIOA ports
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE); //Enabling USART1
 
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9 | GPIO_Pin_10;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+//    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
+
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+
     GPIO_PinAFConfig (GPIOA, GPIO_PinSource9, GPIO_AF_USART1);   //Setting PA9 to Alternate function for USART
     GPIO_PinAFConfig (GPIOA, GPIO_PinSource10, GPIO_AF_USART1);
 
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_400KHz;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-    GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-    GPIO_Init(GPIOA, &GPIO_InitStructure);
 
     //USART settings
-    USART_InitStructure.USART_BaudRate = 38400;
+    USART_InitStructure.USART_BaudRate = 9600;
     USART_InitStructure.USART_WordLength = USART_WordLength_8b;
     USART_InitStructure.USART_StopBits = USART_StopBits_1;
     USART_InitStructure.USART_Parity = USART_Parity_No;
@@ -74,17 +80,24 @@ int main(void)
 
     USART_Cmd(USART1, ENABLE);    //Enable UART
 
-//    while(1)
-//    {
-//    	if(USART1->SR & USART_SR_RXNE) //if there is data to be READ
-//    	{
-//    		char temp = USART1->DR;
-//    		USART1->DR = temp;
-//    		while(!(USART1->SR & USART_SR_TC));
-//    	}
-//    }
 
-*/
+    for (int i = 0; i < 18; ++i)
+    {
+    	USART_SendData(USART1,send_message[i]);
+    	while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+
+//    	while(USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
+//    	receive_message[i] = USART_ReceiveData(USART1);
+
+    }
+    while(1)
+    {
+
+    }
+
+
+
+
     //*******************************************************************************************///
 
 
