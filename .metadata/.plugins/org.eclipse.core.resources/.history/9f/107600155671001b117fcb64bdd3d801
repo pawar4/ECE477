@@ -1,0 +1,7 @@
+#include <string.h>
+//Used to parse NMEA messages
+//for this project we will utilize GLL, GSV and RMC
+
+typedef struct{
+
+}nmea_message;

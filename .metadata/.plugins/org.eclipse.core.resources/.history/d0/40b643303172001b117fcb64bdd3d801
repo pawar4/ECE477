@@ -1,0 +1,128 @@
+#include "stm32l1xx.h"
+#include "stm32l_discovery_lcd.h"
+#include "stm32l1xx_gpio.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "nmea.h"
+
+void parse_gll(gll_message * gll, char * buffer){
+	char * curr = strstr(buffer, ",");
+	curr++;
+	gll -> latitude = atof(curr);
+	curr = strstr(curr, ",");
+	curr++;
+	gll -> lat_direction = *curr;
+	curr = strstr(curr, ",");
+	curr++;
+	gll -> longitude = atof(curr);
+	curr = strstr(curr, ",");
+	curr++;
+	gll -> long_direction = *curr;
+}
+
+/*
+void print_gll(gll_message * gll){
+    printf("%07.2f, %c, %08.2f, %c", gll -> latitude, gll -> lat_direction, gll -> longitude, gll -> long_direction);
+}*/
+
+//Parse an nmea gsv message
+void parse_gsv(gsv_message * gsv, char * buffer){
+	char * curr = strstr(buffer, ",");
+	curr++;
+	curr = strstr(curr, ",");
+	curr++;
+	curr = strstr(curr, ",");
+	curr++;
+	gsv -> num_satellites = atoi(curr);
+}
+
+void print_gsv(gsv_message * gsv){
+    printf("%d", gsv -> num_satellites);
+}
+
+//Parse an nmea rmc message
+void parse_rmc(rmc_message * rmc, char * buffer){
+	char * curr = strstr(buffer, ",");
+	curr++;
+	int value = atoi(curr);
+	rmc -> seconds = value % 100;
+	value /= 100;
+	rmc -> minutes = value % 100;
+	value /= 100;
+	rmc -> hour = value;
+
+	curr = strstr(curr, ",");
+	curr++;
+	rmc -> valid = *curr;
+}
+
+void print_rmc(rmc_message * rmc){
+	printf("%d:%d:%d  %c", rmc -> hour, rmc -> minutes, rmc -> seconds, rmc -> valid);
+}
+
+//Obtains the type of nmea message
+nmea_type get_message_type(char * buffer){
+	if(strstr(buffer, "GLL") != NULL){
+		return GLL;
+	}
+	else if(strstr(buffer, "GSV") != NULL){
+		return GSV;
+	}
+	else if(strstr(buffer, "RMC") != NULL){
+		return RMC;
+	}
+
+	return NONE;
+}
+
+//Obtains the type of nmea message then parses it
+//and returns the message
+nmea_message * parse_sentence(char * buffer){
+	nmea_message * message = calloc(1, sizeof(nmea_message));
+	nmea_type type = get_message_type(buffer);
+	message->type = type;
+
+	switch(type){
+		case GLL:
+			message -> gll = calloc(1, sizeof(gll_message));
+			parse_gll(message -> gll, buffer);
+			break;
+		case GSV:
+			message -> gsv = calloc(1, sizeof(gsv_message));
+			parse_gsv(message -> gsv, buffer);
+			break;
+		case RMC:
+			message -> rmc = calloc(1, sizeof(rmc_message));
+			parse_rmc(message -> rmc, buffer);
+			break;
+		case NONE:
+			break;
+	}
+
+	return message;
+}
+
+void free_nmea_message(nmea_message * message){
+	if(message -> gll != NULL){
+		free(message -> gll);
+	}else if(message -> gsv != NULL){
+		free(message -> gsv);
+	}else if(message -> rmc != NULL){
+		free(message -> rmc);
+	}
+
+	free(message);
+}
+
+void print_nmea_message(nmea_message * message){
+	if(message -> type == GLL){
+		print_gll(message -> gll);
+	}else if(message -> type == GSV){
+		print_gsv(message -> gsv);
+	}else if(message -> type == RMC){
+		print_rmc(message -> rmc);
+	}
+
+}
+

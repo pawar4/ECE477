@@ -1,0 +1,59 @@
+#include "stm32l1xx.h"
+#include "stm32l_discovery_lcd.h"
+#include "stm32l1xx_gpio.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "nmea.h"
+
+void parse_gll(gll_message * gll, char * buffer){
+
+}
+
+void parse_gsv(gsv_message * gsv, char * buffer){
+
+}
+
+void parse_rmc(rmc_message * rmc, char * buffer){
+
+}
+
+void parse_sentence(char * buffer){
+	switch(get_message_type(buffer)){
+	case GLL:
+		break;
+	case GSV:
+		break;
+	case RMC:
+		break;
+	case:
+		break;
+
+	}
+
+}
+
+nmea_type get_message_type(char * buffer){
+	if(strstr(buffer, "GLL") != NULL){
+		return GLL;
+	}
+	else if(strstr(buffer, "GSV") != NULL){
+		return GSV;
+	}
+	else if(strstr(buffer, "RMC") != NULL){
+		return RMC;
+	}
+
+	return NONE;
+}
+//Obtains the size of the nmea message
+int get_message_length(char * buffer){
+	int i = 0;
+	while(i < GPS_BUFFER_SIZE){
+		if(buffer[i] != '\0'){
+			i++;
+		}
+	}
+
+	return i;
+}

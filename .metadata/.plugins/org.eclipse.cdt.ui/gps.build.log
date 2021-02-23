@@ -1,0 +1,29 @@
+14:27:50 **** Incremental Build of configuration Debug for project gps ****
+make -j3 all 
+Building file: ../src/main.c
+Building file: ../src/nmea.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/nmea.d" -MT"src/nmea.o" -o "src/nmea.o" "../src/nmea.c"
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/nmea.c
+ 
+Finished building: ../src/main.c
+ 
+Building target: gps.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "gps.elf" @"objects.list"   -lm
+Finished building target: gps.elf
+ 
+/Applications/Xcode.app/Contents/Developer/usr/bin/make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "gps.elf" "gps.bin"
+arm-none-eabi-size "gps.elf"
+   text	   data	    bss	    dec	    hex	filename
+  12880	   2516	    384	  15780	   3da4	gps.elf
+ 
+
+14:27:51 Build Finished (took 1s.307ms)
+

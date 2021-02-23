@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="false" key="isRegEx"/>
+		<item value="&#x0A;&#x09;&#x09;&#x09;// FIXME: Output data for debug purposes&#x0A;&#x09;&#x09;&#x09;BC = GPS_buf_cntr;&#x0A;&#x09;&#x09;&#x09;VCP_SendBuf(GPS_buf,GPS_buf_cntr);" key="selection"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="true" key="wrap"/>
+		<item value="false" key="wholeword"/>
+		<list key="findhistory">
+			<item value="&#x0A;&#x09;&#x09;&#x09;// FIXME: Output data for debug purposes&#x0A;&#x09;&#x09;&#x09;BC = GPS_buf_cntr;&#x0A;&#x09;&#x09;&#x09;VCP_SendBuf(GPS_buf,GPS_buf_cntr);"/>
+			<item value="// Output data for debug purposes"/>
+			<item value="vcp"/>
+		</list>
+		<list key="replacehistory">
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="1440" key="DIALOG_WIDTH"/>
+		<item value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont" key="DIALOG_FONT_NAME"/>
+		<item value="872" key="DIALOG_HEIGHT"/>
+		<item value="0" key="DIALOG_X_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>
