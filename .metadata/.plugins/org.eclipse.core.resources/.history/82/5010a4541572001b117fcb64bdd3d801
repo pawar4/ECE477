@@ -1,0 +1,126 @@
+#include "stm32l1xx.h"
+#include "stm32l_discovery_lcd.h"
+#include "stm32l1xx_gpio.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "nmea.h"
+
+//Parse an nmea gll message
+double convertLat
+void getLatitudeLongitude(gll_message * gll, char * buffer){
+	double value = 0;
+	int i = 0;
+	bool period = FALSE;
+
+	//Getting latitude info
+	while(buffer[i] != ','){
+		if(buffer[i] == '.'){
+			period = TRUE;
+		}
+
+		if(!period){
+			value *= 10;
+			value += atoi(&buffer[i]);
+		}
+		else{
+			value += (atoi(&buffer[i]) / 10);
+		}
+		i++;
+	}
+
+	gll -> latitude = value;
+	gll -> lat_direction = buffer[i];
+	i++;
+	value = 0;
+	period = FALSE;
+
+	//Getting longitude info
+	while(buffer[i] != ','){
+			if(buffer[i] == '.'){
+				period = TRUE;
+			}
+
+			if(!period){
+				value *= 10;
+				value += atoi(&buffer[i]);
+			}
+			else{
+				value += (atoi(&buffer[i]) / 10);
+			}
+			i++;
+		}
+
+		gll -> longitude = value;
+		gll -> long_direction = buffer[i];
+		i++;
+		value = 0;
+
+}
+
+void parse_gll(gll_message * gll, char * buffer){
+	char * curr = strstr(buffer, ",");
+	curr++;
+}
+
+//Parse an nmea gsv message
+void parse_gsv(gsv_message * gsv, char * buffer){
+
+}
+
+//Parse an nmea rmc message
+void parse_rmc(rmc_message * rmc, char * buffer){
+
+}
+
+//Obtains the type of nmea message
+nmea_type get_message_type(char * buffer){
+	if(strstr(buffer, "GLL") != NULL){
+		return GLL;
+	}
+	else if(strstr(buffer, "GSV") != NULL){
+		return GSV;
+	}
+	else if(strstr(buffer, "RMC") != NULL){
+		return RMC;
+	}
+
+	return NONE;
+}
+//Obtains the size of the nmea message
+int get_message_length(char * buffer){
+	int i = 0;
+	while(i < GPS_BUFFER_SIZE){
+		if(buffer[i] != '\0'){
+			i++;
+		}
+	}
+
+	return i;
+}
+
+//Obtains the type of nmea message then parses it
+//and returns the message
+nmea_message * parse_sentence(char * buffer){
+	nmea_message * message = calloc(1, sizeof(nmea_message));
+	nmea_type type = get_message_type(buffer);
+	message->type = type;
+
+	switch(type){
+	case GLL:
+		message -> gll = calloc(1, sizeof(gll_message));
+		parse_gll(message -> gll, buffer);
+		break;
+	case GSV:
+		message -> gsv = calloc(1, sizeof(gsv_message));
+		parse_gsv(message -> gsv, buffer);
+		break;
+	case RMC:
+		message -> rmc = calloc(1, sizeof(rmc_message));
+		parse_rmc(message -> rmc, buffer);
+		break;
+	}
+
+	return message;
+}
+

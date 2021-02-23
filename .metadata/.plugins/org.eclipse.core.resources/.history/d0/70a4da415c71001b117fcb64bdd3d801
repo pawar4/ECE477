@@ -1,0 +1,11 @@
+#include "stm32l1xx.h"
+#include "stm32l_discovery_lcd.h"
+#include "stm32l1xx_gpio.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "nmeah.h"
+
+void parse_gll(gll_message * gll, char * buffer){
+
+}

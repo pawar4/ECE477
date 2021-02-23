@@ -1,0 +1,35 @@
+//Used to parse NMEA messages
+//for this project we will utilize GLL, GSV and RMC
+
+typedef enum{
+	GLL, //Latitude and longitude
+	GSV, //Number of satellites
+	RMC  //time and date
+}nmea_type;
+
+typedef struct{
+	int latitude;
+	int longitude;
+	bool valid;
+}gll_message;
+
+typedef struct{
+	int num_satellites;
+}gsv_message;
+
+typedef struct{
+	int hour;
+	int minutes;
+	int seconds;
+	int month;
+	int date;
+	int year;
+
+}rmc_message;
+
+typedef struct{
+	nmea_type;
+	gll_message * gll;
+	gsv_message * gsv;
+	rmc_message * rmc;
+}nmea_message;
