@@ -2,6 +2,12 @@
   package="com.test">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    
 
     <application
       android:name=".MainApplication"
@@ -22,6 +28,9 @@
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+      <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyCTbJPvM8GOVt4oyKGhLfg1DZ_hvUUTh5w"/>
     </application>
 
 </manifest>
