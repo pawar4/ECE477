@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-navigation/bottom-tabs": "^5.11.7",
     "@react-navigation/native": "^5.9.2",
+    "easy-bluetooth-classic": "^1.0.4",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-ble-manager": "^7.4.2",

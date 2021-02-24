@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MapView from "react-native-maps";
 import BleManager from 'react-native-ble-manager';
+import EasyBluetooth from 'easy-bluetooth-classic';
 
 const BleManagerModule = NativeModules.BleManager;
 const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
@@ -144,8 +145,50 @@ function GPSScreen() {
 }
 
 function SettingScreen() {
+
+    const devices = new Map();
+
+    const scanDevice = () => {
+        EasyBluetooth.startScan().then(function (devices) {
+            console.log("all devices found: ");
+            console.log(devices);
+        }).catch (function (ex) {
+            console.warn(ex);
+        });
+    }
+    
+    const connectDevice = (device) => {
+        EasyBluetooth.connect(device).then(() => {
+            console.log("Connected");
+        }).catch((ex) => {
+            console.warn(ex);
+        });
+    }
+
+    React.useEffect(() => {
+        var config = {
+            "uuid" : "00001101-0000-1000-8000-00805f9b34fb",
+            "deviceName" : "Bluetooth Example Project",
+            "bufferSize" : 1024,
+            "characterDelimiter": "\n"
+        }
+
+        EasyBluetooth.init(config).then(function (config) {
+            console.log("config done");
+        }).catch(function (ex) {
+            console.warn(ex);
+        })
+    }, [])
     return (
-        <View style={{flex: 1}}>
+        <View style={{  flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center'}}>
+            <View style={{margin: 10}}>
+                <Button title="Scan devices" onPress={() => scanDevice() } />
+            </View>
+            <View style={{margin: 10}}>
+                <Button title="Connect Devices" onPress={() => connectDevice(devices[0]) } />
+            </View>
         </View>
     );
 }
@@ -163,7 +206,6 @@ function MyTabs() {
 }
 
 export default function App() {
-
 
     return (
     <NavigationContainer>
