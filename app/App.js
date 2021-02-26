@@ -5,85 +5,91 @@ import { Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MapView from "react-native-maps";
-import BleManager from 'react-native-ble-manager';
-import EasyBluetooth from 'easy-bluetooth-classic';
+// import BleManager from 'react-native-ble-manager';
+import BluetoothSerial from 'react-native-bluetooth-serial'
 
-const BleManagerModule = NativeModules.BleManager;
-const bleManagerEmitter = new NativeEventEmitter(BleManagerModule);
 
 function HomeScreen() {
-    const [isScanning, setIsScanning] = useState(false);
+    const [isconnected, setIsConnected] = useState(false);   //state variable to hold boolean value of whether any device is connected
+    const [weight,setWeight] = useState("5 kg");
     const peripherals = new Map();
-    const [list, setList] = useState([]);
+    const [list, setList] = useState([]);             //state variable to hold all discovered peripherals(not connected)
+    const [device, setDevice] = useState(null);       // state variable to hold current connected peripheral
+    const [readdata, setreaddata] = useState("");     //state variable to hold current read message
+
     
-    const startScan = () => {
-        if (!isScanning) {
-            BleManager.scan([], 3, true).then((results) => {
-            console.log('Scanning...');
-            setIsScanning(true);
-            }).catch(err => {
-            console.error(err);
+    //Component to discover all unpaired devices within range
+    const discoverUnpaired = () => {
+        BluetoothSerial.discoverUnpairedDevices()
+          .then((unpairedDevices) => {
+            setList(unpairedDevices);
+          })
+          .catch(err => {console.error(err);
             });
-        }    
-    }
-
-    const handleStopScan = () => {
-        console.log('Scan is stopped');
-        setIsScanning(false);
-    }
-
-    const handleDiscoverPeripheral = (peripheral) => {
-        if (peripheral.name == 'LE Surface Headphones'){
-            console.log('Got ble peripheral', peripheral.id);
-            if (!peripheral.name) {
-            peripheral.name = 'NO NAME';
-            }
-            peripherals.set(peripheral.id, peripheral);
-            setList(Array.from(peripherals.values()));
+        for(var i = 0; i < list.length; ++i)
+        {
+            console.log(list[i]);
         }
     }
 
-    const testPeripheral = (peripheral) => {
-        if (peripheral) {
-            if (peripheral.connected) {
-                BleManager.disconnect(peripheral.id);
-            }
-            else {
-                BleManager.connect(peripheral.id).then(() => {
-                    let p = peripherals.get(peripheral.id);
-                    if (p) {
-                        p.connected = true
-                        peripherals.set(peripheral.id, p);
-                        setList(Array.from(peripherals.values()));
-                    }
-                    console.log('Connected to ' + peripheral.id)
-                })
-            }
-                
-        }
+    discoverPaired_Connect = () => {
+        discoverPaired();
+        BluetoothConnect();
     }
 
-    const retrieveConnected = () => {
-        BleManager.getConnectedPeripherals([]).then((results) => {
-            if (results.length == 0) {
-                console.log('No connected peripherals')
-            }
-            console.log(results);
-            for (var i = 0; i < results.length; i++) {
-                var peripheral = results[i];
-                peripheral.connected = true;
-                peripherals.set(peripheral.id, peripheral);
-                setList(Array.from(peripherals.values()));
-            }
-        });
+    //Component to discover paired device (HC05) with phone
+    const discoverPaired = () => {
+        BluetoothSerial.list().then((pairedDevices) => {    
+            setDevice(pairedDevices[0]);
+            //console.log(device);
+        }).catch(err => {console.error(err);
+            });
     }
+
+    //Component to connect to the HC05
+    const BluetoothConnect = () => {
+        BluetoothSerial.connect(device.id).then((res) => {
+            console.log("Connected to device:",device.name);
+            setIsConnected(true);
+          }).catch(err => {console.error(err);});
+        // setDevice(device);
+        //BluetoothSerial.pairDevice(device);
+    }
+
+    //Component to disconnect from bluetooth device
+    const BluetoothDisconnect = () => {
+        BluetoothSerial.disconnect()
+        .catch(err => {console.error(err);});
+        setIsConnected(false);
+        console.log("Disconnected from backpack")
+    }
+
+    const checkconnection = () => {
+        BluetoothSerial.isConnected().then((res) =>
+        {
+            console.log(res)
+        }).catch(err => {console.error(err);});
+    }
+    
+    const GetWeight = () => {
+        setWeight("500 kg");
+    }
+
+   const WriteMessage = (message) => {
+     if (!isconnected) {
+       console.log('You must connect to device first');
+     }
+ 
+     BluetoothSerial.write(message)
+     .then((res) => {
+       console.log('Successfuly wrote to device');
+       //this.setState({ connected: true })
+     })
+     .catch(err => {console.error(err);});
+   }
 
     React.useEffect(() => {
         // this is a constructor (runs once)
-        BleManager.start({ showAlert: false }).then(() => {
-        // Success code
-            console.log("Module initialized");
-        });
         if (Platform.OS === 'android' && Platform.Version >= 23) {
             PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION).then((result) => {
                 if (result) {
@@ -98,31 +104,55 @@ function HomeScreen() {
                   });
                 }
             });
-          }  
-        bleManagerEmitter.addListener('BleManagerDiscoverPeripheral', handleDiscoverPeripheral);
-        bleManagerEmitter.addListener('BleManagerStopScan', handleStopScan );
+          }
+
+          discoverPaired();       //automatically as app opens up, the app tries to connect to the backpack.
+
+          BluetoothSerial.withDelimiter('\r\n').then((res) => {
+              console.log("Delimiter has been set up ");
+              BluetoothSerial.on('read', data => {
+                setreaddata(data);
+                //console.log(`DATA FROM BLUETOOTH: ${data.data}`);
+                // console.log(data.data);
+             });
+          })
     }, [])
 
     return (
         <View style={{  flex: 1,
                         justifyContent: 'center',
                         alignItems: 'center'}}>
+
             <View style={{margin: 10}}>
-                <Button 
-                    title={'Scan Bluetooth (' + (isScanning ? 'on' : 'off') + ')'}
-                    onPress={() => startScan() } 
-                />            
+                <Button title="Discover Paired devices" onPress={() => discoverPaired() } />
             </View>
 
             <View style={{margin: 10}}>
-                <Button title="Retrieve connected peripherals" onPress={() => retrieveConnected() } />
+                <Button title="Connect to backpack" onPress={() => BluetoothConnect() } />
             </View>
 
             <View style={{margin: 10}}>
-                <Button title="Connect to peripheral" onPress={() => testPeripheral(list[0]) } />
+                <Button title="Disconnect from backpack" onPress={() => BluetoothDisconnect() } />
             </View>
+
+            <View style={{margin: 10}}>
+                <Button title="Check if connected" onPress={() => checkconnection() } />
+            </View>
+
+            <View style={{margin: 10}}>
+                <Button title="Send request to backpack" onPress={() => WriteMessage(String("Hello\r\n")) } />
+            </View>
+
+            <View style={{margin: 10}}>
+                <Button title="Get Backpack Weight" onPress={() => GetWeight() } />
+            </View>
+
+            <Text> {readdata.data} </Text>
+            <Text> {weight} </Text>
         </View>
     );
+
+
 }
 
 function GPSScreen() {
@@ -145,50 +175,8 @@ function GPSScreen() {
 }
 
 function SettingScreen() {
-
-    const devices = new Map();
-
-    const scanDevice = () => {
-        EasyBluetooth.startScan().then(function (devices) {
-            console.log("all devices found: ");
-            console.log(devices);
-        }).catch (function (ex) {
-            console.warn(ex);
-        });
-    }
-    
-    const connectDevice = (device) => {
-        EasyBluetooth.connect(device).then(() => {
-            console.log("Connected");
-        }).catch((ex) => {
-            console.warn(ex);
-        });
-    }
-
-    React.useEffect(() => {
-        var config = {
-            "uuid" : "00001101-0000-1000-8000-00805f9b34fb",
-            "deviceName" : "Bluetooth Example Project",
-            "bufferSize" : 1024,
-            "characterDelimiter": "\n"
-        }
-
-        EasyBluetooth.init(config).then(function (config) {
-            console.log("config done");
-        }).catch(function (ex) {
-            console.warn(ex);
-        })
-    }, [])
     return (
-        <View style={{  flex: 1,
-                        justifyContent: 'center',
-                        alignItems: 'center'}}>
-            <View style={{margin: 10}}>
-                <Button title="Scan devices" onPress={() => scanDevice() } />
-            </View>
-            <View style={{margin: 10}}>
-                <Button title="Connect Devices" onPress={() => connectDevice(devices[0]) } />
-            </View>
+        <View style={{flex: 1}}>
         </View>
     );
 }
@@ -206,7 +194,6 @@ function MyTabs() {
 }
 
 export default function App() {
-
     return (
     <NavigationContainer>
         <MyTabs />

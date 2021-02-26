@@ -18,7 +18,7 @@
 
 static int cnt = 0;
 char received_message[200] = "";
-char receive_success[30] = "Message successfully received\r";
+char receive_success[31] = "Message successfully received\r\n";
 volatile int UART1_received = 0;
 volatile int UART1_sent = 1;
 
@@ -130,7 +130,7 @@ void UART1_init()
 void receivesuccessmsg()
 {
 	int i;
-	for(i = 0; i < 30; ++i)
+	for(i = 0; i < 31; ++i)
 	{
 		USART_SendData(USART1,receive_success[i]);
 		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
@@ -196,7 +196,7 @@ void USART1_IRQHandler()
 void EXTI0_IRQHandler()
 {
 	if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
-		char send_message[] = "Hello\r\n";
+		char send_message[] = "Hello My name is Vignesh\r\n";
 		for(int i = 0; i < strlen(send_message); ++i)
 		{
 			USART_SendData(USART1,send_message[i]);
