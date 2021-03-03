@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "HX711.h"
 
 static int cnt = 0;
 char received_message[200] = "";
@@ -57,17 +58,27 @@ int main(void)
 
 	UART1_init();
 	pushbuttonmsg();
+	HX711_init();
+
+	unsigned long weight;
+	unsigned long count_t;
+	int flag = 1;
+	//set gain
+	HX711_Read();
 	while(1)
 	{
-		if(UART1_received == 1)
-		{
-			UART1_received = 0;
-			receivesuccessmsg();
-		}
+		//count_t = HX711();
+		//weight = (((4.555e-5)*count_t) - 347.8)-7;
+		count_t = HX711_GetOffset();
+		weight = (((4.555e-5)*count_t) - 347.8)-7;
+//		if(UART1_received == 1)
+//		{
+//			UART1_received = 0;
+//			receivesuccessmsg();
+//		}
+
 	}
 }
-
-
 
 void UART1_init()
 {
@@ -125,7 +136,6 @@ void UART1_init()
 
 
 }
-
 
 void receivesuccessmsg()
 {

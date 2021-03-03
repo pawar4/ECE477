@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;blink/src/HX711&apos; to &apos;HX711.h&apos;" description="Rename resource &apos;HX711&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/HX711" name="HX711.h" stamp="1614538527808" updateReferences="true"/>
+</session>
