@@ -1,5 +1,5 @@
 {
-  "name": "test",
+  "name": "app",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,28 +11,25 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
-    "@react-navigation/bottom-tabs": "^5.11.7",
-    "@react-navigation/native": "^5.9.2",
-    "easy-bluetooth-classic": "^1.0.4",
+    "@react-navigation/bottom-tabs": "^5.11.8",
+    "@react-navigation/native": "^5.9.3",
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "react-native-ble-manager": "^7.4.2",
     "react-native-bluetooth-serial": "^1.0.0-rc1",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-maps": "^0.27.1",
-    "react-native-reanimated": "^1.13.2",
-    "react-native-safe-area-context": "^3.1.9",
-    "react-native-screens": "^2.18.0",
-    "react-native-tab-view": "^2.15.2"
+    "react-native-reanimated": "^2.0.0",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "^2.18.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/runtime": "^7.8.4",
-    "@react-native-community/eslint-config": "^1.1.0",
-    "babel-jest": "^25.1.0",
-    "eslint": "^6.5.1",
-    "jest": "^25.1.0",
-    "metro-react-native-babel-preset": "^0.59.0",
+    "@babel/core": "7.13.10",
+    "@babel/runtime": "7.13.10",
+    "@react-native-community/eslint-config": "1.1.0",
+    "babel-jest": "25.5.1",
+    "eslint": "6.8.0",
+    "jest": "25.5.4",
+    "metro-react-native-babel-preset": "0.59.0",
     "react-test-renderer": "16.13.1"
   },
   "jest": {
