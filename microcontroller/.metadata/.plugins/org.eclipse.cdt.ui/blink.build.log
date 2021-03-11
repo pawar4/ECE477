@@ -1,6 +1,6 @@
-18:54:41 **** Incremental Build of configuration Debug for project blink ****
+14:51:42 **** Incremental Build of configuration Debug for project blink ****
 make -j8 all 
 make: Nothing to be done for 'all'.
 
-18:54:41 Build Finished (took 503ms)
+14:51:42 Build Finished (took 657ms)
 

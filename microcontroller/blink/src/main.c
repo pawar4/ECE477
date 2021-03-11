@@ -65,12 +65,12 @@ int main(void)
 	int flag = 1;
 	//set gain
 	HX711_Read();
+	//long offset = HX711_GetOffset();
 	while(1)
 	{
 		//count_t = HX711();
 		//weight = (((4.555e-5)*count_t) - 347.8)-7;
-		count_t = HX711_GetOffset();
-		weight = (((4.555e-5)*count_t) - 347.8)-7;
+		count_t = HX711_Read(); //- offset;
 //		if(UART1_received == 1)
 //		{
 //			UART1_received = 0;

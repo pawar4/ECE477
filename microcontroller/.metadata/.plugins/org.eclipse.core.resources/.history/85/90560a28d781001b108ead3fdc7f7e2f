@@ -59,7 +59,7 @@ int HX711_GetOffset(void) {
 	int offset = 0;
 	for (int i = 0; i < 10; i++) {
 		offset += HX711_Read();
-		Delay(10000);
+		Delay(10000)
 	}
 
 	return offset/10;

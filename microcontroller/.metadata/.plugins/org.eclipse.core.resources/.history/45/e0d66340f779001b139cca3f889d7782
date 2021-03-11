@@ -1,2 +1,0 @@
-
-int HX711_Read(void);
