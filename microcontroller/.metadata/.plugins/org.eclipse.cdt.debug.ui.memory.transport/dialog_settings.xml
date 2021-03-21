@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="EXPORT_DIALOG">
+		<item value="0x0" key="Start"/>
+		<item value="0x64" key="End"/>
+		<item value="C:\Users\pawar\Desktop\hx711.txt" key="File"/>
+		<item value="PlainTextExporter" key="SELECTED_EXPORTER"/>
+		<item value="0x13" key="Initial address"/>
+	</section>
+</section>

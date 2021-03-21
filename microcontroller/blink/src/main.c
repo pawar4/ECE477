@@ -28,6 +28,9 @@ void USART1_IRQHandler();
 void EXTI0_IRQHandler();
 void receivesuccessmsg();
 void pushbuttonmsg();
+void test();
+
+int count_t = 0;
 
 int main(void)
 {
@@ -60,17 +63,19 @@ int main(void)
 	pushbuttonmsg();
 	HX711_init();
 
-	unsigned long weight;
-	unsigned long count_t;
-	int flag = 1;
+	//double weight;
+	//int flag = 1;
 	//set gain
 	HX711_Read();
-	//long offset = HX711_GetOffset();
+	int offset = HX711_GetOffset();
 	while(1)
 	{
 		//count_t = HX711();
-		//weight = (((4.555e-5)*count_t) - 347.8)-7;
-		count_t = HX711_Read(); //- offset;
+		count_t = (HX711_Read()- offset) / 1000;
+		test();
+		Delay(100000);
+//		weight = (((4.555e-5)*count_t) - 347.8)-42;
+		//weight =  count_t - offset;
 //		if(UART1_received == 1)
 //		{
 //			UART1_received = 0;
@@ -207,6 +212,7 @@ void EXTI0_IRQHandler()
 {
 	if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
 		char send_message[] = "Hello\r\n";
+
 		for(int i = 0; i < strlen(send_message); ++i)
 		{
 			USART_SendData(USART1,send_message[i]);
@@ -215,5 +221,19 @@ void EXTI0_IRQHandler()
 		EXTI_ClearITPendingBit(EXTI_Line0);
 	}
 
+}
+
+void test()
+{
+	char send_message[] = "Hello\r\n";
+	itoa(count_t, send_message, 10);
+
+	for(int i = 0; i < strlen(send_message); ++i)
+	{
+		USART_SendData(USART1,send_message[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
+	USART_SendData(USART1,"\r");
+	while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
 }
 

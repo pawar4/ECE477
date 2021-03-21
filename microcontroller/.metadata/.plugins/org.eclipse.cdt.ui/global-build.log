@@ -1021,3 +1021,1490 @@ arm-none-eabi-size "blink.elf"
 14:51:42 **** Incremental Build of configuration Debug for project blink ****
 make -j8 all 
 make: Nothing to be done for 'all'.
+14:01:54 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/HX711.c
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/HX711.d" -MT"src/HX711.o" -o "src/HX711.o" "../src/HX711.c"
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:64:16: warning: variable 'count_t' set but not used [-Wunused-but-set-variable]
+  unsigned long count_t;
+                ^~~~~~~
+../src/main.c:63:16: warning: unused variable 'weight' [-Wunused-variable]
+  unsigned long weight;
+                ^~~~~~
+Finished building: ../src/main.c
+Finished building: ../src/HX711.c
+ 
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   6920	   2152	    604	   9676	   25cc	blink.elf
+ 
+14:19:47 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:64:16: warning: variable 'count_t' set but not used [-Wunused-but-set-variable]
+  unsigned long count_t;
+                ^~~~~~~
+../src/main.c:63:16: warning: unused variable 'weight' [-Wunused-variable]
+  unsigned long weight;
+                ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   6996	   2152	    604	   9752	   2618	blink.elf
+ 
+14:22:34 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+14:28:26 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:64:16: warning: variable 'count_t' set but not used [-Wunused-but-set-variable]
+  unsigned long count_t;
+                ^~~~~~~
+../src/main.c:63:16: warning: unused variable 'weight' [-Wunused-variable]
+  unsigned long weight;
+                ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7008	   2152	    604	   9764	   2624	blink.elf
+ 
+14:29:30 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:16: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  unsigned long weight;
+                ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7012	   2152	    604	   9768	   2628	blink.elf
+ 
+14:30:12 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:7: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  long weight;
+       ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7012	   2152	    604	   9768	   2628	blink.elf
+ 
+14:31:49 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+14:33:40 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:68:7: warning: unused variable 'offset' [-Wunused-variable]
+  long offset = HX711_GetOffset();
+       ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:64:16: warning: variable 'count_t' set but not used [-Wunused-but-set-variable]
+  unsigned long count_t;
+                ^~~~~~~
+../src/main.c:63:7: warning: unused variable 'weight' [-Wunused-variable]
+  long weight;
+       ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7004	   2152	    604	   9760	   2620	blink.elf
+ 
+14:37:55 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+14:39:48 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+14:51:50 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:68:7: warning: unused variable 'offset' [-Wunused-variable]
+  long offset = HX711_GetOffset();
+       ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:64:16: warning: variable 'count_t' set but not used [-Wunused-but-set-variable]
+  unsigned long count_t;
+                ^~~~~~~
+../src/main.c:63:7: warning: unused variable 'weight' [-Wunused-variable]
+  long weight;
+       ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7012	   2152	    604	   9768	   2628	blink.elf
+ 
+14:58:00 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:68:7: warning: unused variable 'offset' [-Wunused-variable]
+  long offset = HX711_GetOffset();
+       ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:64:16: warning: variable 'count_t' set but not used [-Wunused-but-set-variable]
+  unsigned long count_t;
+                ^~~~~~~
+../src/main.c:63:7: warning: unused variable 'weight' [-Wunused-variable]
+  long weight;
+       ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7012	   2152	    604	   9768	   2628	blink.elf
+ 
+14:58:44 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+14:59:51 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:68:7: warning: unused variable 'offset' [-Wunused-variable]
+  long offset = HX711_GetOffset();
+       ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:64:16: warning: variable 'count_t' set but not used [-Wunused-but-set-variable]
+  unsigned long count_t;
+                ^~~~~~~
+../src/main.c:63:7: warning: unused variable 'weight' [-Wunused-variable]
+  long weight;
+       ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7004	   2152	    604	   9760	   2620	blink.elf
+ 
+15:00:11 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/HX711.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/HX711.d" -MT"src/HX711.o" -o "src/HX711.o" "../src/HX711.c"
+Finished building: ../src/HX711.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   6996	   2152	    604	   9752	   2618	blink.elf
+ 
+15:06:02 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:15:14 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:7: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  long weight;
+       ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7004	   2152	    604	   9760	   2620	blink.elf
+ 
+15:17:44 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:7: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  long weight;
+       ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7004	   2152	    604	   9760	   2620	blink.elf
+ 
+15:20:32 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:9: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  double weight;
+         ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7904	   2152	    604	  10660	   29a4	blink.elf
+ 
+15:20:58 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:9: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  double weight;
+         ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7904	   2152	    604	  10660	   29a4	blink.elf
+ 
+15:27:28 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:28:47 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:29:08 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:30:50 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:31:53 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:36:30 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:68:16: warning: unused variable 'offset' [-Wunused-variable]
+  unsigned long offset = HX711_GetOffset();
+                ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:9: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  double weight;
+         ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   9028	   2152	    604	  11784	   2e08	blink.elf
+ 
+15:37:02 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:38:34 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:68:16: warning: unused variable 'offset' [-Wunused-variable]
+  unsigned long offset = HX711_GetOffset();
+                ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:9: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  double weight;
+         ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   9028	   2152	    604	  11784	   2e08	blink.elf
+ 
+15:39:16 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:68:16: warning: unused variable 'offset' [-Wunused-variable]
+  unsigned long offset = HX711_GetOffset();
+                ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:9: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  double weight;
+         ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7648	   2128	    604	  10380	   288c	blink.elf
+ 
+15:51:21 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/HX711.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/HX711.d" -MT"src/HX711.o" -o "src/HX711.o" "../src/HX711.c"
+Finished building: ../src/HX711.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7656	   2128	    604	  10388	   2894	blink.elf
+ 
+16:00:22 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:68:16: warning: unused variable 'offset' [-Wunused-variable]
+  unsigned long offset = HX711_GetOffset();
+                ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:9: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  double weight;
+         ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7656	   2128	    604	  10388	   2894	blink.elf
+ 
+16:03:19 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+16:13:52 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:68:16: warning: unused variable 'offset' [-Wunused-variable]
+  unsigned long offset = HX711_GetOffset();
+                ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:64:16: warning: variable 'count_t' set but not used [-Wunused-but-set-variable]
+  unsigned long count_t;
+                ^~~~~~~
+../src/main.c:63:9: warning: unused variable 'weight' [-Wunused-variable]
+  double weight;
+         ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   5624	   2128	    604	   8356	   20a4	blink.elf
+ 
+16:27:40 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+16:29:37 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:71:3: error: lvalue required as decrement operand
+ ------ count_t = HX711_Read();
+   ^~
+../src/main.c:68:16: warning: unused variable 'offset' [-Wunused-variable]
+  unsigned long offset = HX711_GetOffset();
+                ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:9: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  double weight;
+         ^~~~~~
+src/subdir.mk:30: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+16:30:04 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:72:3: error: lvalue required as decrement operand
+ ------ count_t = HX711_Read();
+   ^~
+../src/main.c:68:16: warning: unused variable 'offset' [-Wunused-variable]
+  unsigned long offset = HX711_GetOffset();
+                ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:9: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  double weight;
+         ^~~~~~
+src/subdir.mk:30: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+16:30:30 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:72:3: error: lvalue required as decrement operand
+ ------ count_t = HX711_Read();
+   ^~
+../src/main.c:68:16: warning: unused variable 'offset' [-Wunused-variable]
+  unsigned long offset = HX711_GetOffset();
+                ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:9: warning: unused variable 'weight' [-Wunused-variable]
+  double weight;
+         ^~~~~~
+src/subdir.mk:30: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+16:30:53 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:68:16: warning: unused variable 'offset' [-Wunused-variable]
+  unsigned long offset = HX711_GetOffset();
+                ^~~~~~
+../src/main.c:65:6: warning: unused variable 'flag' [-Wunused-variable]
+  int flag = 1;
+      ^~~~
+../src/main.c:63:9: warning: variable 'weight' set but not used [-Wunused-but-set-variable]
+  double weight;
+         ^~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7656	   2128	    604	  10388	   2894	blink.elf
+ 
+16:45:53 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'EXTI0_IRQHandler':
+../src/main.c:212:3: error: expected expression before 'for'
+   for(int i = 0; i < strlen(send_message); ++i)
+   ^~~
+../src/main.c:212:18: error: 'i' undeclared (first use in this function)
+   for(int i = 0; i < strlen(send_message); ++i)
+                  ^
+../src/main.c:212:18: note: each undeclared identifier is reported only once for each function it appears in
+../src/main.c:212:20: warning: comparison between pointer and integer
+   for(int i = 0; i < strlen(send_message); ++i)
+                    ^
+../src/main.c:212:20: warning: statement with no effect [-Wunused-value]
+   for(int i = 0; i < strlen(send_message); ++i)
+                  ~~^~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:212:44: error: lvalue required as increment operand
+   for(int i = 0; i < strlen(send_message); ++i)
+                                            ^~
+../src/main.c:212:44: warning: statement with no effect [-Wunused-value]
+../src/main.c:212:47: error: expected ';' before ')' token
+   for(int i = 0; i < strlen(send_message); ++i)
+                                               ^
+../src/main.c:212:47: error: expected statement before ')' token
+../src/main.c:214:38: error: array subscript is not an integer
+    USART_SendData(USART1,send_message[i]);
+                                      ^
+../src/main.c:214:26: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+    USART_SendData(USART1,send_message[i]);
+                          ^~~~~~~~~~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+src/subdir.mk:30: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+16:47:27 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7168	   2152	    604	   9924	   26c4	blink.elf
+ 
+16:49:34 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:74:3: warning: implicit declaration of function 'test'; did you mean 'strstr'? [-Wimplicit-function-declaration]
+   test();
+   ^~~~
+   strstr
+../src/main.c: At top level:
+../src/main.c:225:6: warning: conflicting types for 'test'
+ void test()
+      ^~~~
+../src/main.c:74:3: note: previous implicit declaration of 'test' was here
+   test();
+   ^~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7280	   2152	    604	  10036	   2734	blink.elf
+ 
+16:50:00 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7280	   2152	    604	  10036	   2734	blink.elf
+ 
+17:15:45 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:231:41: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+  for(int i = 0; i < strlen(send_message),send_message[i]);
+                                         ^
+../src/main.c:231:57: error: expected ';' before ')' token
+  for(int i = 0; i < strlen(send_message),send_message[i]);
+                                                         ^
+../src/main.c:231:2: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  for(int i = 0; i < strlen(send_message),send_message[i]);
+  ^~~
+../src/main.c:232:3: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+   while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+   ^~~~~
+../src/main.c: At top level:
+../src/main.c:234:1: error: expected identifier or '(' before '}' token
+ }
+ ^
+src/subdir.mk:30: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+17:15:53 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:231:41: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+  for(int i = 0; i < strlen(send_message),send_message[i]);
+                                         ^
+../src/main.c:231:57: error: expected ';' before ')' token
+  for(int i = 0; i < strlen(send_message),send_message[i]);
+                                                         ^
+../src/main.c:231:2: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  for(int i = 0; i < strlen(send_message),send_message[i]);
+  ^~~
+../src/main.c:232:3: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+   while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+   ^~~~~
+../src/main.c: At top level:
+../src/main.c:234:1: error: expected identifier or '(' before '}' token
+ }
+ ^
+src/subdir.mk:30: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+17:16:38 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7280	   2152	    604	  10036	   2734	blink.elf
+ 
+17:18:57 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+../src/main.c:238:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\n");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7352	   2152	    604	  10108	   277c	blink.elf
+ 
+17:23:02 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7280	   2152	    604	  10036	   2734	blink.elf
+ 
+17:23:56 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\n");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7316	   2152	    604	  10072	   2758	blink.elf
+ 
+17:25:08 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"x");
+                        ^~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7316	   2152	    604	  10072	   2758	blink.elf
+ 
+17:27:45 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7316	   2152	    604	  10072	   2758	blink.elf
+ 
+17:34:10 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7412	   2152	    604	  10168	   27b8	blink.elf
+ 
+17:34:52 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7404	   2152	    604	  10160	   27b0	blink.elf
+ 
+17:35:26 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7316	   2152	    604	  10072	   2758	blink.elf
+ 
+17:35:59 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7320	   2152	    604	  10076	   275c	blink.elf
+ 
+17:36:23 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7320	   2152	    604	  10076	   275c	blink.elf
+ 
+15:12:46 **** Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7320	   2152	    604	  10076	   275c	blink.elf
+ 
+15:13:19 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:14:34 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7408	   2152	    604	  10164	   27b4	blink.elf
+ 
+15:15:40 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: missing terminating " character
+  USART_SendData(USART1,"\");
+                        ^
+../src/main.c:236:24: error: missing terminating " character
+  USART_SendData(USART1,"\");
+                        ^~~~~
+../src/main.c:237:2: error: expected expression before 'while'
+  while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+  ^~~~~
+../src/main.c:240:1: error: expected ';' before '}' token
+ }
+ ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:30: recipe for target 'src/main.o' failed
+15:15:58 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7408	   2152	    604	  10164	   27b4	blink.elf
+ 
+15:16:28 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:20:34 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:21:06 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:23:28 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7408	   2152	    604	  10164	   27b4	blink.elf
+ 
+15:24:33 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:70:6: warning: unused variable 'offset' [-Wunused-variable]
+  int offset = HX711_GetOffset();
+      ^~~~~~
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7404	   2152	    604	  10160	   27b0	blink.elf
+ 
+15:25:42 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:26:58 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7320	   2152	    604	  10076	   275c	blink.elf
+ 
+15:28:35 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.
+15:36:03 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7408	   2152	    604	  10164	   27b4	blink.elf
+ 
+15:37:45 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+C:\Users\pawar\Documents\School\ECE477\microcontroller\blink\Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/Utilities" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/inc" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device" -I"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'test':
+../src/main.c:236:24: warning: passing argument 2 of 'USART_SendData' makes integer from pointer without a cast [-Wint-conversion]
+  USART_SendData(USART1,"\r");
+                        ^~~~
+In file included from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_conf.h:46:0,
+                 from C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/CMSIS/device/stm32l1xx.h:6638,
+                 from ../src/main.c:12:
+C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/StdPeriph_Driver/inc/stm32l1xx_usart.h:378:6: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'char *'
+ void USART_SendData(USART_TypeDef* USARTx, uint16_t Data);
+      ^~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: blink.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"C:/Users/pawar/Documents/School/ECE477/microcontroller/blink/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "blink.elf" @"objects.list"   -lm
+Finished building target: blink.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "blink.elf" "blink.bin"
+arm-none-eabi-size "blink.elf"
+   text	   data	    bss	    dec	    hex	filename
+   7424	   2152	    604	  10180	   27c4	blink.elf
+ 
+15:41:41 **** Incremental Build of configuration Debug for project blink ****
+make -j8 all 
+make: Nothing to be done for 'all'.

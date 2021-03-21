@@ -35,6 +35,7 @@ void HX711_init() {
 	GPIO_WriteBit(GPIOC, PD_SCK_Pin, Bit_RESET);
 	Delay(1000);
 }
+
 int HX711_Read(void)
 {
 	unsigned long buffer = 0;
