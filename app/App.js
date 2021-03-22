@@ -1,13 +1,21 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { NativeEventEmitter, NativeModules, Platform, PermissionsAndroid } from 'react-native';
+import { 
+    Alert, 
+    NativeEventEmitter, 
+    NativeModules, 
+    Platform, 
+    PermissionsAndroid, 
+    StyleSheet, 
+    ScrollView,
+    TextInput } from 'react-native';
 import { Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MapView from "react-native-maps";
 // import BleManager from 'react-native-ble-manager';
 import BluetoothSerial from 'react-native-bluetooth-serial'
-
+import SmsAndroid from 'react-native-get-sms-android'
 
 function HomeScreen() {
     const [isconnected, setIsConnected] = useState(false);   //state variable to hold boolean value of whether any device is connected
@@ -151,8 +159,6 @@ function HomeScreen() {
             <Text> {weight} </Text>
         </View>
     );
-
-
 }
 
 function GPSScreen() {
@@ -175,8 +181,121 @@ function GPSScreen() {
 }
 
 function SettingScreen() {
+
+    const styles = StyleSheet.create({
+    container: {
+        margin: 20,
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "flex-start",
+        backgroundColor: "#F5FCFF"
+    },
+    welcome: {
+        color: 'black',
+        fontSize: 20,
+        textAlign: "center",
+    },
+    instructions: {
+        textAlign: "center",
+        color: "#333333",
+        marginBottom: 5
+    }
+    });
+
+    const [state, setState] = useState({
+        sendTo: "",
+        sendBody: "",
+        minDate: "",
+        maxDate: "",
+        smsList: []
+    });
+
+    React.useEffect(() => {
+        console.log("checking SMS permissions");
+        try {
+            PermissionsAndroid.requestMultiple([PermissionsAndroid.PERMISSIONS.SEND_SMS,
+                                                PermissionsAndroid.PERMISSIONS.READ_SMS]
+                                                ).then((result) => {
+                                                    if (result['android.permission.READ_SMS'] &&
+                                                    result['android.permission.SEND_SMS'] === PermissionsAndroid.RESULTS.GRANTED) {
+                                                        console.log("SMS Permission granted")
+                                                    }
+                                                    else {
+                                                        console.log("SMS Permission denied")
+                                                    }
+                                                })
+        } catch (e) {
+            console.error(e);
+        }
+    }, []);
+
+    const sendSMS = () => {
+        console.log(state.sendTo);
+        console.log(state.sendBody);
+        SmsAndroid.autoSend(
+            state.sendTo,
+            state.sendBody,
+            err => {
+                Alert.alert("Failed to send SMS. Check console");
+                console.log("SMS SEND ERROR", err);
+            },
+            success => {
+                Alert.alert("SMS sent successfully");
+            }
+        );
+    }
+
+    const listSMS = () => {
+        const {minDate, maxDate} = state
+        var filter = {
+            box: "inbox",
+            maxCount: 30,
+        };
+        if (minDate !== "") {
+            filter.minDate = minDate
+        }
+        if (maxDate !== "") {
+            filter.maxDate = maxDate
+        }
+    
+        SmsAndroid.list(
+            JSON.stringify(filter),
+            fail => {
+                console.log("Failed with this error: " + fail);
+            },
+            (count, smsList) => {
+                var arr = JSON.parse(smsList);
+                console.log(arr);
+                setState({...state, smsList: arr });
+          }
+        );
+      }
+
     return (
         <View style={{flex: 1}}>
+            <View style={{ flex: 1, alignItems: 'flex-start'}}>
+                <Text style={styles.welcome}>Send SMS</Text>
+                <Text>To</Text>
+                <TextInput
+                    style={{ width: '100%', borderRadius: 20, height: 40, borderColor: "gray", borderWidth: 1 }}
+                    onChangeText={text => setState({...state, 
+                                                    sendTo :  text})}
+                    value={state.sendTo}
+                    keyboardType={"numeric"}
+                />
+                <Text>Message</Text>
+                <TextInput
+                    style={{ borderRadius: 20, height: 40, borderColor: "gray", borderWidth: 1 }}
+                    onChangeText={text => setState({...state, 
+                                                    sendBody : text})}
+                    value={state.sendBody}
+                />
+                <Button title="send sms" onPress={() => sendSMS()} />
+            </View>
+            <View style={{flex: 1}}>
+                <Button title="read sms" onPress={() => listSMS()} />
+            </View>
+            
         </View>
     );
 }
