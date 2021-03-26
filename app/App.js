@@ -182,26 +182,6 @@ function GPSScreen() {
 
 function SettingScreen() {
 
-    const styles = StyleSheet.create({
-    container: {
-        margin: 20,
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "flex-start",
-        backgroundColor: "#F5FCFF"
-    },
-    welcome: {
-        color: 'black',
-        fontSize: 20,
-        textAlign: "center",
-    },
-    instructions: {
-        textAlign: "center",
-        color: "#333333",
-        marginBottom: 5
-    }
-    });
-
     const [state, setState] = useState({
         sendTo: "",
         sendBody: "",
@@ -240,7 +220,7 @@ function SettingScreen() {
                 console.log("SMS SEND ERROR", err);
             },
             success => {
-                Alert.alert("SMS sent successfully");
+                Alert.alert("SMS sent successfully.\nPlease wait for response to be updated on this page");
             }
         );
     }
@@ -271,9 +251,31 @@ function SettingScreen() {
         );
       }
 
+    const reqWeight = () => {
+        state.sendBody = "W"
+        sendSMS()
+    }
+
+    const reqBattStat = () => {
+        state.sendBody = "B"
+        sendSMS()
+    }
+
     return (
-        <View style={{flex: 1}}>
-            <View style={{ flex: 1, alignItems: 'flex-start'}}>
+        <View style={{  flex: 1,
+                        justifyContent: 'center',
+                        alignItems: 'center'}}>
+            
+            <View style={{margin: 10}}>
+                <Button title="Get Weight" onPress={() => reqWeight()} />
+                <Text style= {{ width: '100%', borderRadius: 40, height: 40, borderColor: 'gray', borderWidth: 1, alignItems: 'center'}}>Hello</Text>
+            </View>
+
+            <View style={{margin: 10}}>
+                <Button title="Get Battery Status" onPress={() => reqBattStat()} />
+            </View>
+
+            {/* <View style={{ flex: 1, alignItems: 'flex-start'}}>
                 <Text style={styles.welcome}>Send SMS</Text>
                 <Text>To</Text>
                 <TextInput
@@ -294,7 +296,7 @@ function SettingScreen() {
             </View>
             <View style={{flex: 1}}>
                 <Button title="read sms" onPress={() => listSMS()} />
-            </View>
+            </View> */}
             
         </View>
     );
@@ -307,7 +309,7 @@ function MyTabs() {
     <Tab.Navigator>
         <Tab.Screen name='Home' component={HomeScreen} />
         <Tab.Screen name='GPS' component={GPSScreen} />
-        <Tab.Screen name="Settings" component={SettingScreen} />
+        <Tab.Screen name="Information" component={SettingScreen} />
     </Tab.Navigator>
     );
 }
