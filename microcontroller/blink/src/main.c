@@ -8,7 +8,7 @@
   ******************************************************************************
 */
 
-
+//checking to seee if there are no merge issues
 #include "stm32l1xx.h"
 #include "stm32l_discovery_lcd.h"
 #include "stm32l1xx_gpio.h"
