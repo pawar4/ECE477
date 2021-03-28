@@ -8,7 +8,7 @@
   ******************************************************************************
 */
 
-//checking to seee if there are no merge issues
+
 #include "stm32l1xx.h"
 #include "stm32l_discovery_lcd.h"
 #include "stm32l1xx_gpio.h"
@@ -16,53 +16,86 @@
 #include <stdlib.h>
 #include <string.h>
 
-static int cnt = 0;
-char received_message[200] = "";
+static int cnt1 = 0;
+static int cnt3 = 0;
+int state = 0;
+int valid1 = 0;
+int valid3 = 0;
+int test_cmd = 0;
+static int sms_cnt = 0;
+char delimiter[2] = "\r\n";
+char received_message1[200] = "";
+char received_message3[200] = "";
+char sms_request[100] = "";
+char weight[50] = "20.5 Kg";
+char location[100] = "blabla";
+char battery[10] = "70%";
+
+uint8_t ctrl_z = 0x1A;                              // for sending ctrl+z
+
 char receive_success[30] = "Message successfully received\r";
+
 volatile int UART1_received = 0;
-volatile int UART1_sent = 1;
+volatile int UART3_received = 0;
 
 void UART1_init();
+void UART3_init();
 void USART1_IRQHandler();
+void USART3_IRQHandler();
 void EXTI0_IRQHandler();
 void receivesuccessmsg();
 void pushbuttonmsg();
+void setup_ring_indicator_pin();
+void sms_sendweight();
+void sms_sendlocation();
+void sms_sendbattery();
+void bluetooth_sendweight();
+void bluetooth_sendlocation();
+void bluetooth_sendbattery();
 
 int main(void)
 {
-	//*************************** Making two LEDs blink ***********************///
-
-	/*RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
-
-	GPIO_InitTypeDef Init_Periph;
-	Init_Periph.GPIO_Pin = GPIO_Pin_7 | GPIO_Pin_6;
-	Init_Periph.GPIO_Mode = GPIO_Mode_OUT;
-	Init_Periph.GPIO_Speed = GPIO_Speed_2MHz;
-	Init_Periph.GPIO_OType = GPIO_OType_PP;
-	Init_Periph.GPIO_PuPd = GPIO_PuPd_UP;
-	GPIO_Init(GPIOB, &Init_Periph);
-
-	while(1) {
-		GPIO_SetBits(GPIOB, GPIO_Pin_7);
-		GPIO_SetBits(GPIOB, GPIO_Pin_6);
-		//for(int i = 0; i <= 500000; i++);
-		for(int i = 0; i <= 1000000; i++);
-		GPIO_ResetBits(GPIOB, GPIO_Pin_7);
-		GPIO_ResetBits(GPIOB, GPIO_Pin_6);
-		//for(int i = 0; i <= 500000; i++);
-		for(int i = 0; i <= 1000000; i++);
-	}*/
-
-	//*************************************************************************///
-
 	UART1_init();
+//	UART3_init();
 	pushbuttonmsg();
 	while(1)
 	{
-		if(UART1_received == 1)
+		if((UART1_received == 1) && (valid1 == 1))
 		{
+			if(received_message1[0] == 'W') //send weight info via bluetooth
+			{
+				bluetooth_sendweight();
+			}
+			else if(received_message1[0] == 'B')   //send battery info via bluetooth
+			{
+				bluetooth_sendbattery();
+			}
+			else if(received_message1[0] == 'L') //send location info via bluetooth
+			{
+				bluetooth_sendlocation();
+			}
 			UART1_received = 0;
-			receivesuccessmsg();
+			valid1 = 0;
+//			receivesuccessmsg();
+		}
+
+		if((UART3_received == 1) && (valid3 == 1))
+		{
+			if(sms_request[0] == 'W')  //send weight info via sms
+			{
+				sms_sendweight();
+			}
+			else if(sms_request[0] == 'B') //send battery info via sms
+			{
+				sms_sendbattery();
+			}
+			else if(sms_request[0] == 'L') //send GPS location info via sms
+			{
+				sms_sendlocation();
+			}
+			UART3_received = 0;
+			valid3 = 0;
+
 		}
 	}
 }
@@ -110,20 +143,6 @@ void UART1_init()
     NVIC_Init(&NVIC_InitStructure);							 // the properties are passed to the NVIC_Init function which takes care of the low level stuff
 
     USART_Cmd(USART1, ENABLE);    //Enable UART
-
-
-//    for (int i = 0; i < 16; ++i)
-//    {
-////    	USART_SendData(USART1,send_message[i]);
-////    	while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
-//
-//    	while(USART_GetFlagStatus(USART1, USART_FLAG_RXNE) == RESET);
-//    	received_message[i] = USART_ReceiveData(USART1);
-//
-//    }
-
-
-
 }
 
 
@@ -175,35 +194,276 @@ void USART1_IRQHandler()
 
 	    char temp = USART_ReceiveData(USART1);
 
-	    if( (temp != '\n') && (cnt < 200) ){
-	      received_message[cnt] = temp;
-	      cnt++;
+	    if( (temp != '\r') && (cnt1 < 200) ){
+	      received_message1[cnt1] = temp;
+	      cnt1++;
 	    }
 	    else{
 	      UART1_received = 1;
-	      cnt = 0;
+	      cnt1 = 0;
+	      valid1 = 1;
 	    }
 	  }
 
-	  // check if the USART1 transmit interrupt flag was set
-	  if( USART_GetITStatus(USART1, USART_IT_TXE) ){
-
-
-	  }
 
 	  return;
 }
+
 void EXTI0_IRQHandler()
 {
 	if (EXTI_GetITStatus(EXTI_Line0) != RESET) {
-		char send_message[] = "Hello\r\n";
-		for(int i = 0; i < strlen(send_message); ++i)
+//		char send_message1[] = "AT+CMGL=\"ALL\"\r\n";
+//		char send_message[] = "AT+CMGF=1\r\n";
+//		char send_message1[] = "AT+CMGD=3\r\n";
+		char send_message1[] = "AT+CNMI=2,2\r\n";
+//		char send_message[] = "AT+CMGL=\"REC READ\"\r\n";
+//		char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+//		char send_message1[] = "AT&V\r";
+		for(int i = 0; i < strlen(send_message1); ++i)
 		{
-			USART_SendData(USART1,send_message[i]);
-			while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+			USART_SendData(USART3,send_message1[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
 		}
+
+//		for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
+//
+//		for(int i = 0; i < strlen(send_message2); ++i)
+//		{
+//			USART_SendData(USART3,send_message2[i]);
+//			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+//		}
+//		USART_SendData(USART3,ctrl_z);
 		EXTI_ClearITPendingBit(EXTI_Line0);
 	}
 
 }
+
+//Function to initialize UART Channel 3 for GSM
+void UART3_init()
+{
+	//**************************Setting up USART*******************//
+	GPIO_InitTypeDef  GPIO_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+	NVIC_InitTypeDef NVIC_InitStructure;
+
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE); //Enabling GPIOB ports
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3,ENABLE); //Enabling USART3
+
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+  //GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;
+
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+    GPIO_PinAFConfig (GPIOB, GPIO_PinSource10, GPIO_AF_USART3);   //Setting PB10 to Alternate function for USART
+    GPIO_PinAFConfig (GPIOB, GPIO_PinSource11, GPIO_AF_USART3);
+
+
+    //USART settings
+    USART_InitStructure.USART_BaudRate = 9600;
+    USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+    USART_InitStructure.USART_StopBits = USART_StopBits_1;
+    USART_InitStructure.USART_Parity = USART_Parity_No;
+    USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+    USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+
+    USART_Init(USART3, &USART_InitStructure);     //Initialize UART settings
+
+    USART_ITConfig(USART3, USART_IT_RXNE, ENABLE); // enable the USART3 receive interrupt
+
+    NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;		 // we want to configure the USART1 interrupts
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x00;// this sets the priority group of the USART3 interrupts
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x2;		 // this sets the subpriority inside the group
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			 // the USART1 interrupts are globally enabled
+    NVIC_Init(&NVIC_InitStructure);							 // the properties are passed to the NVIC_Init function which takes care of the low level stuff
+
+    USART_Cmd(USART3, ENABLE);    //Enable UART
+}
+
+//Function called when UART channel 3 receive register contains unread values for GSM
+void USART3_IRQHandler()
+{
+	if(test_cmd == 0)     //We know that the only AT command we receiving without test is for SMS notification
+	{
+		// check if the USART3 receive interrupt flag was set
+	  if( USART_GetITStatus(USART3, USART_IT_RXNE) ){
+
+	    char temp = USART_ReceiveData(USART3);
+
+		if(cnt3 >= 48 && temp == '\n'){
+			cnt3 = 0;
+			UART3_received = 1;
+			sms_cnt = 0;
+			valid3 = 1;
+		}
+		else
+		{
+			received_message3[cnt3] = temp;
+			if(cnt3 >= 48)
+			{
+				sms_request[sms_cnt] = temp;
+				sms_cnt += 1;
+			}
+			sms_cnt += 0;
+			cnt3++;
+		}
+	  }
+	}
+
+	else  //test_cmd = 1
+	{
+			sms_cnt = 0;
+		  if( USART_GetITStatus(USART3, USART_IT_RXNE) ){
+		    char temp = USART_ReceiveData(USART3);
+
+			if(temp == 'K' && received_message3[cnt3-1] == 'O')
+			{
+				received_message3[cnt3] = temp;
+				state = 1;
+			}
+			else if(state == 1 && temp == '\n'){
+				cnt3 = 0;
+				UART3_received = 1;
+				state = 0;
+				valid3 = 1;
+			}
+			else if(state == 0 && cnt3 < 500)
+			{
+				received_message3[cnt3] = temp;
+				cnt3++;
+			}
+		  }
+	}
+
+	  return;
+}
+
+void setup_ring_indicator_pin()
+{
+	EXTI_InitTypeDef  EXTI_InitStructure;
+	GPIO_InitTypeDef  GPIO_InitStructure;
+
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC, ENABLE); //Enabling GPIOC ports
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;    //setting the pin to logic low when button not pressed
+
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+    SYSCFG_EXTILineConfig(EXTI_PortSourceGPIOC, EXTI_PinSource4);  //telling system to use PC4 for EXTI_Line4
+
+    EXTI_InitStructure.EXTI_Line = EXTI_Line4;
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
+    EXTI_Init(&EXTI_InitStructure);
+
+}
+
+
+void sms_sendweight()
+{
+	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+	for(int i = 0; i < strlen(send_message1); ++i)
+	{
+		USART_SendData(USART3,send_message1[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+
+	for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
+
+	for(int i = 0; weight[i] != '\0'; ++i)
+	{
+		USART_SendData(USART3,weight[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+	USART_SendData(USART3,ctrl_z);
+}
+
+void sms_sendlocation()
+{
+	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+	for(int i = 0; i < strlen(send_message1); ++i)
+	{
+		USART_SendData(USART3,send_message1[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+
+	for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
+
+	for(int i = 0; weight[i] != '\0'; ++i)
+	{
+		USART_SendData(USART3,location[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+	USART_SendData(USART3,ctrl_z);
+}
+
+void sms_sendbattery()
+{
+	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+	for(int i = 0; i < strlen(send_message1); ++i)
+	{
+		USART_SendData(USART3,send_message1[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+
+	for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
+
+	for(int i = 0; weight[i] != '\0'; ++i)
+	{
+		USART_SendData(USART3,battery[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+	USART_SendData(USART3,ctrl_z);
+}
+
+void bluetooth_sendweight()
+{
+	for(int i = 0; weight[i] != '\0'; ++i)
+	{
+		USART_SendData(USART1,weight[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
+	for(int i=0; i < strlen(delimiter); ++i)
+	{
+		USART_SendData(USART1,delimiter[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
+}
+
+void bluetooth_sendbattery()
+{
+	for(int i = 0; battery[i] != '\0'; ++i)
+	{
+		USART_SendData(USART1,battery[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
+	for(int i=0; i < strlen(delimiter); ++i)
+	{
+		USART_SendData(USART1,delimiter[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
+}
+
+void bluetooth_sendlocation()
+{
+	for(int i = 0; location[i] != '\0'; ++i)
+	{
+		USART_SendData(USART1,location[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
+	for(int i=0; i < strlen(delimiter); ++i)
+	{
+		USART_SendData(USART1,delimiter[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
+}
+
+
+
+
+
 
