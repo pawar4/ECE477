@@ -12,10 +12,23 @@ import {
 import { Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 // import BleManager from 'react-native-ble-manager';
 import BluetoothSerial from 'react-native-bluetooth-serial'
 import SmsAndroid from 'react-native-get-sms-android'
+
+let initRegion = {
+    latitude: 51.5079145,
+    longitude: -0.0899163,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01
+};
+
+let markerLocation = {
+    latitude: 50.5079145,
+    longitude: -0.0877321,
+    title : "BackPack"
+};
 
 function HomeScreen() {
     const [isconnected, setIsConnected] = useState(false);   //state variable to hold boolean value of whether any device is connected
@@ -148,7 +161,7 @@ function HomeScreen() {
             </View>
 
             <View style={{margin: 10}}>
-                <Button title="Send request to backpack" onPress={() => WriteMessage(String("Hello\r\n")) } />
+                <Button title="Send request to backpack" onPress={() => WriteMessage(String("W\r\n")) } />
             </View>
 
             <View style={{margin: 10}}>
@@ -161,22 +174,26 @@ function HomeScreen() {
     );
 }
 
-function GPSScreen() {
-    const [region, setRegion] = useState({
-        latitude: 51.5079145,
-        longitude: -0.0899163,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01 
-    });
+function _updateMarkerLocation(_latitude, _longitude) {
+    markerLocation.latitude = _latitude;
+    markerLocation.longitude = _longitude;
+}
 
+function GPSScreen() {
+    const [region, setRegion] = useState(initRegion);
+    const [marker, setMarker] = useState(markerLocation);
+    
     return (
         <MapView 
             style={{  flex: 1  }} 
             region={region}
-            onRegionChangeComplete={region => setRegion(region)}
+            onRegionChangeComplete={region => {setRegion(region),setMarker(initMarker)}}
             showsUserLocation={true}
             followsUserLocation={true}
-        />
+            showsMyLocationButton={true}
+        >
+        <Marker coordinate={marker} />
+        </MapView>
     );
 }
 
@@ -273,31 +290,7 @@ function SettingScreen() {
 
             <View style={{margin: 10}}>
                 <Button title="Get Battery Status" onPress={() => reqBattStat()} />
-            </View>
-
-            {/* <View style={{ flex: 1, alignItems: 'flex-start'}}>
-                <Text style={styles.welcome}>Send SMS</Text>
-                <Text>To</Text>
-                <TextInput
-                    style={{ width: '100%', borderRadius: 20, height: 40, borderColor: "gray", borderWidth: 1 }}
-                    onChangeText={text => setState({...state, 
-                                                    sendTo :  text})}
-                    value={state.sendTo}
-                    keyboardType={"numeric"}
-                />
-                <Text>Message</Text>
-                <TextInput
-                    style={{ borderRadius: 20, height: 40, borderColor: "gray", borderWidth: 1 }}
-                    onChangeText={text => setState({...state, 
-                                                    sendBody : text})}
-                    value={state.sendBody}
-                />
-                <Button title="send sms" onPress={() => sendSMS()} />
-            </View>
-            <View style={{flex: 1}}>
-                <Button title="read sms" onPress={() => listSMS()} />
-            </View> */}
-            
+            </View>            
         </View>
     );
 }
