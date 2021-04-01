@@ -174,33 +174,25 @@ function HomeScreen() {
     );
 }
 
-function _updateMarkerLocation(_latitude, _longitude) {
-    markerLocation.latitude = _latitude;
-    markerLocation.longitude = _longitude;
+function _updateMarkerLocation(coordString) {
+
+    var coords = coordString.split(',')
+    var lat = parseFloat(coords[0] , 10 ) + 1;
+    var long = parseFloat(coords[1] , 10 ) + 1;
+    console.log(coords)
+    console.log(lat)
+    console.log(long)
+    //markerLocation.latitude = _latitude;
+    //markerLocation.longitude = _longitude;
 }
 
 function GPSScreen() {
     const [region, setRegion] = useState(initRegion);
     const [marker, setMarker] = useState(markerLocation);
     
-    return (
-        <MapView 
-            style={{  flex: 1  }} 
-            region={region}
-            onRegionChangeComplete={region => {setRegion(region),setMarker(initMarker)}}
-            showsUserLocation={true}
-            followsUserLocation={true}
-            showsMyLocationButton={true}
-        >
-        <Marker coordinate={marker} />
-        </MapView>
-    );
-}
-
-function SettingScreen() {
-
+    //GSM Part
     const [state, setState] = useState({
-        sendTo: "",
+        sendFrom: "+17657143147",
         sendBody: "",
         minDate: "",
         maxDate: "",
@@ -226,33 +218,20 @@ function SettingScreen() {
         }
     }, []);
 
-    const sendSMS = () => {
-        console.log(state.sendTo);
-        console.log(state.sendBody);
-        SmsAndroid.autoSend(
-            state.sendTo,
-            state.sendBody,
-            err => {
-                Alert.alert("Failed to send SMS. Check console");
-                console.log("SMS SEND ERROR", err);
-            },
-            success => {
-                Alert.alert("SMS sent successfully.\nPlease wait for response to be updated on this page");
-            }
-        );
-    }
-
     const listSMS = () => {
-        const {minDate, maxDate} = state
+        const {sendFrom, minDate, maxDate} = state
         var filter = {
             box: "inbox",
-            maxCount: 30,
+            maxCount: 1,
         };
         if (minDate !== "") {
             filter.minDate = minDate
         }
         if (maxDate !== "") {
             filter.maxDate = maxDate
+        }
+        if (sendFrom !== "") {
+            filter.address = "+17657143147"
         }
     
         SmsAndroid.list(
@@ -262,35 +241,41 @@ function SettingScreen() {
             },
             (count, smsList) => {
                 var arr = JSON.parse(smsList);
-                console.log(arr);
-                setState({...state, smsList: arr });
-          }
+                //console.log(arr[0].body);
+                _updateMarkerLocation(arr[0].body)
+                //setState({...state, smsList: arr });
+            }
         );
-      }
-
-    const reqWeight = () => {
-        state.sendBody = "W"
-        sendSMS()
     }
 
-    const reqBattStat = () => {
-        state.sendBody = "B"
-        sendSMS()
-    }
+    return (
+        <MapView 
+            style={{  flex: 1  }} 
+            region={region}
+            onRegionChangeComplete={region => {setRegion(region),setMarker(markerLocation), listSMS()}}
+            showsUserLocation={true}
+            followsUserLocation={true}
+            showsMyLocationButton={true}
+        >
+        <Marker coordinate={marker} />
+        </MapView>
+    );
+}
 
+function SettingScreen() {
     return (
         <View style={{  flex: 1,
                         justifyContent: 'center',
                         alignItems: 'center'}}>
             
-            <View style={{margin: 10}}>
+            {/* <View style={{margin: 10}}>
                 <Button title="Get Weight" onPress={() => reqWeight()} />
                 <Text style= {{ width: '100%', borderRadius: 40, height: 40, borderColor: 'gray', borderWidth: 1, alignItems: 'center'}}>Hello</Text>
             </View>
 
             <View style={{margin: 10}}>
                 <Button title="Get Battery Status" onPress={() => reqBattStat()} />
-            </View>            
+            </View>             */}
         </View>
     );
 }
