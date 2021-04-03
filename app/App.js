@@ -17,19 +17,6 @@ import MapView, { Marker } from "react-native-maps";
 import BluetoothSerial from 'react-native-bluetooth-serial'
 import SmsAndroid from 'react-native-get-sms-android'
 
-let initRegion = {
-    latitude: 51.5079145,
-    longitude: -0.0899163,
-    latitudeDelta: 0.01,
-    longitudeDelta: 0.01
-};
-
-let markerLocation = {
-    latitude: 50.5079145,
-    longitude: -0.0877321,
-    title : "BackPack"
-};
-
 function HomeScreen() {
     const [isconnected, setIsConnected] = useState(false);   //state variable to hold boolean value of whether any device is connected
     const [weight,setWeight] = useState("5 kg");
@@ -176,23 +163,25 @@ function HomeScreen() {
 
 function _updateMarkerLocation(coordString) {
 
-    var coords = coordString.split(',')
-    var lat = parseFloat(coords[0] , 10 ) + 1;
-    var long = parseFloat(coords[1] , 10 ) + 1;
-    console.log(coords)
-    console.log(lat)
-    console.log(long)
-    //markerLocation.latitude = _latitude;
-    //markerLocation.longitude = _longitude;
+    
 }
 
 function GPSScreen() {
-    const [region, setRegion] = useState(initRegion);
-    const [marker, setMarker] = useState(markerLocation);
+    const [region, setRegion] = useState({
+        latitude: 51.5079145,
+        longitude: -0.807321,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01
+    });
+    const [marker, setMarker] = useState({
+        latitude: 50.5079145,
+        longitude: -0.19,
+        title : "BackPack"
+    });
     
     //GSM Part
     const [state, setState] = useState({
-        sendFrom: "+17657143147",
+        sendFrom: "+18455311048",
         sendBody: "",
         minDate: "",
         maxDate: "",
@@ -218,7 +207,7 @@ function GPSScreen() {
         }
     }, []);
 
-    const listSMS = () => {
+    const listSMS = (marker) => {
         const {sendFrom, minDate, maxDate} = state
         var filter = {
             box: "inbox",
@@ -231,7 +220,7 @@ function GPSScreen() {
             filter.maxDate = maxDate
         }
         if (sendFrom !== "") {
-            filter.address = "+17657143147"
+            filter.address = sendFrom
         }
     
         SmsAndroid.list(
@@ -241,9 +230,13 @@ function GPSScreen() {
             },
             (count, smsList) => {
                 var arr = JSON.parse(smsList);
-                //console.log(arr[0].body);
-                _updateMarkerLocation(arr[0].body)
-                //setState({...state, smsList: arr });
+                setState({...state, smsList: arr });
+                console.log(state.smsList[0].body);
+                var coords = arr[0].body.split(',');
+                var lati = parseFloat(coords[0], 10) + 1;
+                var longi = parseFloat(coords[1], 10) + 1;
+                setMarker({...marker, latitude: lati})
+                setMarker({...marker, longitude: longi})
             }
         );
     }
@@ -252,7 +245,7 @@ function GPSScreen() {
         <MapView 
             style={{  flex: 1  }} 
             region={region}
-            onRegionChangeComplete={region => {setRegion(region),setMarker(markerLocation), listSMS()}}
+            onRegionChangeComplete={region => {setRegion(region), listSMS(marker)}}
             showsUserLocation={true}
             followsUserLocation={true}
             showsMyLocationButton={true}
