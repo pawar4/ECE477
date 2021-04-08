@@ -383,8 +383,3 @@ void USART2_IRQHandler(){
 	  return;
 }
 
-void sendGPS(){
-	char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',',
-			parsed_message -> rmc -> longitude,',', parsed_message -> rmc -> long_direction, '\0'};
-}
-

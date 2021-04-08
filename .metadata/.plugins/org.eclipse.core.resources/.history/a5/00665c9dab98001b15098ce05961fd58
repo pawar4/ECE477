@@ -30,6 +30,7 @@ char received_message1[200] = "";
 char received_message3[200] = "";
 char sms_request[100] = "";
 char weight[50] = "20.5 Kg";
+char location[100] = "blabla";
 char battery[10] = "70%";
 
 uint8_t ctrl_z = 0x1A;                              // for sending ctrl+z
@@ -61,7 +62,7 @@ int main(void)
 	pushbuttonmsg();
 	initParsedMessage();
 	initUART2();
-	initTimer2();
+//	initTimer2();
 	while(1)
 	{
 		if((UART1_received == 1))

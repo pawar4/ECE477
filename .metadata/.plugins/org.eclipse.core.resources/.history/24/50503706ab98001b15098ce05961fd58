@@ -15,7 +15,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "nmea.h"
 
 static int cnt1 = 0;
 static int cnt3 = 0;
@@ -30,6 +29,7 @@ char received_message1[200] = "";
 char received_message3[200] = "";
 char sms_request[100] = "";
 char weight[50] = "20.5 Kg";
+char location[100] = "blabla";
 char battery[10] = "70%";
 
 uint8_t ctrl_z = 0x1A;                              // for sending ctrl+z
@@ -48,7 +48,7 @@ void receivesuccessmsg();
 void pushbuttonmsg();
 void setup_ring_indicator_pin();
 void sms_sendweight();
-void sms_sendlocation(char * msg);
+void sms_sendlocation();
 void sms_sendbattery();
 void bluetooth_sendweight();
 void bluetooth_sendlocation(char * msg);
@@ -59,9 +59,6 @@ int main(void)
 	UART1_init();
 	UART3_init();
 	pushbuttonmsg();
-	initParsedMessage();
-	initUART2();
-	initTimer2();
 	while(1)
 	{
 		if((UART1_received == 1))
@@ -76,7 +73,7 @@ int main(void)
 			}
 			else if(received_message1[0] == 'L') //send location info via bluetooth
 			{
-				bluetooth_sendlocation(createGPSmsg());
+				bluetooth_sendlocation();
 			}
 			UART1_received = 0;
 			valid1 = 0;
@@ -95,7 +92,7 @@ int main(void)
 			}
 			else if(sms_request[0] == 'L') //send GPS location info via sms
 			{
-				sms_sendlocation(createGPSmsg());
+				sms_sendlocation();
 			}
 			UART3_received = 0;
 			valid3 = 0;
@@ -399,7 +396,7 @@ void sms_sendweight()
 	USART_SendData(USART3,ctrl_z);
 }
 
-void sms_sendlocation(char * msg)
+void sms_sendlocation()
 {
 	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
 	for(int i = 0; i < strlen(send_message1); ++i)
@@ -412,7 +409,7 @@ void sms_sendlocation(char * msg)
 
 	for(int i = 0; weight[i] != '\0'; ++i)
 	{
-		USART_SendData(USART3,msg[i]);
+		USART_SendData(USART3,location[i]);
 		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
 	}
 	USART_SendData(USART3,ctrl_z);
