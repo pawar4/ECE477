@@ -2,12 +2,15 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="&#x0A;&#x09;&#x09;&#x09;// FIXME: Output data for debug purposes&#x0A;&#x09;&#x09;&#x09;BC = GPS_buf_cntr;&#x0A;&#x09;&#x09;&#x09;VCP_SendBuf(GPS_buf,GPS_buf_cntr);" key="selection"/>
+		<item value="SR" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="SR"/>
+			<item value="ARR"/>
+			<item value="arr"/>
 			<item value="&#x0A;&#x09;&#x09;&#x09;// FIXME: Output data for debug purposes&#x0A;&#x09;&#x09;&#x09;BC = GPS_buf_cntr;&#x0A;&#x09;&#x09;&#x09;VCP_SendBuf(GPS_buf,GPS_buf_cntr);"/>
 			<item value="// Output data for debug purposes"/>
 			<item value="vcp"/>
