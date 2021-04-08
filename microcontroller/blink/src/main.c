@@ -18,7 +18,8 @@
 
 static int cnt1 = 0;
 static int cnt3 = 0;
-int state = 0;
+int state1 = 0;
+int state0 = 0;
 int valid1 = 0;
 int valid3 = 0;
 int test_cmd = 0;
@@ -56,11 +57,11 @@ void bluetooth_sendbattery();
 int main(void)
 {
 	UART1_init();
-//	UART3_init();
+	UART3_init();
 	pushbuttonmsg();
 	while(1)
 	{
-		if((UART1_received == 1) && (valid1 == 1))
+		if((UART1_received == 1))
 		{
 			if(received_message1[0] == 'W') //send weight info via bluetooth
 			{
@@ -79,7 +80,7 @@ int main(void)
 //			receivesuccessmsg();
 		}
 
-		if((UART3_received == 1) && (valid3 == 1))
+		if((UART3_received == 1))
 		{
 			if(sms_request[0] == 'W')  //send weight info via sms
 			{
@@ -215,15 +216,17 @@ void EXTI0_IRQHandler()
 //		char send_message1[] = "AT+CMGL=\"ALL\"\r\n";
 //		char send_message[] = "AT+CMGF=1\r\n";
 //		char send_message1[] = "AT+CMGD=3\r\n";
-		char send_message1[] = "AT+CNMI=2,2\r\n";
-//		char send_message[] = "AT+CMGL=\"REC READ\"\r\n";
+//		char send_message1[] = "AT+CNMI=2,2\r\n";
+//		char send_message1[] = "AT+UPSV=1\r\n";
+//		char send_message1[] = "AT+CMGL=\"REC READ\"\r\n";
 //		char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+//		char send_message2[] = "Hello";
 //		char send_message1[] = "AT&V\r";
-		for(int i = 0; i < strlen(send_message1); ++i)
-		{
-			USART_SendData(USART3,send_message1[i]);
-			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-		}
+//		for(int i = 0; i < strlen(send_message1); ++i)
+//		{
+//			USART_SendData(USART3,send_message1[i]);
+//			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+//		}
 
 //		for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
 //
@@ -233,6 +236,8 @@ void EXTI0_IRQHandler()
 //			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
 //		}
 //		USART_SendData(USART3,ctrl_z);
+		bluetooth_sendlocation();
+
 		EXTI_ClearITPendingBit(EXTI_Line0);
 	}
 
@@ -288,28 +293,37 @@ void USART3_IRQHandler()
 	if(test_cmd == 0)     //We know that the only AT command we receiving without test is for SMS notification
 	{
 		// check if the USART3 receive interrupt flag was set
-	  if( USART_GetITStatus(USART3, USART_IT_RXNE) ){
+		  if( USART_GetITStatus(USART3, USART_IT_RXNE) ){
 
-	    char temp = USART_ReceiveData(USART3);
+		    char temp = USART_ReceiveData(USART3);
 
-		if(cnt3 >= 48 && temp == '\n'){
-			cnt3 = 0;
-			UART3_received = 1;
-			sms_cnt = 0;
-			valid3 = 1;
-		}
-		else
-		{
-			received_message3[cnt3] = temp;
-			if(cnt3 >= 48)
-			{
-				sms_request[sms_cnt] = temp;
-				sms_cnt += 1;
+		    if((temp == 'T') && (received_message3[cnt3-1] == 'M') && (received_message3[cnt3-2] == 'C'))  //denotes CMT message
+		    {
+		    	state0 = 1;
+		    	cnt3 = 0;
+		    	sms_cnt = 0;
+		    }
+//		    else if(cnt3 >= 48 && temp == '\r'){
+		    else if(state0 == 2){        //finished reading
+				cnt3 = 0;
+				UART3_received = 1;
+				sms_cnt = 0;
+				valid3 = 1;
+				state0 = 0;
 			}
-			sms_cnt += 0;
-			cnt3++;
-		}
-	  }
+			else
+			{
+				received_message3[cnt3] = temp;
+//				if(cnt3 >= 48 && ((temp == 'W') || (temp == 'B') || (temp == 'L')))
+				if((temp == 'W') || (temp == 'B') || (temp == 'L'))
+				{
+					sms_request[sms_cnt] = temp;
+					sms_cnt = 0;
+					state0 = 2;
+				}
+				cnt3++;
+			}
+		  }
 	}
 
 	else  //test_cmd = 1
@@ -321,15 +335,15 @@ void USART3_IRQHandler()
 			if(temp == 'K' && received_message3[cnt3-1] == 'O')
 			{
 				received_message3[cnt3] = temp;
-				state = 1;
+				state1 = 1;
 			}
-			else if(state == 1 && temp == '\n'){
+			else if(state1 == 1 && temp == '\n'){
 				cnt3 = 0;
 				UART3_received = 1;
-				state = 0;
+				state1 = 0;
 				valid3 = 1;
 			}
-			else if(state == 0 && cnt3 < 500)
+			else if(state1 == 0 && cnt3 < 500)
 			{
 				received_message3[cnt3] = temp;
 				cnt3++;
