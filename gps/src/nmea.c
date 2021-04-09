@@ -13,6 +13,7 @@ char buff[8200] = "";
 int timer2_cnt = 0;
 int timer3_cnt = 0;
 nmea_message * parsed_message;
+char gps_msg_to_send[54];
 
 
 void reverse(char* str, int len){
@@ -135,10 +136,9 @@ void parse_rmc(rmc_message * rmc, char * buffer){
 		curr++;
 		rmc -> long_direction = *curr;
 
-
+		psm_in();
 		deinit_UART();
 		TIM_DeInit(TIM3);
-		psm_in();
 		parsed_message -> init = 0;
 	}
 }
@@ -349,7 +349,7 @@ void TIM3_IRQHandler(){ //Timeout Function
 	if(timer3_cnt < 1){
 		timer3_cnt++;
 	}else{
-		if(parsed_message -> rmc -> valid == 'V'){
+		if(parsed_message -> rmc -> valid != 'A'){
 			psm_out();
 			deinit_UART();
 			TIM_DeInit(TIM3);
@@ -383,8 +383,17 @@ void USART2_IRQHandler(){
 	  return;
 }
 
-void sendGPS(){
-	char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',',
-			parsed_message -> rmc -> longitude,',', parsed_message -> rmc -> long_direction, '\0'};
+char * createGPSmsg(){
+	memset(gps_msg_to_send, '\0', 54);
+	strcpy(gps_msg_to_send, parsed_message -> rmc -> latitude);
+	strcat(gps_msg_to_send, ",");
+	strcat(gps_msg_to_send, &(parsed_message -> rmc -> lat_direction));
+	strcat(gps_msg_to_send, ",");
+	strcat(gps_msg_to_send, parsed_message -> rmc -> longitude);
+	strcat(gps_msg_to_send, ",");
+	strcat(gps_msg_to_send, &(parsed_message -> rmc -> long_direction));
+	strcat(gps_msg_to_send, "\0");
+
+	return gps_msg_to_send;
 }
 

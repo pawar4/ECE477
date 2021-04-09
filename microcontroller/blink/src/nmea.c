@@ -136,9 +136,9 @@ void parse_rmc(rmc_message * rmc, char * buffer){
 		rmc -> long_direction = *curr;
 
 
+		psm_in();
 		deinit_UART();
 		TIM_DeInit(TIM3);
-		psm_in();
 		parsed_message -> init = 0;
 	}
 }

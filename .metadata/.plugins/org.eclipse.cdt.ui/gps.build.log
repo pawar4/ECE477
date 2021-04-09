@@ -1,6 +1,6 @@
-16:20:29 **** Incremental Build of configuration Debug for project gps ****
+16:29:22 **** Build of configuration Debug for project gps ****
 make -j3 all 
 make: Nothing to be done for `all'.
 
-16:20:29 Build Finished (took 286ms)
+16:29:22 Build Finished (took 159ms)
 

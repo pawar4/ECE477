@@ -4777,3 +4777,240 @@ arm-none-eabi-size "gps.elf"
 16:20:29 **** Incremental Build of configuration Debug for project gps ****
 make -j3 all 
 make: Nothing to be done for `all'.
+15:08:54 **** Incremental Build of configuration Debug for project gps ****
+make -j3 all 
+Building file: ../src/main.c
+Building file: ../src/nmea.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/nmea.d" -MT"src/nmea.o" -o "src/nmea.o" "../src/nmea.c"
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/nmea.c: In function 'sendGPS':
+../src/nmea.c:387:28: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+  char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',',
+                            ^~~~~~~~~~~~~~
+../src/nmea.c:387:28: note: (near initialization for 'gps_msg_to_send[0]')
+../src/nmea.c:388:4: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+    parsed_message -> rmc -> longitude,',', parsed_message -> rmc -> long_direction, '\0'};
+    ^~~~~~~~~~~~~~
+../src/nmea.c:388:4: note: (near initialization for 'gps_msg_to_send[4]')
+../src/nmea.c:387:7: warning: unused variable 'gps_msg_to_send' [-Wunused-variable]
+  char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',',
+       ^~~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Finished building: ../src/nmea.c
+ 
+Building target: gps.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "gps.elf" @"objects.list"   -lm
+Finished building target: gps.elf
+ 
+/Applications/Xcode.app/Contents/Developer/usr/bin/make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "gps.elf" "gps.bin"
+arm-none-eabi-size "gps.elf"
+   text	   data	    bss	    dec	    hex	filename
+  28536	   2524	   8688	  39748	   9b44	gps.elf
+ 
+15:25:07 **** Incremental Build of configuration Debug for project gps ****
+make -j3 all 
+Building file: ../src/nmea.c
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/nmea.d" -MT"src/nmea.o" -o "src/nmea.o" "../src/nmea.c"
+../src/nmea.c: In function 'createGPSmsg':
+../src/nmea.c:387:28: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+  char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',',
+                            ^~~~~~~~~~~~~~
+../src/nmea.c:387:28: note: (near initialization for 'gps_msg_to_send[0]')
+../src/nmea.c:388:4: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+    parsed_message -> rmc -> longitude,',', parsed_message -> rmc -> long_direction, '\0'};
+    ^~~~~~~~~~~~~~
+../src/nmea.c:388:4: note: (near initialization for 'gps_msg_to_send[4]')
+../src/nmea.c:390:9: warning: function returns address of local variable [-Wreturn-local-addr]
+  return gps_msg_to_send;
+         ^~~~~~~~~~~~~~~
+Finished building: ../src/main.c
+ 
+Finished building: ../src/nmea.c
+ 
+Building target: gps.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "gps.elf" @"objects.list"   -lm
+Finished building target: gps.elf
+ 
+/Applications/Xcode.app/Contents/Developer/usr/bin/make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "gps.elf" "gps.bin"
+arm-none-eabi-size "gps.elf"
+   text	   data	    bss	    dec	    hex	filename
+  28536	   2524	   8688	  39748	   9b44	gps.elf
+ 
+15:26:32 **** Incremental Build of configuration Debug for project gps ****
+make -j3 all 
+Building file: ../src/nmea.c
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/nmea.d" -MT"src/nmea.o" -o "src/nmea.o" "../src/nmea.c"
+../src/nmea.c:16:27: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',',
+                           ^~~~~~~~~~~~~~
+../src/nmea.c:16:27: note: (near initialization for 'gps_msg_to_send[0]')
+../src/nmea.c:16:27: error: initializer element is not constant
+../src/nmea.c:16:27: note: (near initialization for 'gps_msg_to_send[0]')
+../src/nmea.c:16:67: error: initializer element is not constant
+ char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',',
+                                                                   ^~~~~~~~~~~~~~
+../src/nmea.c:16:67: note: (near initialization for 'gps_msg_to_send[2]')
+../src/nmea.c:17:4: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+    parsed_message -> rmc -> longitude,',', parsed_message -> rmc -> long_direction, '\0'};
+    ^~~~~~~~~~~~~~
+../src/nmea.c:17:4: note: (near initialization for 'gps_msg_to_send[4]')
+../src/nmea.c:17:4: error: initializer element is not constant
+../src/nmea.c:17:4: note: (near initialization for 'gps_msg_to_send[4]')
+../src/nmea.c:17:44: error: initializer element is not constant
+    parsed_message -> rmc -> longitude,',', parsed_message -> rmc -> long_direction, '\0'};
+                                            ^~~~~~~~~~~~~~
+../src/nmea.c:17:44: note: (near initialization for 'gps_msg_to_send[6]')
+make: *** [src/nmea.o] Error 1
+15:27:06 **** Incremental Build of configuration Debug for project gps ****
+make -j3 all 
+Building file: ../src/nmea.c
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/nmea.d" -MT"src/nmea.o" -o "src/nmea.o" "../src/nmea.c"
+../src/nmea.c:16:27: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',', parsed_message -> rmc -> longitude,',', parsed_message -> rmc -> long_direction, '\0'};
+                           ^~~~~~~~~~~~~~
+../src/nmea.c:16:27: note: (near initialization for 'gps_msg_to_send[0]')
+../src/nmea.c:16:27: error: initializer element is not constant
+../src/nmea.c:16:27: note: (near initialization for 'gps_msg_to_send[0]')
+../src/nmea.c:16:67: error: initializer element is not constant
+ char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',', parsed_message -> rmc -> longitude,',', parsed_message -> rmc -> long_direction, '\0'};
+                                                                   ^~~~~~~~~~~~~~
+../src/nmea.c:16:67: note: (near initialization for 'gps_msg_to_send[2]')
+../src/nmea.c:16:112: warning: initialization makes integer from pointer without a cast [-Wint-conversion]
+ char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',', parsed_message -> rmc -> longitude,',', parsed_message -> rmc -> long_direction, '\0'};
+                                                                                                                ^~~~~~~~~~~~~~
+../src/nmea.c:16:112: note: (near initialization for 'gps_msg_to_send[4]')
+../src/nmea.c:16:112: error: initializer element is not constant
+../src/nmea.c:16:112: note: (near initialization for 'gps_msg_to_send[4]')
+../src/nmea.c:16:152: error: initializer element is not constant
+ char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',', parsed_message -> rmc -> longitude,',', parsed_message -> rmc -> long_direction, '\0'};
+                                                                                                                                                        ^~~~~~~~~~~~~~
+../src/nmea.c:16:152: note: (near initialization for 'gps_msg_to_send[6]')
+make: *** [src/nmea.o] Error 1
+15:33:08 **** Incremental Build of configuration Debug for project gps ****
+make -j3 all 
+Building file: ../src/nmea.c
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/nmea.d" -MT"src/nmea.o" -o "src/nmea.o" "../src/nmea.c"
+../src/nmea.c: In function 'createGPSmsg':
+../src/nmea.c:391:26: warning: passing argument 2 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
+  strcat(gps_msg_to_send, parsed_message -> rmc -> lat_direction);
+                          ^~~~~~~~~~~~~~
+In file included from ../src/nmea.c:6:0:
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/string.h:34:8: note: expected 'const char * restrict' but argument is of type 'char'
+ char  *strcat (char *__restrict, const char *__restrict);
+        ^~~~~~
+../src/nmea.c:395:26: warning: passing argument 2 of 'strcat' makes pointer from integer without a cast [-Wint-conversion]
+  strcat(gps_msg_to_send, parsed_message -> rmc -> long_direction);
+                          ^~~~~~~~~~~~~~
+In file included from ../src/nmea.c:6:0:
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/string.h:34:8: note: expected 'const char * restrict' but argument is of type 'char'
+ char  *strcat (char *__restrict, const char *__restrict);
+        ^~~~~~
+../src/nmea.c:396:2: warning: null argument where non-null required (argument 2) [-Wnonnull]
+  strcat(gps_msg_to_send, '\0');
+  ^~~~~~
+Finished building: ../src/nmea.c
+ 
+Building target: gps.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "gps.elf" @"objects.list"   -lm
+Finished building target: gps.elf
+ 
+/Applications/Xcode.app/Contents/Developer/usr/bin/make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "gps.elf" "gps.bin"
+arm-none-eabi-size "gps.elf"
+   text	   data	    bss	    dec	    hex	filename
+  28532	   2524	   8744	  39800	   9b78	gps.elf
+ 
+15:34:21 **** Incremental Build of configuration Debug for project gps ****
+make -j3 all 
+Building file: ../src/nmea.c
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/nmea.d" -MT"src/nmea.o" -o "src/nmea.o" "../src/nmea.c"
+Finished building: ../src/nmea.c
+ 
+Building target: gps.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "gps.elf" @"objects.list"   -lm
+Finished building target: gps.elf
+ 
+/Applications/Xcode.app/Contents/Developer/usr/bin/make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "gps.elf" "gps.bin"
+arm-none-eabi-size "gps.elf"
+   text	   data	    bss	    dec	    hex	filename
+  28532	   2524	   8744	  39800	   9b78	gps.elf
+ 
+15:51:42 **** Incremental Build of configuration Debug for project gps ****
+make -j3 all 
+Building file: ../src/nmea.c
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/nmea.d" -MT"src/nmea.o" -o "src/nmea.o" "../src/nmea.c"
+Finished building: ../src/nmea.c
+ 
+Building target: gps.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "gps.elf" @"objects.list"   -lm
+Finished building target: gps.elf
+ 
+/Applications/Xcode.app/Contents/Developer/usr/bin/make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "gps.elf" "gps.bin"
+arm-none-eabi-size "gps.elf"
+   text	   data	    bss	    dec	    hex	filename
+  28532	   2524	   8744	  39800	   9b78	gps.elf
+ 
+16:11:03 **** Incremental Build of configuration Debug for project gps ****
+make -j3 all 
+make: Nothing to be done for `all'.
+16:15:25 **** Incremental Build of configuration Debug for project gps ****
+make -j3 all 
+Building file: ../src/nmea.c
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/nmea.d" -MT"src/nmea.o" -o "src/nmea.o" "../src/nmea.c"
+Finished building: ../src/nmea.c
+ 
+Building target: gps.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -T"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/gps/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "gps.elf" @"objects.list"   -lm
+Finished building target: gps.elf
+ 
+/Applications/Xcode.app/Contents/Developer/usr/bin/make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "gps.elf" "gps.bin"
+arm-none-eabi-size "gps.elf"
+   text	   data	    bss	    dec	    hex	filename
+  28532	   2524	   8744	  39800	   9b78	gps.elf
+ 
+16:26:45 **** Incremental Build of configuration Debug for project gps ****
+make -j3 all 
+make: Nothing to be done for `all'.
+16:29:22 **** Build of configuration Debug for project gps ****
+make -j3 all 
+make: Nothing to be done for `all'.
