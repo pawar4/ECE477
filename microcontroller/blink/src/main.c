@@ -31,7 +31,8 @@ void pushbuttonmsg();
 void test();
 
 int count_t = 0;
-
+int value = 420;
+int counter = 0;
 int main(void)
 {
 	//*************************** Making two LEDs blink ***********************///
@@ -71,10 +72,16 @@ int main(void)
 	while(1)
 	{
 		//count_t = HX711();
-		count_t = (HX711_Read()- offset) / 1000;
+		count_t = HX711_GetOffset();
+		count_t = (((4.555e-4)*count_t) - 3478)-value;
 		test();
+		counter++;
+		if (counter == 15) {
+			counter = 0;
+			value += (count_t);
+		}
 		Delay(100000);
-//		weight = (((4.555e-5)*count_t) - 347.8)-42;
+//		weight =
 		//weight =  count_t - offset;
 //		if(UART1_received == 1)
 //		{
@@ -225,7 +232,7 @@ void EXTI0_IRQHandler()
 
 void test()
 {
-	char send_message[] = "Hello\r\n";
+	char send_message[10] = "";
 	itoa(count_t, send_message, 10);
 
 	for(int i = 0; i < strlen(send_message); ++i)
