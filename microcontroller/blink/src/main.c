@@ -16,6 +16,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "nmea.h"
+#include "SparkFunBQ27441.h"
+#include "stm32l1xx_i2c.h"
 
 static int cnt1 = 0;
 static int cnt3 = 0;
@@ -30,7 +32,9 @@ char received_message1[200] = "";
 char received_message3[200] = "";
 char sms_request[100] = "";
 char weight[50] = "20.5 Kg";
-char battery[10] = "70%";
+char battery[10];
+I2C_TypeDef * I2CPERIPHSEL;
+
 
 uint8_t ctrl_z = 0x1A;                              // for sending ctrl+z
 
@@ -53,11 +57,13 @@ void sms_sendbattery();
 void bluetooth_sendweight();
 void bluetooth_sendlocation(char * msg);
 void bluetooth_sendbattery();
+void FG_Config(void);
 
 int main(void)
 {
 	UART1_init();
 	UART3_init();
+	FG_Config();
 	pushbuttonmsg();
 	initParsedMessage();
 	initUART2();
@@ -239,8 +245,9 @@ void EXTI0_IRQHandler()
 //			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
 //		}
 //		USART_SendData(USART3,ctrl_z);
-		char * msg = createGPSmsg();
-		bluetooth_sendlocation(msg);
+//		char * msg = createGPSmsg();
+//		bluetooth_sendlocation(msg);
+		bluetooth_sendbattery();
 
 		EXTI_ClearITPendingBit(EXTI_Line0);
 	}
@@ -358,6 +365,37 @@ void USART3_IRQHandler()
 	  return;
 }
 
+void FG_Config(void)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	I2C_InitTypeDef I2C_InitStructure;
+
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+	GPIO_StructInit(&GPIO_InitStructure);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C2, ENABLE);
+
+	//GPIO_StructInit(&GPIO_InitStructure);
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_Init(GPIOB, &GPIO_InitStructure);
+
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_I2C2);
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_I2C2);
+
+	I2C_InitStructure.I2C_Ack = I2C_Ack_Enable;
+	I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit;
+	I2C_InitStructure.I2C_ClockSpeed = 100000;
+	I2C_InitStructure.I2C_Mode = I2C_Mode_I2C;
+	I2C_InitStructure.I2C_OwnAddress1 = 0x00;
+	I2C_Init(I2C2, &I2C_InitStructure);
+	I2C_StretchClockCmd(I2C2, ENABLE);
+	I2CPERIPHSEL = I2C2;
+	I2C_Cmd(I2C2, ENABLE);
+}
+
 void setup_ring_indicator_pin()
 {
 	EXTI_InitTypeDef  EXTI_InitStructure;
@@ -430,7 +468,10 @@ void sms_sendbattery()
 
 	for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
 
-	for(int i = 0; weight[i] != '\0'; ++i)
+	uint16_t sob = soc(FILTERED);
+	itoa (sob, battery, 10);
+
+	for(int i = 0; battery[i] != '\0'; ++i)
 	{
 		USART_SendData(USART3,battery[i]);
 		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
@@ -454,6 +495,8 @@ void bluetooth_sendweight()
 
 void bluetooth_sendbattery()
 {
+	uint16_t sob = soc(FILTERED);
+	itoa (sob, battery, 10);
 	for(int i = 0; battery[i] != '\0'; ++i)
 	{
 		USART_SendData(USART1,battery[i]);
