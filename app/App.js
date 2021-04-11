@@ -161,11 +161,6 @@ function HomeScreen() {
     );
 }
 
-function _updateMarkerLocation(coordString) {
-
-    
-}
-
 function GPSScreen() {
     const [region, setRegion] = useState({
         latitude: 51.5079145,
@@ -207,6 +202,22 @@ function GPSScreen() {
         }
     }, []);
 
+    const sendSMS = () => {
+        console.log(state.sendFrom);
+        console.log(state.sendBody);
+        SmsAndroid.autoSend(
+            state.sendFrom,
+            state.sendBody,
+            err => {
+                Alert.alert("Failed to send SMS. Check console");
+                console.log("SMS SEND ERROR", err);
+            },
+            success => {
+                Alert.alert("SMS sent successfully");
+            }
+        );
+    }
+
     const listSMS = (marker) => {
         const {sendFrom, minDate, maxDate} = state
         var filter = {
@@ -231,27 +242,36 @@ function GPSScreen() {
             (count, smsList) => {
                 var arr = JSON.parse(smsList);
                 setState({...state, smsList: arr });
-                console.log(state.smsList[0].body);
+                //console.log(state.smsList[0].body);
                 var coords = arr[0].body.split(',');
-                var lati = parseFloat(coords[0], 10) + 1;
-                var longi = parseFloat(coords[1], 10) + 1;
-                setMarker({...marker, latitude: lati})
-                setMarker({...marker, longitude: longi})
+                var lati = parseFloat(coords[0], 10);
+                var longi = parseFloat(coords[1], 10);
+                setMarker({...marker, latitude: lati, longitude: longi});
             }
         );
     }
 
+    const updateMarker = () => {
+        state.sendBody = "G";
+        sendSMS();
+    };
+
     return (
-        <MapView 
-            style={{  flex: 1  }} 
-            region={region}
-            onRegionChangeComplete={region => {setRegion(region), listSMS(marker)}}
-            showsUserLocation={true}
-            followsUserLocation={true}
-            showsMyLocationButton={true}
-        >
-        <Marker coordinate={marker} />
-        </MapView>
+        <View style={{flex: 1}}> 
+            <MapView    style={{  flex: 1  }} 
+                        region={region}
+                        onRegionChangeComplete={region => {setRegion(region), listSMS()}}
+                        showsUserLocation={true}
+                        followsUserLocation={true}
+                        showsMyLocationButton={true}
+            >
+                <Marker coordinate={marker} />
+            </MapView>
+            <View style={{flex: 0.1}}>
+                <Button title="Update Backpack Location" onPress={() => updateMarker()}/>
+                <Text style={{alignSelf: 'center', marginTop: 5}}> Last Updated Backpack Coordinates: {marker.latitude},{marker.longitude} </Text>
+            </View>
+        </View>
     );
 }
 
