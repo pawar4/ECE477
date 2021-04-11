@@ -164,6 +164,7 @@ function GPSScreen() {
     });
 
     return (
+        <View style={{flex: 1}}>
         <MapView 
             style={{  flex: 1  }} 
             region={region}
@@ -171,6 +172,7 @@ function GPSScreen() {
             showsUserLocation={true}
             followsUserLocation={true}
         />
+        </View>
     );
 }
 
