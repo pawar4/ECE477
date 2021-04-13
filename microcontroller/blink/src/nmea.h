@@ -48,5 +48,5 @@ void TIM2_IRQHandler();
 void initParsedMessage();
 void deinit_UART();
 void TIM3_IRQHandler();
-char * createGPSmsg()
-
+char * createGPSmsg();
+static char gps_msg_to_send[54];

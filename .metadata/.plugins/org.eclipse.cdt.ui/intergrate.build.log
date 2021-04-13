@@ -1,0 +1,36 @@
+17:14:21 **** Build of configuration Debug for project intergrate ****
+make -j3 all 
+Building file: ../startup/startup_stm32.s
+Building file: ../startup/sysmem.c
+Invoking: MCU GCC Assembler
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/intergrate/Debug
+arm-none-eabi-as -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -g -o "startup/startup_stm32.o" "../startup/startup_stm32.s"
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/intergrate/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"startup/sysmem.d" -MT"startup/sysmem.o" -o "startup/sysmem.o" "../startup/sysmem.c"
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/intergrate/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../startup/startup_stm32.s
+ 
+Building file: ../src/nmea.c
+../src/main.c:12:10: fatal error: stm32l1xx.h: No such file or directory
+ #include "stm32l1xx.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make: *** [src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/intergrate/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/nmea.d" -MT"src/nmea.o" -o "src/nmea.o" "../src/nmea.c"
+../src/nmea.c:1:10: fatal error: stm32l1xx.h: No such file or directory
+ #include "stm32l1xx.h"
+          ^~~~~~~~~~~~~
+compilation terminated.
+make: *** [src/nmea.o] Error 1
+Finished building: ../startup/sysmem.c
+ 
+
+17:14:21 Build Finished (took 344ms)
+

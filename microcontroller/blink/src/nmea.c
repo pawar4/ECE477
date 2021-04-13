@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "nmea.h"
-#include <math.h>
+#include "math.h"
 
 char gps_message[GPS_BUFFER_SIZE] = ""; //GPS receive message
 int grmi = 0; //GPS receive message increment
@@ -13,6 +13,7 @@ char buff[8200] = "";
 int timer2_cnt = 0;
 int timer3_cnt = 0;
 nmea_message * parsed_message;
+//char gps_msg_to_send[54];
 
 
 void reverse(char* str, int len){
@@ -326,7 +327,7 @@ void deinit_UART(){
 
 void TIM2_IRQHandler(){
 	TIM_ClearFlag(TIM2, TIM_FLAG_Update);
-	if(timer2_cnt < 6){
+	if(timer2_cnt < 1){
 		timer2_cnt++;
 	}
 	else{
@@ -373,7 +374,7 @@ void USART2_IRQHandler(){
 		gps_message[grmi] = USART_ReceiveData(USART2);
 		c = gps_message[grmi];
 		if(c == '\n'){
-			grmi = 0;
+ 			grmi = 0;
 			parse_sentence(parsed_message, gps_message);
 		}else{
 			grmi++;
@@ -384,9 +385,13 @@ void USART2_IRQHandler(){
 }
 
 char * createGPSmsg(){
-	char gps_msg_to_send[] = {parsed_message -> rmc -> latitude, ',', parsed_message -> rmc -> lat_direction, ',',
-			parsed_message -> rmc -> longitude,',', parsed_message -> rmc -> long_direction, '\0'};
-
+	memset(gps_msg_to_send, '\0', 54);
+	char lat_dir[4] = {',', parsed_message -> rmc -> lat_direction, ',', '\0'};
+	char long_dir[4] = {',', parsed_message -> rmc -> long_direction, '\0'};
+	memset(gps_msg_to_send, '\0', 54);
+	strcat(gps_msg_to_send, parsed_message -> rmc -> latitude);
+	strcat(gps_msg_to_send, lat_dir);
+	strcat(gps_msg_to_send, parsed_message -> rmc -> longitude);
+	strcat(gps_msg_to_send, long_dir);
 	return gps_msg_to_send;
 }
-

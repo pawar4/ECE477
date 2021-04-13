@@ -1,0 +1,1628 @@
+17:17:37 **** Build of configuration Debug for project integrate ****
+make -j3 all 
+Building file: ../startup/startup_stm32l1xx_mdp.S
+Building file: ../src/main.c
+Building file: ../src/nmea.c
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/Debug
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"startup/startup_stm32l1xx_mdp.d" -MT"startup/startup_stm32l1xx_mdp.o" -o "startup/startup_stm32l1xx_mdp.o" "../startup/startup_stm32l1xx_mdp.S"
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/nmea.d" -MT"src/nmea.o" -o "src/nmea.o" "../src/nmea.c"
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../startup/startup_stm32l1xx_mdp.S
+ 
+Building file: ../src/syscalls.c
+Invoking: MCU GCC Compiler
+/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/Debug
+arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L1 -DSTM32L152RCTx -DSTM32L152C_DISCO -DDEBUG -DSTM32L1XX_MDP -DUSE_STDPERIPH_DRIVER -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/Utilities" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/StdPeriph_Driver/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/inc" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/CMSIS/device" -I"/Users/chibuikemohanele/Google Drive/eceCode/ECE477/integrate/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/syscalls.d" -MT"src/syscalls.o" -o "src/syscalls.o" "../src/syscalls.c"
+../src/main.c: In function 'createGPSmsg':
+../src/main.c:20:12: error: storage class specified for parameter 'cnt1'
+ static int cnt1 = 0;
+            ^~~~
+../src/main.c:20:1: error: parameter 'cnt1' is initialized
+ static int cnt1 = 0;
+ ^~~~~~
+../src/main.c:21:12: error: storage class specified for parameter 'cnt3'
+ static int cnt3 = 0;
+            ^~~~
+../src/main.c:21:1: error: parameter 'cnt3' is initialized
+ static int cnt3 = 0;
+ ^~~~~~
+../src/main.c:22:1: error: parameter 'state1' is initialized
+ int state1 = 0;
+ ^~~
+../src/main.c:23:1: error: parameter 'state0' is initialized
+ int state0 = 0;
+ ^~~
+../src/main.c:24:1: error: parameter 'valid1' is initialized
+ int valid1 = 0;
+ ^~~
+../src/main.c:25:1: error: parameter 'valid3' is initialized
+ int valid3 = 0;
+ ^~~
+../src/main.c:26:1: error: parameter 'test_cmd' is initialized
+ int test_cmd = 0;
+ ^~~
+../src/main.c:27:12: error: storage class specified for parameter 'sms_cnt'
+ static int sms_cnt = 0;
+            ^~~~~~~
+../src/main.c:27:1: error: parameter 'sms_cnt' is initialized
+ static int sms_cnt = 0;
+ ^~~~~~
+../src/main.c:28:1: error: parameter 'delimiter' is initialized
+ char delimiter[2] = "\r\n";
+ ^~~~
+../src/main.c:29:1: error: parameter 'received_message1' is initialized
+ char received_message1[200] = "";
+ ^~~~
+../src/main.c:30:1: error: parameter 'received_message3' is initialized
+ char received_message3[200] = "";
+ ^~~~
+../src/main.c:31:1: error: parameter 'sms_request' is initialized
+ char sms_request[100] = "";
+ ^~~~
+../src/main.c:32:1: error: parameter 'weight' is initialized
+ char weight[50] = "20.5 Kg";
+ ^~~~
+../src/main.c:33:1: error: parameter 'battery' is initialized
+ char battery[10] = "70%";
+ ^~~~
+../src/main.c:35:1: error: parameter 'ctrl_z' is initialized
+ uint8_t ctrl_z = 0x1A;                              // for sending ctrl+z
+ ^~~~~~~
+../src/main.c:37:1: error: parameter 'receive_success' is initialized
+ char receive_success[30] = "Message successfully received\r";
+ ^~~~
+../src/main.c:39:1: error: parameter 'UART1_received' is initialized
+ volatile int UART1_received = 0;
+ ^~~~~~~~
+../src/main.c:40:1: error: parameter 'UART3_received' is initialized
+ volatile int UART3_received = 0;
+ ^~~~~~~~
+../src/main.c:58:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../src/main.c:110:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+In file included from ../src/nmea.c:8:0:
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h: In function 'createGPSmsg':
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:86:15: error: storage class specified for parameter 'atan'
+ extern double atan (double);
+               ^~~~
+../src/main.c:154:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:87:15: error: storage class specified for parameter 'cos'
+ extern double cos (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:88:15: error: storage class specified for parameter 'sin'
+ extern double sin (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:89:15: error: storage class specified for parameter 'tan'
+ extern double tan (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:90:15: error: storage class specified for parameter 'tanh'
+ extern double tanh (double);
+               ^~~~
+../src/main.c:164:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:91:15: error: storage class specified for parameter 'frexp'
+ extern double frexp (double, int *);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:92:15: error: storage class specified for parameter 'modf'
+ extern double modf (double, double *);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:93:15: error: storage class specified for parameter 'ceil'
+ extern double ceil (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:94:15: error: storage class specified for parameter 'fabs'
+ extern double fabs (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:95:15: error: storage class specified for parameter 'floor'
+ extern double floor (double);
+               ^~~~~
+../src/main.c:195:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:102:15: error: storage class specified for parameter 'acos'
+ extern double acos (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:103:15: error: storage class specified for parameter 'asin'
+ extern double asin (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:104:15: error: storage class specified for parameter 'atan2'
+ extern double atan2 (double, double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:105:15: error: storage class specified for parameter 'cosh'
+ extern double cosh (double);
+               ^~~~
+../src/main.c:217:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:106:15: error: storage class specified for parameter 'sinh'
+ extern double sinh (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:107:15: error: storage class specified for parameter 'exp'
+ extern double exp (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:108:15: error: storage class specified for parameter 'ldexp'
+ extern double ldexp (double, int);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:109:15: error: storage class specified for parameter 'log'
+ extern double log (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:110:15: error: storage class specified for parameter 'log10'
+ extern double log10 (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:111:15: error: storage class specified for parameter 'pow'
+ extern double pow (double, double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:112:15: error: storage class specified for parameter 'sqrt'
+ extern double sqrt (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:113:15: error: storage class specified for parameter 'fmod'
+ extern double fmod (double, double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:118:12: error: storage class specified for parameter 'finite'
+ extern int finite (double);
+            ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:119:12: error: storage class specified for parameter 'finitef'
+ extern int finitef (float);
+            ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:120:12: error: storage class specified for parameter 'finitel'
+ extern int finitel (long double);
+            ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:121:12: error: storage class specified for parameter 'isinff'
+ extern int isinff (float);
+            ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:122:12: error: storage class specified for parameter 'isnanf'
+ extern int isnanf (float);
+            ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:128:12: error: storage class specified for parameter 'isinf'
+ extern int isinf (double);
+            ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:133:12: error: storage class specified for parameter 'isnan'
+ extern int isnan (double);
+            ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:150:20: error: storage class specified for parameter 'float_t'
+     typedef float  float_t;
+                    ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:151:20: error: storage class specified for parameter 'double_t'
+     typedef double double_t;
+                    ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:194:12: error: storage class specified for parameter '__isinff'
+ extern int __isinff (float x);
+            ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:195:12: error: storage class specified for parameter '__isinfd'
+ extern int __isinfd (double x);
+            ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:196:12: error: storage class specified for parameter '__isnanf'
+ extern int __isnanf (float x);
+            ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:197:12: error: storage class specified for parameter '__isnand'
+ extern int __isnand (double x);
+            ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:198:12: error: storage class specified for parameter '__fpclassifyf'
+ extern int __fpclassifyf (float x);
+            ^~~~~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:199:12: error: storage class specified for parameter '__fpclassifyd'
+ extern int __fpclassifyd (double x);
+            ^~~~~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:200:12: error: storage class specified for parameter '__signbitf'
+ extern int __signbitf (float x);
+            ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:201:12: error: storage class specified for parameter '__signbitd'
+ extern int __signbitd (double x);
+            ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:290:15: error: storage class specified for parameter 'infinity'
+ extern double infinity (void);
+               ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:291:15: error: storage class specified for parameter 'nan'
+ extern double nan (const char *);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:292:15: error: storage class specified for parameter 'copysign'
+ extern double copysign (double, double);
+               ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:293:15: error: storage class specified for parameter 'logb'
+ extern double logb (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:294:12: error: storage class specified for parameter 'ilogb'
+ extern int ilogb (double);
+            ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:296:15: error: storage class specified for parameter 'asinh'
+ extern double asinh (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:297:15: error: storage class specified for parameter 'cbrt'
+ extern double cbrt (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:298:15: error: storage class specified for parameter 'nextafter'
+ extern double nextafter (double, double);
+               ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:299:15: error: storage class specified for parameter 'rint'
+ extern double rint (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:300:15: error: storage class specified for parameter 'scalbn'
+ extern double scalbn (double, int);
+               ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:302:15: error: storage class specified for parameter 'exp2'
+ extern double exp2 (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:303:15: error: storage class specified for parameter 'scalbln'
+ extern double scalbln (double, long int);
+               ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:304:15: error: storage class specified for parameter 'tgamma'
+ extern double tgamma (double);
+               ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:305:15: error: storage class specified for parameter 'nearbyint'
+ extern double nearbyint (double);
+               ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:306:17: error: storage class specified for parameter 'lrint'
+ extern long int lrint (double);
+                 ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:307:22: error: storage class specified for parameter 'llrint'
+ extern long long int llrint (double);
+                      ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:308:15: error: storage class specified for parameter 'round'
+ extern double round (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:309:17: error: storage class specified for parameter 'lround'
+ extern long int lround (double);
+                 ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:310:22: error: storage class specified for parameter 'llround'
+ extern long long int llround (double);
+                      ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:311:15: error: storage class specified for parameter 'trunc'
+ extern double trunc (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:312:15: error: storage class specified for parameter 'remquo'
+ extern double remquo (double, double, int *);
+               ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:313:15: error: storage class specified for parameter 'fdim'
+ extern double fdim (double, double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:314:15: error: storage class specified for parameter 'fmax'
+ extern double fmax (double, double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:315:15: error: storage class specified for parameter 'fmin'
+ extern double fmin (double, double);
+               ^~~~
+../src/main.c:251:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../src/main.c:295:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../src/main.c:361:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../src/main.c:384:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../src/main.c:403:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../src/main.c:422:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../src/main.c:441:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../src/main.c:455:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../src/main.c:469:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../src/main.c:55:6: error: declaration for parameter 'bluetooth_sendbattery' but no such parameter
+ void bluetooth_sendbattery();
+      ^~~~~~~~~~~~~~~~~~~~~
+../src/main.c:54:6: error: declaration for parameter 'bluetooth_sendlocation' but no such parameter
+ void bluetooth_sendlocation(char * msg);
+      ^~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:53:6: error: declaration for parameter 'bluetooth_sendweight' but no such parameter
+ void bluetooth_sendweight();
+      ^~~~~~~~~~~~~~~~~~~~
+../src/main.c:52:6: error: declaration for parameter 'sms_sendbattery' but no such parameter
+ void sms_sendbattery();
+      ^~~~~~~~~~~~~~~
+../src/main.c:51:6: error: declaration for parameter 'sms_sendlocation' but no such parameter
+ void sms_sendlocation(char * msg);
+      ^~~~~~~~~~~~~~~~
+../src/main.c:50:6: error: declaration for parameter 'sms_sendweight' but no such parameter
+ void sms_sendweight();
+      ^~~~~~~~~~~~~~
+../src/main.c:49:6: error: declaration for parameter 'setup_ring_indicator_pin' but no such parameter
+ void setup_ring_indicator_pin();
+      ^~~~~~~~~~~~~~~~~~~~~~~~
+../src/main.c:48:6: error: declaration for parameter 'pushbuttonmsg' but no such parameter
+ void pushbuttonmsg();
+      ^~~~~~~~~~~~~
+../src/main.c:47:6: error: declaration for parameter 'receivesuccessmsg' but no such parameter
+ void receivesuccessmsg();
+      ^~~~~~~~~~~~~~~~~
+../src/main.c:46:6: error: declaration for parameter 'EXTI0_IRQHandler' but no such parameter
+ void EXTI0_IRQHandler();
+      ^~~~~~~~~~~~~~~~
+../src/main.c:45:6: error: declaration for parameter 'USART3_IRQHandler' but no such parameter
+ void USART3_IRQHandler();
+      ^~~~~~~~~~~~~~~~~
+../src/main.c:44:6: error: declaration for parameter 'USART1_IRQHandler' but no such parameter
+ void USART1_IRQHandler();
+      ^~~~~~~~~~~~~~~~~
+../src/main.c:43:6: error: declaration for parameter 'UART3_init' but no such parameter
+ void UART3_init();
+      ^~~~~~~~~~
+../src/main.c:42:6: error: declaration for parameter 'UART1_init' but no such parameter
+ void UART1_init();
+      ^~~~~~~~~~
+../src/main.c:40:14: error: declaration for parameter 'UART3_received' but no such parameter
+ volatile int UART3_received = 0;
+              ^~~~~~~~~~~~~~
+../src/main.c:39:14: error: declaration for parameter 'UART1_received' but no such parameter
+ volatile int UART1_received = 0;
+              ^~~~~~~~~~~~~~
+../src/main.c:37:6: error: declaration for parameter 'receive_success' but no such parameter
+ char receive_success[30] = "Message successfully received\r";
+      ^~~~~~~~~~~~~~~
+../src/main.c:35:9: error: declaration for parameter 'ctrl_z' but no such parameter
+ uint8_t ctrl_z = 0x1A;                              // for sending ctrl+z
+         ^~~~~~
+../src/main.c:33:6: error: declaration for parameter 'battery' but no such parameter
+ char battery[10] = "70%";
+      ^~~~~~~
+../src/main.c:32:6: error: declaration for parameter 'weight' but no such parameter
+ char weight[50] = "20.5 Kg";
+      ^~~~~~
+../src/main.c:31:6: error: declaration for parameter 'sms_request' but no such parameter
+ char sms_request[100] = "";
+      ^~~~~~~~~~~
+../src/main.c:30:6: error: declaration for parameter 'received_message3' but no such parameter
+ char received_message3[200] = "";
+      ^~~~~~~~~~~~~~~~~
+../src/main.c:29:6: error: declaration for parameter 'received_message1' but no such parameter
+ char received_message1[200] = "";
+      ^~~~~~~~~~~~~~~~~
+../src/main.c:28:6: error: declaration for parameter 'delimiter' but no such parameter
+ char delimiter[2] = "\r\n";
+      ^~~~~~~~~
+../src/main.c:27:12: error: declaration for parameter 'sms_cnt' but no such parameter
+ static int sms_cnt = 0;
+            ^~~~~~~
+../src/main.c:26:5: error: declaration for parameter 'test_cmd' but no such parameter
+ int test_cmd = 0;
+     ^~~~~~~~
+../src/main.c:25:5: error: declaration for parameter 'valid3' but no such parameter
+ int valid3 = 0;
+     ^~~~~~
+../src/main.c:24:5: error: declaration for parameter 'valid1' but no such parameter
+ int valid1 = 0;
+     ^~~~~~
+../src/main.c:23:5: error: declaration for parameter 'state0' but no such parameter
+ int state0 = 0;
+     ^~~~~~
+../src/main.c:22:5: error: declaration for parameter 'state1' but no such parameter
+ int state1 = 0;
+     ^~~~~~
+../src/main.c:21:12: error: declaration for parameter 'cnt3' but no such parameter
+ static int cnt3 = 0;
+            ^~~~
+../src/main.c:20:12: error: declaration for parameter 'cnt1' but no such parameter
+ static int cnt1 = 0;
+            ^~~~
+../src/main.c:480:1: error: expected '{' at end of input
+ }
+ ^
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:316:15: error: storage class specified for parameter 'fma'
+ extern double fma (double, double, double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:319:15: error: storage class specified for parameter 'log1p'
+ extern double log1p (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:320:15: error: storage class specified for parameter 'expm1'
+ extern double expm1 (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:324:15: error: storage class specified for parameter 'acosh'
+ extern double acosh (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:325:15: error: storage class specified for parameter 'atanh'
+ extern double atanh (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:326:15: error: storage class specified for parameter 'remainder'
+ extern double remainder (double, double);
+               ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:327:15: error: storage class specified for parameter 'gamma'
+ extern double gamma (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:328:15: error: storage class specified for parameter 'lgamma'
+ extern double lgamma (double);
+               ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:329:15: error: storage class specified for parameter 'erf'
+ extern double erf (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:330:15: error: storage class specified for parameter 'erfc'
+ extern double erfc (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:331:15: error: storage class specified for parameter 'log2'
+ extern double log2 (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:337:15: error: storage class specified for parameter 'hypot'
+ extern double hypot (double, double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:344:14: error: storage class specified for parameter 'atanf'
+ extern float atanf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:345:14: error: storage class specified for parameter 'cosf'
+ extern float cosf (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:346:14: error: storage class specified for parameter 'sinf'
+ extern float sinf (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:347:14: error: storage class specified for parameter 'tanf'
+ extern float tanf (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:348:14: error: storage class specified for parameter 'tanhf'
+ extern float tanhf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:349:14: error: storage class specified for parameter 'frexpf'
+ extern float frexpf (float, int *);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:350:14: error: storage class specified for parameter 'modff'
+ extern float modff (float, float *);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:351:14: error: storage class specified for parameter 'ceilf'
+ extern float ceilf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:352:14: error: storage class specified for parameter 'fabsf'
+ extern float fabsf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:353:14: error: storage class specified for parameter 'floorf'
+ extern float floorf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:356:14: error: storage class specified for parameter 'acosf'
+ extern float acosf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:357:14: error: storage class specified for parameter 'asinf'
+ extern float asinf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:358:14: error: storage class specified for parameter 'atan2f'
+ extern float atan2f (float, float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:359:14: error: storage class specified for parameter 'coshf'
+ extern float coshf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:360:14: error: storage class specified for parameter 'sinhf'
+ extern float sinhf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:361:14: error: storage class specified for parameter 'expf'
+ extern float expf (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:362:14: error: storage class specified for parameter 'ldexpf'
+ extern float ldexpf (float, int);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:363:14: error: storage class specified for parameter 'logf'
+ extern float logf (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:364:14: error: storage class specified for parameter 'log10f'
+ extern float log10f (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:365:14: error: storage class specified for parameter 'powf'
+ extern float powf (float, float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:366:14: error: storage class specified for parameter 'sqrtf'
+ extern float sqrtf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:367:14: error: storage class specified for parameter 'fmodf'
+ extern float fmodf (float, float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:372:14: error: storage class specified for parameter 'exp2f'
+ extern float exp2f (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:373:14: error: storage class specified for parameter 'scalblnf'
+ extern float scalblnf (float, long int);
+              ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:374:14: error: storage class specified for parameter 'tgammaf'
+ extern float tgammaf (float);
+              ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:375:14: error: storage class specified for parameter 'nearbyintf'
+ extern float nearbyintf (float);
+              ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:376:17: error: storage class specified for parameter 'lrintf'
+ extern long int lrintf (float);
+                 ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:377:22: error: storage class specified for parameter 'llrintf'
+ extern long long int llrintf (float);
+                      ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:378:14: error: storage class specified for parameter 'roundf'
+ extern float roundf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:379:17: error: storage class specified for parameter 'lroundf'
+Finished building: ../src/syscalls.c
+ extern long int lroundf (float);
+                 ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:380:22: error: storage class specified for parameter 'llroundf'
+ extern long long int llroundf (float);
+                      ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:381:14: error: storage class specified for parameter 'truncf'
+ extern float truncf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:382:14: error: storage class specified for parameter 'remquof'
+ extern float remquof (float, float, int *);
+              ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:383:14: error: storage class specified for parameter 'fdimf'
+ extern float fdimf (float, float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:384:14: error: storage class specified for parameter 'fmaxf'
+ extern float fmaxf (float, float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:385:14: error: storage class specified for parameter 'fminf'
+ extern float fminf (float, float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:386:14: error: storage class specified for parameter 'fmaf'
+ extern float fmaf (float, float, float);
+ 
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:388:14: error: storage class specified for parameter 'infinityf'
+ extern float infinityf (void);
+              ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:389:14: error: storage class specified for parameter 'nanf'
+ extern float nanf (const char *);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:390:14: error: storage class specified for parameter 'copysignf'
+ extern float copysignf (float, float);
+              ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:391:14: error: storage class specified for parameter 'logbf'
+ extern float logbf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:392:12: error: storage class specified for parameter 'ilogbf'
+ extern int ilogbf (float);
+            ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:394:14: error: storage class specified for parameter 'asinhf'
+ extern float asinhf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:395:14: error: storage class specified for parameter 'cbrtf'
+ extern float cbrtf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:396:14: error: storage class specified for parameter 'nextafterf'
+ extern float nextafterf (float, float);
+              ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:397:14: error: storage class specified for parameter 'rintf'
+ extern float rintf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:398:14: error: storage class specified for parameter 'scalbnf'
+ extern float scalbnf (float, int);
+              ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:399:14: error: storage class specified for parameter 'log1pf'
+ extern float log1pf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:400:14: error: storage class specified for parameter 'expm1f'
+ extern float expm1f (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:403:14: error: storage class specified for parameter 'acoshf'
+ extern float acoshf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:404:14: error: storage class specified for parameter 'atanhf'
+ extern float atanhf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:405:14: error: storage class specified for parameter 'remainderf'
+ extern float remainderf (float, float);
+              ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:406:14: error: storage class specified for parameter 'gammaf'
+ extern float gammaf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:407:14: error: storage class specified for parameter 'lgammaf'
+ extern float lgammaf (float);
+              ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:408:14: error: storage class specified for parameter 'erff'
+ extern float erff (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:409:14: error: storage class specified for parameter 'erfcf'
+ extern float erfcf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:410:14: error: storage class specified for parameter 'log2f'
+ extern float log2f (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:411:14: error: storage class specified for parameter 'hypotf'
+ extern float hypotf (float, float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:422:20: error: storage class specified for parameter 'atanl'
+ extern long double atanl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:423:20: error: storage class specified for parameter 'cosl'
+ extern long double cosl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:424:20: error: storage class specified for parameter 'sinl'
+ extern long double sinl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:425:20: error: storage class specified for parameter 'tanl'
+ extern long double tanl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:426:20: error: storage class specified for parameter 'tanhl'
+ extern long double tanhl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:427:20: error: storage class specified for parameter 'frexpl'
+ extern long double frexpl (long double, int *);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:428:20: error: storage class specified for parameter 'modfl'
+ extern long double modfl (long double, long double *);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:429:20: error: storage class specified for parameter 'ceill'
+ extern long double ceill (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:430:20: error: storage class specified for parameter 'fabsl'
+ extern long double fabsl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:431:20: error: storage class specified for parameter 'floorl'
+ extern long double floorl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:432:20: error: storage class specified for parameter 'log1pl'
+ extern long double log1pl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:433:20: error: storage class specified for parameter 'expm1l'
+ extern long double expm1l (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:438:20: error: storage class specified for parameter 'acosl'
+ extern long double acosl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:439:20: error: storage class specified for parameter 'asinl'
+ extern long double asinl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:440:20: error: storage class specified for parameter 'atan2l'
+ extern long double atan2l (long double, long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:441:20: error: storage class specified for parameter 'coshl'
+ extern long double coshl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:442:20: error: storage class specified for parameter 'sinhl'
+ extern long double sinhl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:443:20: error: storage class specified for parameter 'expl'
+ extern long double expl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:444:20: error: storage class specified for parameter 'ldexpl'
+ extern long double ldexpl (long double, int);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:445:20: error: storage class specified for parameter 'logl'
+ extern long double logl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:446:20: error: storage class specified for parameter 'log10l'
+ extern long double log10l (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:447:20: error: storage class specified for parameter 'powl'
+ extern long double powl (long double, long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:448:20: error: storage class specified for parameter 'sqrtl'
+ extern long double sqrtl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:449:20: error: storage class specified for parameter 'fmodl'
+ extern long double fmodl (long double, long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:450:20: error: storage class specified for parameter 'hypotl'
+ extern long double hypotl (long double, long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:453:20: error: storage class specified for parameter 'copysignl'
+ extern long double copysignl (long double, long double);
+                    ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:454:20: error: storage class specified for parameter 'nanl'
+ extern long double nanl (const char *);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:455:12: error: storage class specified for parameter 'ilogbl'
+ extern int ilogbl (long double);
+            ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:456:20: error: storage class specified for parameter 'asinhl'
+ extern long double asinhl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:457:20: error: storage class specified for parameter 'cbrtl'
+ extern long double cbrtl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:458:20: error: storage class specified for parameter 'nextafterl'
+ extern long double nextafterl (long double, long double);
+                    ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:459:14: error: storage class specified for parameter 'nexttowardf'
+ extern float nexttowardf (float, long double);
+              ^~~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:460:15: error: storage class specified for parameter 'nexttoward'
+ extern double nexttoward (double, long double);
+               ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:461:20: error: storage class specified for parameter 'nexttowardl'
+ extern long double nexttowardl (long double, long double);
+                    ^~~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:462:20: error: storage class specified for parameter 'logbl'
+ extern long double logbl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:463:20: error: storage class specified for parameter 'log2l'
+ extern long double log2l (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:464:20: error: storage class specified for parameter 'rintl'
+ extern long double rintl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:465:20: error: storage class specified for parameter 'scalbnl'
+ extern long double scalbnl (long double, int);
+                    ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:466:20: error: storage class specified for parameter 'exp2l'
+ extern long double exp2l (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:467:20: error: storage class specified for parameter 'scalblnl'
+ extern long double scalblnl (long double, long);
+                    ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:468:20: error: storage class specified for parameter 'tgammal'
+ extern long double tgammal (long double);
+                    ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:469:20: error: storage class specified for parameter 'nearbyintl'
+ extern long double nearbyintl (long double);
+                    ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:470:17: error: storage class specified for parameter 'lrintl'
+ extern long int lrintl (long double);
+                 ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:471:22: error: storage class specified for parameter 'llrintl'
+ extern long long int llrintl (long double);
+                      ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:472:20: error: storage class specified for parameter 'roundl'
+ extern long double roundl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:473:13: error: storage class specified for parameter 'lroundl'
+ extern long lroundl (long double);
+             ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:474:22: error: storage class specified for parameter 'llroundl'
+ extern long long int llroundl (long double);
+                      ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:475:20: error: storage class specified for parameter 'truncl'
+ extern long double truncl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:476:20: error: storage class specified for parameter 'remquol'
+ extern long double remquol (long double, long double, int *);
+                    ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:477:20: error: storage class specified for parameter 'fdiml'
+ extern long double fdiml (long double, long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:478:20: error: storage class specified for parameter 'fmaxl'
+ extern long double fmaxl (long double, long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:479:20: error: storage class specified for parameter 'fminl'
+ extern long double fminl (long double, long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:480:20: error: storage class specified for parameter 'fmal'
+ extern long double fmal (long double, long double, long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:482:20: error: storage class specified for parameter 'acoshl'
+ extern long double acoshl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:483:20: error: storage class specified for parameter 'atanhl'
+ extern long double atanhl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:484:20: error: storage class specified for parameter 'remainderl'
+ extern long double remainderl (long double, long double);
+                    ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:485:20: error: storage class specified for parameter 'lgammal'
+ extern long double lgammal (long double);
+                    ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:486:20: error: storage class specified for parameter 'erfl'
+ extern long double erfl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:487:20: error: storage class specified for parameter 'erfcl'
+ extern long double erfcl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:503:15: error: storage class specified for parameter 'drem'
+ extern double drem (double, double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:504:14: error: storage class specified for parameter 'dremf'
+ extern float dremf (float, float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:508:15: error: storage class specified for parameter 'gamma_r'
+ extern double gamma_r (double, int *);
+               ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:509:15: error: storage class specified for parameter 'lgamma_r'
+ extern double lgamma_r (double, int *);
+               ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:510:14: error: storage class specified for parameter 'gammaf_r'
+ extern float gammaf_r (float, int *);
+              ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:511:14: error: storage class specified for parameter 'lgammaf_r'
+ extern float lgammaf_r (float, int *);
+              ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:515:15: error: storage class specified for parameter 'y0'
+ extern double y0 (double);
+               ^~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:516:15: error: storage class specified for parameter 'y1'
+ extern double y1 (double);
+               ^~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:517:15: error: storage class specified for parameter 'yn'
+ extern double yn (int, double);
+               ^~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:518:15: error: storage class specified for parameter 'j0'
+ extern double j0 (double);
+               ^~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:519:15: error: storage class specified for parameter 'j1'
+ extern double j1 (double);
+               ^~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:520:15: error: storage class specified for parameter 'jn'
+ extern double jn (int, double);
+               ^~
+../src/main.c:480:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:524:14: error: storage class specified for parameter 'y0f'
+ extern float y0f (float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:525:14: error: storage class specified for parameter 'y1f'
+ extern float y1f (float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:526:14: error: storage class specified for parameter 'ynf'
+ extern float ynf (int, float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:527:14: error: storage class specified for parameter 'j0f'
+ extern float j0f (float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:528:14: error: storage class specified for parameter 'j1f'
+ extern float j1f (float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:529:14: error: storage class specified for parameter 'jnf'
+ extern float jnf (int, float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:565:13: error: storage class specified for parameter '__signgam'
+ extern int *__signgam (void);
+             ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:592:12: error: storage class specified for parameter 'matherr'
+ extern int matherr (struct exception *e);
+            ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:653:35: error: storage class specified for parameter '__fdlib_version'
+ extern __IMPORT _LIB_VERSION_TYPE _LIB_VERSION;
+                                   ^
+../src/nmea.c:10:1: error: parameter 'gps_message' is initialized
+ char gps_message[GPS_BUFFER_SIZE] = ""; //GPS receive message
+ ^~~~
+../src/nmea.c:11:1: error: parameter 'grmi' is initialized
+ int grmi = 0; //GPS receive message increment
+ ^~~
+../src/nmea.c:12:1: error: parameter 'buff' is initialized
+ char buff[8200] = "";
+ ^~~~
+../src/nmea.c:13:1: error: parameter 'timer2_cnt' is initialized
+ int timer2_cnt = 0;
+ ^~~
+../src/nmea.c:14:1: error: parameter 'timer3_cnt' is initialized
+ int timer3_cnt = 0;
+ ^~~
+../src/nmea.c:18:33: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void reverse(char* str, int len){
+                                 ^
+../src/nmea.c:29:39: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ int intToStr(int x, char str[], int d){
+                                       ^
+../src/nmea.c:44:46: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void ftoa(float n, char* res, int afterpoint){
+                                              ^
+../src/nmea.c:56:28: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void convertLat(char * lat){
+                            ^
+../src/nmea.c:70:35: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void convertLong(char * longitude){
+                                   ^
+../src/nmea.c:84:49: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void parse_gsv(gsv_message * gsv, char * buffer){
+                                                 ^
+../src/nmea.c:95:49: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void parse_rmc(rmc_message * rmc, char * buffer){
+                                                 ^
+../src/nmea.c:146:51: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void copyUntil(char * dest, char * source, char c){
+                                                   ^
+../src/nmea.c:157:42: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ nmea_type get_message_type(char * buffer){
+                                          ^
+../src/nmea.c:170:59: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void parse_sentence(nmea_message * message, char * buffer){
+                                                           ^
+../src/nmea.c:187:47: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void free_nmea_message(nmea_message * message){
+                                               ^
+../src/nmea.c:197:14: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void psm_in(){
+              ^
+../src/nmea.c:214:15: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void psm_out(){
+               ^
+../src/nmea.c:231:16: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void mon_ver() {
+                ^
+../src/nmea.c:251:17: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void initUART2(){
+                 ^
+../src/nmea.c:289:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void initTimer2(){
+                  ^
+../src/nmea.c:306:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void initTimer3(){
+                  ^
+../src/nmea.c:323:19: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void deinit_UART(){
+                   ^
+../src/nmea.c:327:23: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void TIM2_IRQHandler(){
+                       ^
+../src/nmea.c:346:23: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void TIM3_IRQHandler(){ //Timeout Function
+                       ^
+../src/nmea.c:362:25: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void initParsedMessage(){
+                         ^
+../src/nmea.c:369:25: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ void USART2_IRQHandler(){
+                         ^
+../src/nmea.c:386:22: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ char * createGPSmsg(){
+                      ^
+../src/nmea.c:15:16: error: declaration for parameter 'parsed_message' but no such parameter
+ nmea_message * parsed_message;
+                ^~~~~~~~~~~~~~
+../src/nmea.c:14:5: error: declaration for parameter 'timer3_cnt' but no such parameter
+ int timer3_cnt = 0;
+     ^~~~~~~~~~
+../src/nmea.c:13:5: error: declaration for parameter 'timer2_cnt' but no such parameter
+ int timer2_cnt = 0;
+     ^~~~~~~~~~
+../src/nmea.c:12:6: error: declaration for parameter 'buff' but no such parameter
+ char buff[8200] = "";
+      ^~~~
+../src/nmea.c:11:5: error: declaration for parameter 'grmi' but no such parameter
+ int grmi = 0; //GPS receive message increment
+     ^~~~
+../src/nmea.c:10:6: error: declaration for parameter 'gps_message' but no such parameter
+ char gps_message[GPS_BUFFER_SIZE] = ""; //GPS receive message
+      ^~~~~~~~~~~
+make: *** [src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from ../src/nmea.c:8:0:
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:653:35: error: declaration for parameter '__fdlib_version' but no such parameter
+ extern __IMPORT _LIB_VERSION_TYPE _LIB_VERSION;
+                                   ^
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:592:12: error: declaration for parameter 'matherr' but no such parameter
+ extern int matherr (struct exception *e);
+            ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:565:13: error: declaration for parameter '__signgam' but no such parameter
+ extern int *__signgam (void);
+             ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:529:14: error: declaration for parameter 'jnf' but no such parameter
+ extern float jnf (int, float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:528:14: error: declaration for parameter 'j1f' but no such parameter
+ extern float j1f (float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:527:14: error: declaration for parameter 'j0f' but no such parameter
+ extern float j0f (float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:526:14: error: declaration for parameter 'ynf' but no such parameter
+ extern float ynf (int, float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:525:14: error: declaration for parameter 'y1f' but no such parameter
+ extern float y1f (float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:524:14: error: declaration for parameter 'y0f' but no such parameter
+ extern float y0f (float);
+              ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:520:15: error: declaration for parameter 'jn' but no such parameter
+ extern double jn (int, double);
+               ^~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:519:15: error: declaration for parameter 'j1' but no such parameter
+ extern double j1 (double);
+               ^~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:518:15: error: declaration for parameter 'j0' but no such parameter
+ extern double j0 (double);
+               ^~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:517:15: error: declaration for parameter 'yn' but no such parameter
+ extern double yn (int, double);
+               ^~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:516:15: error: declaration for parameter 'y1' but no such parameter
+ extern double y1 (double);
+               ^~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:515:15: error: declaration for parameter 'y0' but no such parameter
+ extern double y0 (double);
+               ^~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:511:14: error: declaration for parameter 'lgammaf_r' but no such parameter
+ extern float lgammaf_r (float, int *);
+              ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:510:14: error: declaration for parameter 'gammaf_r' but no such parameter
+ extern float gammaf_r (float, int *);
+              ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:509:15: error: declaration for parameter 'lgamma_r' but no such parameter
+ extern double lgamma_r (double, int *);
+               ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:508:15: error: declaration for parameter 'gamma_r' but no such parameter
+ extern double gamma_r (double, int *);
+               ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:504:14: error: declaration for parameter 'dremf' but no such parameter
+ extern float dremf (float, float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:503:15: error: declaration for parameter 'drem' but no such parameter
+ extern double drem (double, double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:487:20: error: declaration for parameter 'erfcl' but no such parameter
+ extern long double erfcl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:486:20: error: declaration for parameter 'erfl' but no such parameter
+ extern long double erfl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:485:20: error: declaration for parameter 'lgammal' but no such parameter
+ extern long double lgammal (long double);
+                    ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:484:20: error: declaration for parameter 'remainderl' but no such parameter
+ extern long double remainderl (long double, long double);
+                    ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:483:20: error: declaration for parameter 'atanhl' but no such parameter
+ extern long double atanhl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:482:20: error: declaration for parameter 'acoshl' but no such parameter
+ extern long double acoshl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:480:20: error: declaration for parameter 'fmal' but no such parameter
+ extern long double fmal (long double, long double, long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:479:20: error: declaration for parameter 'fminl' but no such parameter
+ extern long double fminl (long double, long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:478:20: error: declaration for parameter 'fmaxl' but no such parameter
+ extern long double fmaxl (long double, long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:477:20: error: declaration for parameter 'fdiml' but no such parameter
+ extern long double fdiml (long double, long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:476:20: error: declaration for parameter 'remquol' but no such parameter
+ extern long double remquol (long double, long double, int *);
+                    ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:475:20: error: declaration for parameter 'truncl' but no such parameter
+ extern long double truncl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:474:22: error: declaration for parameter 'llroundl' but no such parameter
+ extern long long int llroundl (long double);
+                      ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:473:13: error: declaration for parameter 'lroundl' but no such parameter
+ extern long lroundl (long double);
+             ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:472:20: error: declaration for parameter 'roundl' but no such parameter
+ extern long double roundl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:471:22: error: declaration for parameter 'llrintl' but no such parameter
+ extern long long int llrintl (long double);
+                      ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:470:17: error: declaration for parameter 'lrintl' but no such parameter
+ extern long int lrintl (long double);
+                 ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:469:20: error: declaration for parameter 'nearbyintl' but no such parameter
+ extern long double nearbyintl (long double);
+                    ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:468:20: error: declaration for parameter 'tgammal' but no such parameter
+ extern long double tgammal (long double);
+                    ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:467:20: error: declaration for parameter 'scalblnl' but no such parameter
+ extern long double scalblnl (long double, long);
+                    ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:466:20: error: declaration for parameter 'exp2l' but no such parameter
+ extern long double exp2l (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:465:20: error: declaration for parameter 'scalbnl' but no such parameter
+ extern long double scalbnl (long double, int);
+                    ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:464:20: error: declaration for parameter 'rintl' but no such parameter
+ extern long double rintl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:463:20: error: declaration for parameter 'log2l' but no such parameter
+ extern long double log2l (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:462:20: error: declaration for parameter 'logbl' but no such parameter
+ extern long double logbl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:461:20: error: declaration for parameter 'nexttowardl' but no such parameter
+ extern long double nexttowardl (long double, long double);
+                    ^~~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:460:15: error: declaration for parameter 'nexttoward' but no such parameter
+ extern double nexttoward (double, long double);
+               ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:459:14: error: declaration for parameter 'nexttowardf' but no such parameter
+ extern float nexttowardf (float, long double);
+              ^~~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:458:20: error: declaration for parameter 'nextafterl' but no such parameter
+ extern long double nextafterl (long double, long double);
+                    ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:457:20: error: declaration for parameter 'cbrtl' but no such parameter
+ extern long double cbrtl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:456:20: error: declaration for parameter 'asinhl' but no such parameter
+ extern long double asinhl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:455:12: error: declaration for parameter 'ilogbl' but no such parameter
+ extern int ilogbl (long double);
+            ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:454:20: error: declaration for parameter 'nanl' but no such parameter
+ extern long double nanl (const char *);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:453:20: error: declaration for parameter 'copysignl' but no such parameter
+ extern long double copysignl (long double, long double);
+                    ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:450:20: error: declaration for parameter 'hypotl' but no such parameter
+ extern long double hypotl (long double, long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:449:20: error: declaration for parameter 'fmodl' but no such parameter
+ extern long double fmodl (long double, long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:448:20: error: declaration for parameter 'sqrtl' but no such parameter
+ extern long double sqrtl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:447:20: error: declaration for parameter 'powl' but no such parameter
+ extern long double powl (long double, long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:446:20: error: declaration for parameter 'log10l' but no such parameter
+ extern long double log10l (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:445:20: error: declaration for parameter 'logl' but no such parameter
+ extern long double logl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:444:20: error: declaration for parameter 'ldexpl' but no such parameter
+ extern long double ldexpl (long double, int);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:443:20: error: declaration for parameter 'expl' but no such parameter
+ extern long double expl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:442:20: error: declaration for parameter 'sinhl' but no such parameter
+ extern long double sinhl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:441:20: error: declaration for parameter 'coshl' but no such parameter
+ extern long double coshl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:440:20: error: declaration for parameter 'atan2l' but no such parameter
+ extern long double atan2l (long double, long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:439:20: error: declaration for parameter 'asinl' but no such parameter
+ extern long double asinl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:438:20: error: declaration for parameter 'acosl' but no such parameter
+ extern long double acosl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:433:20: error: declaration for parameter 'expm1l' but no such parameter
+ extern long double expm1l (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:432:20: error: declaration for parameter 'log1pl' but no such parameter
+ extern long double log1pl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:431:20: error: declaration for parameter 'floorl' but no such parameter
+ extern long double floorl (long double);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:430:20: error: declaration for parameter 'fabsl' but no such parameter
+ extern long double fabsl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:429:20: error: declaration for parameter 'ceill' but no such parameter
+ extern long double ceill (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:428:20: error: declaration for parameter 'modfl' but no such parameter
+ extern long double modfl (long double, long double *);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:427:20: error: declaration for parameter 'frexpl' but no such parameter
+ extern long double frexpl (long double, int *);
+                    ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:426:20: error: declaration for parameter 'tanhl' but no such parameter
+ extern long double tanhl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:425:20: error: declaration for parameter 'tanl' but no such parameter
+ extern long double tanl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:424:20: error: declaration for parameter 'sinl' but no such parameter
+ extern long double sinl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:423:20: error: declaration for parameter 'cosl' but no such parameter
+ extern long double cosl (long double);
+                    ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:422:20: error: declaration for parameter 'atanl' but no such parameter
+ extern long double atanl (long double);
+                    ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:411:14: error: declaration for parameter 'hypotf' but no such parameter
+ extern float hypotf (float, float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:410:14: error: declaration for parameter 'log2f' but no such parameter
+ extern float log2f (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:409:14: error: declaration for parameter 'erfcf' but no such parameter
+ extern float erfcf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:408:14: error: declaration for parameter 'erff' but no such parameter
+ extern float erff (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:407:14: error: declaration for parameter 'lgammaf' but no such parameter
+ extern float lgammaf (float);
+              ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:406:14: error: declaration for parameter 'gammaf' but no such parameter
+ extern float gammaf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:405:14: error: declaration for parameter 'remainderf' but no such parameter
+ extern float remainderf (float, float);
+              ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:404:14: error: declaration for parameter 'atanhf' but no such parameter
+ extern float atanhf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:403:14: error: declaration for parameter 'acoshf' but no such parameter
+ extern float acoshf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:400:14: error: declaration for parameter 'expm1f' but no such parameter
+ extern float expm1f (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:399:14: error: declaration for parameter 'log1pf' but no such parameter
+ extern float log1pf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:398:14: error: declaration for parameter 'scalbnf' but no such parameter
+ extern float scalbnf (float, int);
+              ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:397:14: error: declaration for parameter 'rintf' but no such parameter
+ extern float rintf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:396:14: error: declaration for parameter 'nextafterf' but no such parameter
+ extern float nextafterf (float, float);
+              ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:395:14: error: declaration for parameter 'cbrtf' but no such parameter
+ extern float cbrtf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:394:14: error: declaration for parameter 'asinhf' but no such parameter
+ extern float asinhf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:392:12: error: declaration for parameter 'ilogbf' but no such parameter
+ extern int ilogbf (float);
+            ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:391:14: error: declaration for parameter 'logbf' but no such parameter
+ extern float logbf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:390:14: error: declaration for parameter 'copysignf' but no such parameter
+ extern float copysignf (float, float);
+              ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:389:14: error: declaration for parameter 'nanf' but no such parameter
+ extern float nanf (const char *);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:388:14: error: declaration for parameter 'infinityf' but no such parameter
+ extern float infinityf (void);
+              ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:386:14: error: declaration for parameter 'fmaf' but no such parameter
+ extern float fmaf (float, float, float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:385:14: error: declaration for parameter 'fminf' but no such parameter
+ extern float fminf (float, float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:384:14: error: declaration for parameter 'fmaxf' but no such parameter
+ extern float fmaxf (float, float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:383:14: error: declaration for parameter 'fdimf' but no such parameter
+ extern float fdimf (float, float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:382:14: error: declaration for parameter 'remquof' but no such parameter
+ extern float remquof (float, float, int *);
+              ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:381:14: error: declaration for parameter 'truncf' but no such parameter
+ extern float truncf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:380:22: error: declaration for parameter 'llroundf' but no such parameter
+ extern long long int llroundf (float);
+                      ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:379:17: error: declaration for parameter 'lroundf' but no such parameter
+ extern long int lroundf (float);
+                 ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:378:14: error: declaration for parameter 'roundf' but no such parameter
+ extern float roundf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:377:22: error: declaration for parameter 'llrintf' but no such parameter
+ extern long long int llrintf (float);
+                      ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:376:17: error: declaration for parameter 'lrintf' but no such parameter
+ extern long int lrintf (float);
+                 ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:375:14: error: declaration for parameter 'nearbyintf' but no such parameter
+ extern float nearbyintf (float);
+              ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:374:14: error: declaration for parameter 'tgammaf' but no such parameter
+ extern float tgammaf (float);
+              ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:373:14: error: declaration for parameter 'scalblnf' but no such parameter
+ extern float scalblnf (float, long int);
+              ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:372:14: error: declaration for parameter 'exp2f' but no such parameter
+ extern float exp2f (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:367:14: error: declaration for parameter 'fmodf' but no such parameter
+ extern float fmodf (float, float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:366:14: error: declaration for parameter 'sqrtf' but no such parameter
+ extern float sqrtf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:365:14: error: declaration for parameter 'powf' but no such parameter
+ extern float powf (float, float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:364:14: error: declaration for parameter 'log10f' but no such parameter
+ extern float log10f (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:363:14: error: declaration for parameter 'logf' but no such parameter
+ extern float logf (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:362:14: error: declaration for parameter 'ldexpf' but no such parameter
+ extern float ldexpf (float, int);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:361:14: error: declaration for parameter 'expf' but no such parameter
+ extern float expf (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:360:14: error: declaration for parameter 'sinhf' but no such parameter
+ extern float sinhf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:359:14: error: declaration for parameter 'coshf' but no such parameter
+ extern float coshf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:358:14: error: declaration for parameter 'atan2f' but no such parameter
+ extern float atan2f (float, float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:357:14: error: declaration for parameter 'asinf' but no such parameter
+ extern float asinf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:356:14: error: declaration for parameter 'acosf' but no such parameter
+ extern float acosf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:353:14: error: declaration for parameter 'floorf' but no such parameter
+ extern float floorf (float);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:352:14: error: declaration for parameter 'fabsf' but no such parameter
+ extern float fabsf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:351:14: error: declaration for parameter 'ceilf' but no such parameter
+ extern float ceilf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:350:14: error: declaration for parameter 'modff' but no such parameter
+ extern float modff (float, float *);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:349:14: error: declaration for parameter 'frexpf' but no such parameter
+ extern float frexpf (float, int *);
+              ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:348:14: error: declaration for parameter 'tanhf' but no such parameter
+ extern float tanhf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:347:14: error: declaration for parameter 'tanf' but no such parameter
+ extern float tanf (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:346:14: error: declaration for parameter 'sinf' but no such parameter
+ extern float sinf (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:345:14: error: declaration for parameter 'cosf' but no such parameter
+ extern float cosf (float);
+              ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:344:14: error: declaration for parameter 'atanf' but no such parameter
+ extern float atanf (float);
+              ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:337:15: error: declaration for parameter 'hypot' but no such parameter
+ extern double hypot (double, double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:331:15: error: declaration for parameter 'log2' but no such parameter
+ extern double log2 (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:330:15: error: declaration for parameter 'erfc' but no such parameter
+ extern double erfc (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:329:15: error: declaration for parameter 'erf' but no such parameter
+ extern double erf (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:328:15: error: declaration for parameter 'lgamma' but no such parameter
+ extern double lgamma (double);
+               ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:327:15: error: declaration for parameter 'gamma' but no such parameter
+ extern double gamma (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:326:15: error: declaration for parameter 'remainder' but no such parameter
+ extern double remainder (double, double);
+               ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:325:15: error: declaration for parameter 'atanh' but no such parameter
+ extern double atanh (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:324:15: error: declaration for parameter 'acosh' but no such parameter
+ extern double acosh (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:320:15: error: declaration for parameter 'expm1' but no such parameter
+ extern double expm1 (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:319:15: error: declaration for parameter 'log1p' but no such parameter
+ extern double log1p (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:316:15: error: declaration for parameter 'fma' but no such parameter
+ extern double fma (double, double, double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:315:15: error: declaration for parameter 'fmin' but no such parameter
+ extern double fmin (double, double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:314:15: error: declaration for parameter 'fmax' but no such parameter
+ extern double fmax (double, double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:313:15: error: declaration for parameter 'fdim' but no such parameter
+ extern double fdim (double, double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:312:15: error: declaration for parameter 'remquo' but no such parameter
+ extern double remquo (double, double, int *);
+               ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:311:15: error: declaration for parameter 'trunc' but no such parameter
+ extern double trunc (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:310:22: error: declaration for parameter 'llround' but no such parameter
+ extern long long int llround (double);
+                      ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:309:17: error: declaration for parameter 'lround' but no such parameter
+ extern long int lround (double);
+                 ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:308:15: error: declaration for parameter 'round' but no such parameter
+ extern double round (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:307:22: error: declaration for parameter 'llrint' but no such parameter
+ extern long long int llrint (double);
+                      ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:306:17: error: declaration for parameter 'lrint' but no such parameter
+ extern long int lrint (double);
+                 ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:305:15: error: declaration for parameter 'nearbyint' but no such parameter
+ extern double nearbyint (double);
+               ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:304:15: error: declaration for parameter 'tgamma' but no such parameter
+ extern double tgamma (double);
+               ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:303:15: error: declaration for parameter 'scalbln' but no such parameter
+ extern double scalbln (double, long int);
+               ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:302:15: error: declaration for parameter 'exp2' but no such parameter
+ extern double exp2 (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:300:15: error: declaration for parameter 'scalbn' but no such parameter
+ extern double scalbn (double, int);
+               ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:299:15: error: declaration for parameter 'rint' but no such parameter
+ extern double rint (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:298:15: error: declaration for parameter 'nextafter' but no such parameter
+ extern double nextafter (double, double);
+               ^~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:297:15: error: declaration for parameter 'cbrt' but no such parameter
+ extern double cbrt (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:296:15: error: declaration for parameter 'asinh' but no such parameter
+ extern double asinh (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:294:12: error: declaration for parameter 'ilogb' but no such parameter
+ extern int ilogb (double);
+            ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:293:15: error: declaration for parameter 'logb' but no such parameter
+ extern double logb (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:292:15: error: declaration for parameter 'copysign' but no such parameter
+ extern double copysign (double, double);
+               ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:291:15: error: declaration for parameter 'nan' but no such parameter
+ extern double nan (const char *);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:290:15: error: declaration for parameter 'infinity' but no such parameter
+ extern double infinity (void);
+               ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:201:12: error: declaration for parameter '__signbitd' but no such parameter
+ extern int __signbitd (double x);
+            ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:200:12: error: declaration for parameter '__signbitf' but no such parameter
+ extern int __signbitf (float x);
+            ^~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:199:12: error: declaration for parameter '__fpclassifyd' but no such parameter
+ extern int __fpclassifyd (double x);
+            ^~~~~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:198:12: error: declaration for parameter '__fpclassifyf' but no such parameter
+ extern int __fpclassifyf (float x);
+            ^~~~~~~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:197:12: error: declaration for parameter '__isnand' but no such parameter
+ extern int __isnand (double x);
+            ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:196:12: error: declaration for parameter '__isnanf' but no such parameter
+ extern int __isnanf (float x);
+            ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:195:12: error: declaration for parameter '__isinfd' but no such parameter
+ extern int __isinfd (double x);
+            ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:194:12: error: declaration for parameter '__isinff' but no such parameter
+ extern int __isinff (float x);
+            ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:151:20: error: declaration for parameter 'double_t' but no such parameter
+     typedef double double_t;
+                    ^~~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:150:20: error: declaration for parameter 'float_t' but no such parameter
+     typedef float  float_t;
+                    ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:133:12: error: declaration for parameter 'isnan' but no such parameter
+ extern int isnan (double);
+            ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:128:12: error: declaration for parameter 'isinf' but no such parameter
+ extern int isinf (double);
+            ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:122:12: error: declaration for parameter 'isnanf' but no such parameter
+ extern int isnanf (float);
+            ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:121:12: error: declaration for parameter 'isinff' but no such parameter
+ extern int isinff (float);
+            ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:120:12: error: declaration for parameter 'finitel' but no such parameter
+ extern int finitel (long double);
+            ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:119:12: error: declaration for parameter 'finitef' but no such parameter
+ extern int finitef (float);
+            ^~~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:118:12: error: declaration for parameter 'finite' but no such parameter
+ extern int finite (double);
+            ^~~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:113:15: error: declaration for parameter 'fmod' but no such parameter
+ extern double fmod (double, double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:112:15: error: declaration for parameter 'sqrt' but no such parameter
+ extern double sqrt (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:111:15: error: declaration for parameter 'pow' but no such parameter
+ extern double pow (double, double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:110:15: error: declaration for parameter 'log10' but no such parameter
+ extern double log10 (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:109:15: error: declaration for parameter 'log' but no such parameter
+ extern double log (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:108:15: error: declaration for parameter 'ldexp' but no such parameter
+ extern double ldexp (double, int);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:107:15: error: declaration for parameter 'exp' but no such parameter
+ extern double exp (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:106:15: error: declaration for parameter 'sinh' but no such parameter
+ extern double sinh (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:105:15: error: declaration for parameter 'cosh' but no such parameter
+ extern double cosh (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:104:15: error: declaration for parameter 'atan2' but no such parameter
+ extern double atan2 (double, double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:103:15: error: declaration for parameter 'asin' but no such parameter
+ extern double asin (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:102:15: error: declaration for parameter 'acos' but no such parameter
+ extern double acos (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:95:15: error: declaration for parameter 'floor' but no such parameter
+ extern double floor (double);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:94:15: error: declaration for parameter 'fabs' but no such parameter
+ extern double fabs (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:93:15: error: declaration for parameter 'ceil' but no such parameter
+ extern double ceil (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:92:15: error: declaration for parameter 'modf' but no such parameter
+ extern double modf (double, double *);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:91:15: error: declaration for parameter 'frexp' but no such parameter
+ extern double frexp (double, int *);
+               ^~~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:90:15: error: declaration for parameter 'tanh' but no such parameter
+ extern double tanh (double);
+               ^~~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:89:15: error: declaration for parameter 'tan' but no such parameter
+ extern double tan (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:88:15: error: declaration for parameter 'sin' but no such parameter
+ extern double sin (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:87:15: error: declaration for parameter 'cos' but no such parameter
+ extern double cos (double);
+               ^~~
+/Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/arm-none-eabi/include/math.h:86:15: error: declaration for parameter 'atan' but no such parameter
+ extern double atan (double);
+               ^~~~
+../src/nmea.c:391:1: error: expected '{' at end of input
+ }
+ ^
+../src/nmea.c:391:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [src/nmea.o] Error 1
+
+17:17:38 Build Finished (took 732ms)
+
