@@ -132,27 +132,31 @@ function HomeScreen() {
                         alignItems: 'center'}}>
 
             <View style={{margin: 10}}>
-                <Button title="Discover Paired devices" onPress={() => discoverPaired() } />
+                <Button title="Discover Paired devices" onPress={() => discoverPaired()} />
             </View>
 
             <View style={{margin: 10}}>
-                <Button title="Connect to backpack" onPress={() => BluetoothConnect() } />
+                <Button title="Connect to backpack" onPress={() => BluetoothConnect()} />
             </View>
 
             <View style={{margin: 10}}>
-                <Button title="Disconnect from backpack" onPress={() => BluetoothDisconnect() } />
+                <Button title="Disconnect from backpack" onPress={() => BluetoothDisconnect()} />
             </View>
 
             <View style={{margin: 10}}>
-                <Button title="Check if connected" onPress={() => checkconnection() } />
+                <Button title="Check if connected" onPress={() => checkconnection()} />
             </View>
 
             <View style={{margin: 10}}>
-                <Button title="Send request to backpack" onPress={() => WriteMessage(String("W\r\n")) } />
+                <Button title="Send request to backpack" onPress={() => WriteMessage(String("W\r\n"))} />
             </View>
 
             <View style={{margin: 10}}>
-                <Button title="Get Backpack Weight" onPress={() => GetWeight() } />
+                <Button title="Tare Backpack Weight" onPress={() =>GetWeight()} />
+            </View>
+
+            <View style={{margin: 10}}>
+                <Button title="Get Backpack Weight" onPress={() => GetWeight()} />
             </View>
 
             <Text> {readdata.data} </Text>
