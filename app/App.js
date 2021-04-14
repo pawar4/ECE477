@@ -2,13 +2,14 @@ import * as React from 'react';
 import { useState } from 'react';
 import { 
     Alert, 
-    NativeEventEmitter, 
-    NativeModules, 
     Platform, 
     PermissionsAndroid, 
     StyleSheet, 
     ScrollView,
-    TextInput } from 'react-native';
+    TextInput,
+    TouchableOpacity,
+    Touchable,
+    ImageBackground, } from 'react-native';
 import { Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -16,6 +17,8 @@ import MapView, { Marker } from "react-native-maps";
 // import BleManager from 'react-native-ble-manager';
 import BluetoothSerial from 'react-native-bluetooth-serial'
 import SmsAndroid from 'react-native-get-sms-android'
+
+import {BACKGROUND} from './src/img';
 
 function HomeScreen() {
     const [isconnected, setIsConnected] = useState(false);   //state variable to hold boolean value of whether any device is connected
@@ -25,6 +28,27 @@ function HomeScreen() {
     const [device, setDevice] = useState(null);       // state variable to hold current connected peripheral
     const [readdata, setreaddata] = useState("");     //state variable to hold current read message
 
+
+    const [region, setRegion] = useState({
+        latitude: 51.5079145,
+        longitude: -0.807321,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01
+    });
+    const [marker, setMarker] = useState({
+        latitude: 50.5079145,
+        longitude: -0.19,
+        title : "BackPack"
+    });
+    
+    //GSM Part
+    const [state, setState] = useState({
+        sendFrom: "+18455311048",
+        sendBody: "",
+        minDate: "",
+        maxDate: "",
+        smsList: []
+    });
     
     //Component to discover all unpaired devices within range
     const discoverUnpaired = () => {
@@ -96,117 +120,7 @@ function HomeScreen() {
      .catch(err => {console.error(err);});
    }
 
-    React.useEffect(() => {
-        // this is a constructor (runs once)
-        if (Platform.OS === 'android' && Platform.Version >= 23) {
-            PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION).then((result) => {
-                if (result) {
-                  console.log("Permission is OK");
-                } else {
-                  PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION).then((result) => {
-                    if (result) {
-                      console.log("User accept");
-                    } else {
-                      console.log("User refuse");
-                    }
-                  });
-                }
-            });
-          }
-
-          discoverPaired();       //automatically as app opens up, the app tries to connect to the backpack.
-
-          BluetoothSerial.withDelimiter('\r\n').then((res) => {
-              console.log("Delimiter has been set up ");
-              BluetoothSerial.on('read', data => {
-                setreaddata(data);
-                //console.log(`DATA FROM BLUETOOTH: ${data.data}`);
-                // console.log(data.data);
-             });
-          })
-    }, [])
-
-    return (
-        <View style={{  flex: 1,
-                        justifyContent: 'center',
-                        alignItems: 'center'}}>
-
-            <View style={{margin: 10}}>
-                <Button title="Discover Paired devices" onPress={() => discoverPaired()} />
-            </View>
-
-            <View style={{margin: 10}}>
-                <Button title="Connect to backpack" onPress={() => BluetoothConnect()} />
-            </View>
-
-            <View style={{margin: 10}}>
-                <Button title="Disconnect from backpack" onPress={() => BluetoothDisconnect()} />
-            </View>
-
-            <View style={{margin: 10}}>
-                <Button title="Check if connected" onPress={() => checkconnection()} />
-            </View>
-
-            <View style={{margin: 10}}>
-                <Button title="Send request to backpack" onPress={() => WriteMessage(String("W\r\n"))} />
-            </View>
-
-            <View style={{margin: 10}}>
-                <Button title="Tare Backpack Weight" onPress={() =>GetWeight()} />
-            </View>
-
-            <View style={{margin: 10}}>
-                <Button title="Get Backpack Weight" onPress={() => GetWeight()} />
-            </View>
-
-            <Text> {readdata.data} </Text>
-            <Text> {weight} </Text>
-        </View>
-    );
-}
-
-function GPSScreen() {
-    const [region, setRegion] = useState({
-        latitude: 51.5079145,
-        longitude: -0.807321,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01
-    });
-    const [marker, setMarker] = useState({
-        latitude: 50.5079145,
-        longitude: -0.19,
-        title : "BackPack"
-    });
-    
-    //GSM Part
-    const [state, setState] = useState({
-        sendFrom: "+18455311048",
-        sendBody: "",
-        minDate: "",
-        maxDate: "",
-        smsList: []
-    });
-
-    React.useEffect(() => {
-        console.log("checking SMS permissions");
-        try {
-            PermissionsAndroid.requestMultiple([PermissionsAndroid.PERMISSIONS.SEND_SMS,
-                                                PermissionsAndroid.PERMISSIONS.READ_SMS]
-                                                ).then((result) => {
-                                                    if (result['android.permission.READ_SMS'] &&
-                                                    result['android.permission.SEND_SMS'] === PermissionsAndroid.RESULTS.GRANTED) {
-                                                        console.log("SMS Permission granted")
-                                                    }
-                                                    else {
-                                                        console.log("SMS Permission denied")
-                                                    }
-                                                })
-        } catch (e) {
-            console.error(e);
-        }
-    }, []);
-
-    const sendSMS = () => {
+   const sendSMS = () => {
         console.log(state.sendFrom);
         console.log(state.sendBody);
         SmsAndroid.autoSend(
@@ -260,39 +174,133 @@ function GPSScreen() {
         sendSMS();
     };
 
-    return (
-        <View style={{flex: 1}}> 
-            <MapView    style={{  flex: 1  }} 
-                        region={region}
-                        onRegionChangeComplete={region => {setRegion(region), listSMS()}}
-                        showsUserLocation={true}
-                        followsUserLocation={true}
-                        showsMyLocationButton={true}
-            >
-                <Marker coordinate={marker} />
-            </MapView>
-            <View style={{flex: 0.1}}>
-                <Button title="Update Backpack Location" onPress={() => updateMarker()}/>
-                <Text style={{alignSelf: 'center', marginTop: 5}}> Last Updated Backpack Coordinates: {marker.latitude},{marker.longitude} </Text>
-            </View>
-        </View>
-    );
-}
+    React.useEffect(() => {
+        // // this is a constructor (runs once)
+        // if (Platform.OS === 'android' && Platform.Version >= 23) {
+        //     PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION).then((result) => {
+        //         if (result) {
+        //           console.log("Permission is OK");
+        //         } else {
+        //           PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION).then((result) => {
+        //             if (result) {
+        //               console.log("User accept");
+        //             } else {
+        //               console.log("User refuse");
+        //             }
+        //           });
+        //         }
+        //     });
+        //   }
 
-function SettingScreen() {
-    return (
-        <View style={{  flex: 1,
-                        justifyContent: 'center',
-                        alignItems: 'center'}}>
-            
-            {/* <View style={{margin: 10}}>
-                <Button title="Get Weight" onPress={() => reqWeight()} />
-                <Text style= {{ width: '100%', borderRadius: 40, height: 40, borderColor: 'gray', borderWidth: 1, alignItems: 'center'}}>Hello</Text>
-            </View>
+          discoverPaired();       //automatically as app opens up, the app tries to connect to the backpack.
 
-            <View style={{margin: 10}}>
-                <Button title="Get Battery Status" onPress={() => reqBattStat()} />
-            </View>             */}
+          BluetoothSerial.withDelimiter('\r\n').then((res) => {
+              console.log("Delimiter has been set up ");
+              BluetoothSerial.on('read', data => {
+                setreaddata(data);
+                //console.log(`DATA FROM BLUETOOTH: ${data.data}`);
+                // console.log(data.data);
+             });
+          })
+
+        console.log("checking SMS permissions");
+        try {
+            PermissionsAndroid.requestMultiple([PermissionsAndroid.PERMISSIONS.SEND_SMS,
+                                                PermissionsAndroid.PERMISSIONS.READ_SMS,
+                                                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION]
+                                                ).then((result) => {
+                                                    if (result['android.permission.READ_SMS'] &&
+                                                        result['android.permission.SEND_SMS'] &&
+                                                        result['android.permission.ACCESS_FINE_LOCATION'] 
+                                                        === PermissionsAndroid.RESULTS.GRANTED) {
+                                                        console.log("Permission granted")
+                                                    }
+                                                    else {
+                                                        console.log("SMS Permission denied")
+                                                    }
+                                                })
+        } catch (e) {
+            console.error(e);
+        }
+    }, [])
+
+    return (
+        <View style={{height: '100%', backgroundColor: '#ccc'}}>
+            <ImageBackground    source={BACKGROUND}
+                                style={{flex: 1, width: null, height: null}}>
+                <MapView    style={{  height: 450,  width: 400, alignSelf: 'center'}} 
+                            region={region}
+                            showsMyLocationButton={true}
+                            onRegionChangeComplete={region => {setRegion(region), listSMS()}}
+                            showsUserLocation={true}
+                            followsUserLocation={true}
+                >
+                    <Marker coordinate={marker} />
+                </MapView>
+                <ScrollView style={{ flex: 1}}>
+                    <View style={   {marginTop: 35, 
+                                    flexDirection: 'row'}}> 
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: 250, 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10,
+                                                }} 
+                                            onPress={checkconnection}
+                                            onLongPress={BluetoothConnect}>
+                            <Text>Backpack Connection</Text>
+                        </TouchableOpacity>
+                        <Text style={{alignSelf: 'center', padding: 10}}>Connection Status</Text>
+                    </View>
+                    <View style={   {marginTop: 35, 
+                                    flexDirection: 'row',}}> 
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: 250, 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10
+                                                }} 
+                                            onPress={GetWeight}
+                                            onLongPress={GetWeight}>
+                            <Text>Backpack Weight</Text>
+                        </TouchableOpacity>
+                        <Text style={{  alignSelf: 'center',
+                                        padding: 10}}>{weight}</Text>
+                    </View>
+                    <View style={   {marginTop: 35, 
+                                    flexDirection: 'row',}}> 
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: 250, 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10
+                                                }} 
+                                            onPress={GetWeight}
+                                            onLongPress={GetWeight}>
+                            <Text>Update Location</Text>
+                        </TouchableOpacity>
+                        <Text style={{  alignSelf: 'center', padding: 5}}>
+                            {marker.latitude},{marker.longitude}
+                        </Text>
+                    </View>
+                    <View style={   {marginTop: 35, 
+                                    flexDirection: 'row',}}> 
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: 250, 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10
+                                                }} 
+                                            onPress={GetWeight}
+                                            onLongPress={GetWeight}>
+                            <Text>Update Battery Status</Text>
+                        </TouchableOpacity>
+                        <Text style={{  alignSelf: 'center', padding: 5}}>
+                            hello
+                        </Text>
+                    </View>
+                </ScrollView>
+            </ImageBackground>
         </View>
     );
 }
@@ -303,8 +311,6 @@ function MyTabs() {
     return (
     <Tab.Navigator>
         <Tab.Screen name='Home' component={HomeScreen} />
-        <Tab.Screen name='GPS' component={GPSScreen} />
-        <Tab.Screen name="Information" component={SettingScreen} />
     </Tab.Navigator>
     );
 }
