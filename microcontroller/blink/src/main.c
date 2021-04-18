@@ -422,6 +422,7 @@ void setup_ring_indicator_pin()
 void sms_sendweight()
 {
 	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+	char category[2] = "W,";
 	for(int i = 0; i < strlen(send_message1); ++i)
 	{
 		USART_SendData(USART3,send_message1[i]);
@@ -429,6 +430,12 @@ void sms_sendweight()
 	}
 
 	for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
+	
+	for(int i=0; i < 2; ++i)
+	{
+		USART_SendData(USART3,category[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
 
 	for(int i = 0; weight[i] != '\0'; ++i)
 	{
@@ -441,6 +448,7 @@ void sms_sendweight()
 void sms_sendlocation(char * msg)
 {
 	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+	char category[2] = "L,";
 	for(int i = 0; i < strlen(send_message1); ++i)
 	{
 		USART_SendData(USART3,send_message1[i]);
@@ -448,6 +456,12 @@ void sms_sendlocation(char * msg)
 	}
 
 	for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
+	
+	for(int i=0; i < 2; ++i)
+	{
+		USART_SendData(USART3,category[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
 
 	for(int i = 0; weight[i] != '\0'; ++i)
 	{
@@ -460,6 +474,7 @@ void sms_sendlocation(char * msg)
 void sms_sendbattery()
 {
 	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+	char category[2] = "B,";
 	for(int i = 0; i < strlen(send_message1); ++i)
 	{
 		USART_SendData(USART3,send_message1[i]);
@@ -470,6 +485,12 @@ void sms_sendbattery()
 
 	uint16_t sob = soc(FILTERED);
 	itoa (sob, battery, 10);
+	
+	for(int i=0; i < 2; ++i)
+	{
+		USART_SendData(USART3,category[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
 
 	for(int i = 0; battery[i] != '\0'; ++i)
 	{
