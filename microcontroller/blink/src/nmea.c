@@ -386,12 +386,17 @@ void USART2_IRQHandler(){
 
 char * createGPSmsg(){
 	memset(gps_msg_to_send, '\0', 54);
-	char lat_dir[4] = {',', parsed_message -> rmc -> lat_direction, ',', '\0'};
-	char long_dir[4] = {',', parsed_message -> rmc -> long_direction, '\0'};
-	memset(gps_msg_to_send, '\0', 54);
-	strcat(gps_msg_to_send, parsed_message -> rmc -> latitude);
-	strcat(gps_msg_to_send, lat_dir);
-	strcat(gps_msg_to_send, parsed_message -> rmc -> longitude);
-	strcat(gps_msg_to_send, long_dir);
+	if(parsed_message -> valid == 'A'){
+		char lat_dir[4] = {',', parsed_message -> rmc -> lat_direction, ',', '\0'};
+		char long_dir[4] = {',', parsed_message -> rmc -> long_direction, '\0'};
+		memset(gps_msg_to_send, '\0', 54);
+		strcat(gps_msg_to_send, parsed_message -> rmc -> latitude);
+		strcat(gps_msg_to_send, lat_dir);
+		strcat(gps_msg_to_send, parsed_message -> rmc -> longitude);
+		strcat(gps_msg_to_send, long_dir);
+	}
+	else{
+		strcat(gps_msg_to_send, "Location Unavailable");
+	}
 	return gps_msg_to_send;
 }
