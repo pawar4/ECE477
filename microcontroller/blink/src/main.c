@@ -43,6 +43,8 @@ char receive_success[30] = "Message successfully received\r";
 volatile int UART1_received = 0;
 volatile int UART3_received = 0;
 
+void GSM_default();
+void GSM_powersave();
 void UART1_init();
 void UART3_init();
 void USART1_IRQHandler();
@@ -63,11 +65,13 @@ int main(void)
 {
 	UART1_init();
 	UART3_init();
+	GSM_default();
 	FG_Config();
 	pushbuttonmsg();
 	initParsedMessage();
 	initUART2();
 	initTimer2();
+	GSM_powersave();
 	while(1)
 	{
 		if((UART1_received == 1))
@@ -110,7 +114,36 @@ int main(void)
 	}
 }
 
+void GSM_default()
+{
+	char send_message1[] = "AT+UPSV=0\r\n";
+	char send_message2[] = "AT+CNMI=2,2\r\n";
+	for(int i = 0; i < strlen(send_message1); ++i)
+	{
+		USART_SendData(USART3,send_message1[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
 
+	for(int i= 0; i < 10000; ++i);     //when using while(UART3_received != 1) it doesnt work
+
+	for(int i = 0; i < strlen(send_message2); ++i)
+	{
+		USART_SendData(USART3,send_message2[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+}
+
+void GSM_powersave()
+{
+	char send_message1[] = "AT+UPSV=1\r\n";
+
+	for(int i = 0; i < strlen(send_message1); ++i)
+	{
+		USART_SendData(USART3,send_message1[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+
+}
 
 void UART1_init()
 {
@@ -247,7 +280,8 @@ void EXTI0_IRQHandler()
 //		USART_SendData(USART3,ctrl_z);
 //		char * msg = createGPSmsg();
 //		bluetooth_sendlocation(msg);
-		bluetooth_sendbattery();
+// 		bluetooth_sendbattery();
+		send_smsweight();
 
 		EXTI_ClearITPendingBit(EXTI_Line0);
 	}
@@ -429,7 +463,7 @@ void sms_sendweight()
 		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
 	}
 
-	for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
+	for(int i= 0; i < 5000; ++i);     //when using while(UART3_received != 1) it doesnt work
 	
 	for(int i=0; i < 2; ++i)
 	{
