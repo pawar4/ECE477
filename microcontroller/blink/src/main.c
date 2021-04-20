@@ -261,7 +261,7 @@ void EXTI0_IRQHandler()
 //		char send_message1[] = "AT+CNMI=2,2\r\n";
 //		char send_message1[] = "AT+UPSV=1\r\n";
 //		char send_message1[] = "AT+CMGL=\"REC READ\"\r\n";
-//		char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+//		char send_message1[] = "AT+CMGS=\"+17657018549\"\r";
 //		char send_message2[] = "Hello";
 //		char send_message1[] = "AT&V\r";
 //		for(int i = 0; i < strlen(send_message1); ++i)
@@ -281,7 +281,7 @@ void EXTI0_IRQHandler()
 //		char * msg = createGPSmsg();
 //		bluetooth_sendlocation(msg);
 // 		bluetooth_sendbattery();
-		send_smsweight();
+		sms_sendweight();
 
 		EXTI_ClearITPendingBit(EXTI_Line0);
 	}
@@ -455,7 +455,7 @@ void setup_ring_indicator_pin()
 
 void sms_sendweight()
 {
-	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+	char send_message1[] = "AT+CMGS=\"+17657018549\"\r";
 	char category[2] = "W,";
 	for(int i = 0; i < strlen(send_message1); ++i)
 	{
@@ -481,7 +481,7 @@ void sms_sendweight()
 
 void sms_sendlocation(char * msg)
 {
-	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+	char send_message1[] = "AT+CMGS=\"+17657018549\"\r";
 	char category[2] = "L,";
 	for(int i = 0; i < strlen(send_message1); ++i)
 	{
@@ -507,7 +507,7 @@ void sms_sendlocation(char * msg)
 
 void sms_sendbattery()
 {
-	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+	char send_message1[] = "AT+CMGS=\"+17657018549\"\r";
 	char category[2] = "B,";
 	for(int i = 0; i < strlen(send_message1); ++i)
 	{

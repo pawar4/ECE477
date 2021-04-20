@@ -76,7 +76,7 @@ int HX711_GetOffset(void)
 int HX711_Tare(int *offset)
 {
 	int weight = -1;
-	int offset = 420;
+	*offset = 420;
 	int idx = 0;
 
 	for (int i = 0; i <= 30; i++)

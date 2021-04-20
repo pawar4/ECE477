@@ -386,7 +386,7 @@ void USART2_IRQHandler(){
 
 char * createGPSmsg(){
 	memset(gps_msg_to_send, '\0', 54);
-	if(parsed_message -> valid == 'A'){
+	if(parsed_message -> rmc -> valid == 'A'){
 		char lat_dir[4] = {',', parsed_message -> rmc -> lat_direction, ',', '\0'};
 		char long_dir[4] = {',', parsed_message -> rmc -> long_direction, '\0'};
 		memset(gps_msg_to_send, '\0', 54);
