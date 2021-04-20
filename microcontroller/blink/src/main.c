@@ -71,7 +71,7 @@ int main(void)
 	initParsedMessage();
 	initUART2();
 	initTimer2();
-	GSM_powersave();
+	//GSM_powersave();
 	while(1)
 	{
 		if((UART1_received == 1))
@@ -335,68 +335,68 @@ void UART3_init()
 //Function called when UART channel 3 receive register contains unread values for GSM
 void USART3_IRQHandler()
 {
-	if(test_cmd == 0)     //We know that the only AT command we receiving without test is for SMS notification
-	{
-		// check if the USART3 receive interrupt flag was set
-		  if( USART_GetITStatus(USART3, USART_IT_RXNE) ){
+    if(test_cmd == 0)     //We know that the only AT command we receiving without test is for SMS notification
+    {
+        // check if the USART3 receive interrupt flag was set
+          if( USART_GetITStatus(USART3, USART_IT_RXNE) ){
 
-		    char temp = USART_ReceiveData(USART3);
+            char temp = USART_ReceiveData(USART3);
 
-		    if((temp == 'T') && (received_message3[cnt3-1] == 'M') && (received_message3[cnt3-2] == 'C'))  //denotes CMT message
-		    {
-		    	state0 = 1;
-		    	cnt3 = 0;
-		    	sms_cnt = 0;
-		    }
-//		    else if(cnt3 >= 48 && temp == '\r'){
-		    else if(state0 == 2){        //finished reading
-				cnt3 = 0;
-				UART3_received = 1;
-				sms_cnt = 0;
-				valid3 = 1;
-				state0 = 0;
-			}
-			else
-			{
-				received_message3[cnt3] = temp;
-//				if(cnt3 >= 48 && ((temp == 'W') || (temp == 'B') || (temp == 'L')))
-				if((temp == 'W') || (temp == 'B') || (temp == 'L'))
-				{
-					sms_request[sms_cnt] = temp;
-					sms_cnt = 0;
-					state0 = 2;
-				}
-				cnt3++;
-			}
-		  }
-	}
+            if((temp == 'T') && (received_message3[cnt3-1] == 'M') && (received_message3[cnt3-2] == 'C'))  //denotes CMT message
+            {
+                state0 = 1;
+                cnt3 = 0;
+                sms_cnt = 0;
+            }
+//            else if(cnt3 >= 48 && temp == '\r'){
+            else if(state0 == 2){        //finished reading
+                cnt3 = 0;
+                UART3_received = 1;
+                sms_cnt = 0;
+                valid3 = 1;
+                state0 = 0;
+            }
+            else
+            {
+                received_message3[cnt3] = temp;
+//                if(cnt3 >= 48 && ((temp == 'W')  (temp == 'B')  (temp == 'L')))
+                if((temp == 'W') || (temp == 'B') || (temp == 'L'))
+                {
+                    sms_request[sms_cnt] = temp;
+                    sms_cnt = 0;
+                    state0 = 2;
+                }
+                cnt3++;
+            }
+          }
+    }
 
-	else  //test_cmd = 1
-	{
-			sms_cnt = 0;
-		  if( USART_GetITStatus(USART3, USART_IT_RXNE) ){
-		    char temp = USART_ReceiveData(USART3);
+    else  //test_cmd = 1
+    {
+            sms_cnt = 0;
+          if( USART_GetITStatus(USART3, USART_IT_RXNE) ){
+            char temp = USART_ReceiveData(USART3);
 
-			if(temp == 'K' && received_message3[cnt3-1] == 'O')
-			{
-				received_message3[cnt3] = temp;
-				state1 = 1;
-			}
-			else if(state1 == 1 && temp == '\n'){
-				cnt3 = 0;
-				UART3_received = 1;
-				state1 = 0;
-				valid3 = 1;
-			}
-			else if(state1 == 0 && cnt3 < 500)
-			{
-				received_message3[cnt3] = temp;
-				cnt3++;
-			}
-		  }
-	}
+            if(temp == 'K' && received_message3[cnt3-1] == 'O')
+            {
+                received_message3[cnt3] = temp;
+                state1 = 1;
+            }
+            else if(state1 == 1 && temp == '\n'){
+                cnt3 = 0;
+                UART3_received = 1;
+                state1 = 0;
+                valid3 = 1;
+            }
+            else if(state1 == 0 && cnt3 < 200)
+            {
+                received_message3[cnt3] = temp;
+                cnt3++;
+            }
+          }
+    }
 
-	  return;
+    return;
 }
 
 void FG_Config(void)
@@ -455,33 +455,26 @@ void setup_ring_indicator_pin()
 
 void sms_sendweight()
 {
-	char send_message1[] = "AT+CMGS=\"+17657018549\"\r";
-	char category[2] = "W,";
-	for(int i = 0; i < strlen(send_message1); ++i)
-	{
-		USART_SendData(USART3,send_message1[i]);
-		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-	}
+    char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+    for(int i = 0; i < strlen(send_message1); ++i)
+    {
+        USART_SendData(USART3,send_message1[i]);
+        while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+    }
 
-	for(int i= 0; i < 5000; ++i);     //when using while(UART3_received != 1) it doesnt work
-	
-	for(int i=0; i < 2; ++i)
-	{
-		USART_SendData(USART3,category[i]);
-		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-	}
+    for(int i= 0; i < 10000; ++i);     //when using while(UART3_received != 1) it doesnt work
 
-	for(int i = 0; weight[i] != '\0'; ++i)
-	{
-		USART_SendData(USART3,weight[i]);
-		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-	}
-	USART_SendData(USART3,ctrl_z);
+    for(int i = 0; weight[i] != '\0'; ++i)
+    {
+        USART_SendData(USART3,weight[i]);
+        while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+    }
+    USART_SendData(USART3,ctrl_z);
 }
 
 void sms_sendlocation(char * msg)
 {
-	char send_message1[] = "AT+CMGS=\"+17657018549\"\r";
+	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
 	char category[2] = "L,";
 	for(int i = 0; i < strlen(send_message1); ++i)
 	{
@@ -490,14 +483,14 @@ void sms_sendlocation(char * msg)
 	}
 
 	for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
-	
+
 	for(int i=0; i < 2; ++i)
 	{
 		USART_SendData(USART3,category[i]);
 		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
 	}
 
-	for(int i = 0; weight[i] != '\0'; ++i)
+	for(int i = 0; msg[i] != '\0'; ++i)
 	{
 		USART_SendData(USART3,msg[i]);
 		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
@@ -507,31 +500,21 @@ void sms_sendlocation(char * msg)
 
 void sms_sendbattery()
 {
-	char send_message1[] = "AT+CMGS=\"+17657018549\"\r";
-	char category[2] = "B,";
-	for(int i = 0; i < strlen(send_message1); ++i)
-	{
-		USART_SendData(USART3,send_message1[i]);
-		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-	}
+    char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+    for(int i = 0; i < strlen(send_message1); ++i)
+    {
+        USART_SendData(USART3,send_message1[i]);
+        while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+    }
 
-	for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
+    for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
 
-	uint16_t sob = soc(FILTERED);
-	itoa (sob, battery, 10);
-	
-	for(int i=0; i < 2; ++i)
-	{
-		USART_SendData(USART3,category[i]);
-		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-	}
-
-	for(int i = 0; battery[i] != '\0'; ++i)
-	{
-		USART_SendData(USART3,battery[i]);
-		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-	}
-	USART_SendData(USART3,ctrl_z);
+    for(int i = 0; weight[i] != '\0'; ++i)
+    {
+        USART_SendData(USART3,battery[i]);
+        while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+    }
+    USART_SendData(USART3,ctrl_z);
 }
 
 void bluetooth_sendweight()
