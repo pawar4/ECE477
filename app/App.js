@@ -20,35 +20,13 @@ import SmsAndroid from 'react-native-get-sms-android'
 
 import {BACKGROUND} from './src/img';
 
-function HomeScreen() {
+function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge, setCharge}) {
     const [isconnected, setIsConnected] = useState(false);   //state variable to hold boolean value of whether any device is connected
     const [weight,setWeight] = useState("5 kg");
     const peripherals = new Map();
     const [list, setList] = useState([]);             //state variable to hold all discovered peripherals(not connected)
     const [device, setDevice] = useState(null);       // state variable to hold current connected peripheral
     const [readdata, setreaddata] = useState("");     //state variable to hold current read message
-
-
-    const [region, setRegion] = useState({
-        latitude: 51.5079145,
-        longitude: -0.807321,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01
-    });
-    const [marker, setMarker] = useState({
-        latitude: 50.5079145,
-        longitude: -0.19,
-        title : "BackPack"
-    });
-    
-    //GSM Part
-    const [state, setState] = useState({
-        sendFrom: "+18455311048",
-        sendBody: "",
-        minDate: "",
-        maxDate: "",
-        smsList: []
-    });
     
     //Component to discover all unpaired devices within range
     const discoverUnpaired = () => {
@@ -121,11 +99,11 @@ function HomeScreen() {
    }
 
    const sendSMS = () => {
-        console.log(state.sendFrom);
-        console.log(state.sendBody);
+        console.log(user.sendFrom);
+        console.log(user.sendBody);
         SmsAndroid.autoSend(
-            state.sendFrom,
-            state.sendBody,
+            user.sendFrom,
+            user.sendBody,
             err => {
                 Alert.alert("Failed to send SMS. Check console");
                 console.log("SMS SEND ERROR", err);
@@ -136,74 +114,13 @@ function HomeScreen() {
         );
     }
 
-    const listSMS = (marker) => {
-        const {sendFrom, minDate, maxDate} = state
-        var filter = {
-            box: "inbox",
-            maxCount: 1,
-        };
-        if (minDate !== "") {
-            filter.minDate = minDate
-        }
-        if (maxDate !== "") {
-            filter.maxDate = maxDate
-        }
-        if (sendFrom !== "") {
-            filter.address = sendFrom
-        }
-    
-        SmsAndroid.list(
-            JSON.stringify(filter),
-            fail => {
-                console.log("Failed with this error: " + fail);
-            },
-            (count, smsList) => {
-                var arr = JSON.parse(smsList);
-                setState({...state, smsList: arr });
-                //console.log(state.smsList[0].body);
-                var coords = arr[0].body.split(',');
-                var lati = parseFloat(coords[0], 10);
-                var longi = parseFloat(coords[1], 10);
-                setMarker({...marker, latitude: lati, longitude: longi});
-            }
-        );
-    }
-
     const updateMarker = () => {
-        state.sendBody = "G";
+        user.sendBody = "G";
         sendSMS();
     };
 
     React.useEffect(() => {
-        // // this is a constructor (runs once)
-        // if (Platform.OS === 'android' && Platform.Version >= 23) {
-        //     PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION).then((result) => {
-        //         if (result) {
-        //           console.log("Permission is OK");
-        //         } else {
-        //           PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION).then((result) => {
-        //             if (result) {
-        //               console.log("User accept");
-        //             } else {
-        //               console.log("User refuse");
-        //             }
-        //           });
-        //         }
-        //     });
-        //   }
-
-          discoverPaired();       //automatically as app opens up, the app tries to connect to the backpack.
-
-          BluetoothSerial.withDelimiter('\r\n').then((res) => {
-              console.log("Delimiter has been set up ");
-              BluetoothSerial.on('read', data => {
-                setreaddata(data);
-                //console.log(`DATA FROM BLUETOOTH: ${data.data}`);
-                // console.log(data.data);
-             });
-          })
-
-        console.log("checking SMS permissions");
+        console.log("checking permissions");
         try {
             PermissionsAndroid.requestMultiple([PermissionsAndroid.PERMISSIONS.SEND_SMS,
                                                 PermissionsAndroid.PERMISSIONS.READ_SMS,
@@ -222,22 +139,79 @@ function HomeScreen() {
         } catch (e) {
             console.error(e);
         }
+
+        discoverPaired();       //automatically as app opens up, the app tries to connect to the backpack.
+
+        BluetoothSerial.withDelimiter('\r\n').then((res) => {
+            console.log("Delimiter has been set up ");
+            BluetoothSerial.on('read', data => {
+            setreaddata(data);
+            //console.log(`DATA FROM BLUETOOTH: ${data.data}`);
+            // console.log(data.data);
+            });
+        })
     }, [])
 
     return (
         <View style={{height: '100%', backgroundColor: '#ccc'}}>
             <ImageBackground    source={BACKGROUND}
                                 style={{flex: 1, width: null, height: null}}>
-                <MapView    style={{  height: 450,  width: 400, alignSelf: 'center'}} 
-                            region={region}
-                            showsMyLocationButton={true}
-                            onRegionChangeComplete={region => {setRegion(region), listSMS()}}
-                            showsUserLocation={true}
-                            followsUserLocation={true}
-                >
-                    <Marker coordinate={marker} />
-                </MapView>
+                <View style={{  height: 250, 
+                                backgroundColor:'#fff', 
+                                marginLeft: 10, 
+                                marginRight: 10,
+                                opacity: 0.6,
+                                alignItems: 'center'
+                                }}>
+                    <Text style={{color: '#000', fontSize: 60}}>The</Text>
+                    <Text style={{color: '#000', fontSize: 60}}>Smart</Text>
+                    <Text style={{color: '#000', fontSize: 60}}>Backpack</Text>
+                </View>
                 <ScrollView style={{ flex: 1}}>
+                <View style={   {marginTop: 35, 
+                                    flexDirection: 'row'}}>
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: '40%', 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10,
+                                                }} 
+                                            onPress={checkconnection}>
+                            <Text>Send My Number</Text>
+                        </TouchableOpacity>
+                        <TextInput  style={{    width: '50%', 
+                                                borderRadius: 20, 
+                                                height: 40, 
+                                                borderColor: "gray", 
+                                                borderWidth: 1,
+                                                marginLeft: 20,
+                                                color: '#fff'}}
+                                    onChangeText={text => setUser({ sendTo: text })}
+                                    value={user.sendFrom}
+                                    keyboardType={"numeric"}/>
+                    </View>
+                    <View style={   {marginTop: 35, 
+                                    flexDirection: 'row'}}>
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: '40%', 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10,
+                                                }} 
+                                            onPress={checkconnection}>
+                            <Text>Save Backpack Number</Text>
+                        </TouchableOpacity>
+                        <TextInput  style={{    width: '50%', 
+                                                borderRadius: 20, 
+                                                height: 40, 
+                                                borderColor: "gray", 
+                                                borderWidth: 1,
+                                                marginLeft: 20,
+                                                color: '#fff'}}
+                                    onChangeText={text => setUser({ sendTo: text })}
+                                    value={user.sendFrom}
+                                    keyboardType={"numeric"}/>
+                    </View>
                     <View style={   {marginTop: 35, 
                                     flexDirection: 'row'}}> 
                         <TouchableOpacity   style={{    marginLeft: 10,
@@ -296,7 +270,7 @@ function HomeScreen() {
                             <Text>Update Battery Status</Text>
                         </TouchableOpacity>
                         <Text style={{  alignSelf: 'center', padding: 5}}>
-                            hello
+                            70%
                         </Text>
                     </View>
                 </ScrollView>
@@ -305,12 +279,108 @@ function HomeScreen() {
     );
 }
 
+function MapScreen({region, setRegion, marker, setMarker, user, setUser}) {
+    
+    const listSMS = (marker) => {
+        const {sendFrom, minDate, maxDate} = user
+        var filter = {
+            box: "inbox",
+            maxCount: 1,
+        };
+        if (minDate !== "") {
+            filter.minDate = minDate
+        }
+        if (maxDate !== "") {
+            filter.maxDate = maxDate
+        }
+        if (sendFrom !== "") {
+            filter.address = sendFrom
+        }
+    
+        SmsAndroid.list(
+            JSON.stringify(filter),
+            fail => {
+                console.log("Failed with this error: " + fail);
+            },
+            (count, smsList) => {
+                var arr = JSON.parse(smsList);
+                setUser({...user, smsList: arr });
+                //console.log(user.smsList[0].body);
+                var coords = arr[0].body.split(',');
+                var lati = parseFloat(coords[0], 10);
+                var longi = parseFloat(coords[1], 10);
+                setMarker({...marker, latitude: lati, longitude: longi});
+            }
+        );
+    }
+
+    return(
+        <View style={{flex: 1}}>
+            <MapView    style={{  height: '100%',  width: 400, alignSelf: 'center'}} 
+                            region={region}
+                            showsMyLocationButton={true}
+                            onRegionChangeComplete={region => {setRegion(region), listSMS()}}
+                            showsUserLocation={true}
+                            followsUserLocation={true}
+                >
+                    <Marker coordinate={marker} />
+                </MapView>
+        </View>
+
+
+    );
+}
+
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
+    const [region, setRegion] = useState({
+        latitude: 51.5079145,
+        longitude: -0.807321,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01
+    });
+    const [marker, setMarker] = useState({
+        latitude: 50.5079145,
+        longitude: -0.19,
+        title : "BackPack"
+    });
+    
+    //GSM Part
+    const [state, setState] = useState({
+        sendFrom: "+18455311048",
+        sendBody: "",
+        minDate: "",
+        maxDate: "",
+        smsList: []
+    });
+
+    const [charge, setCharge] = useState(-1);
+
     return (
     <Tab.Navigator>
-        <Tab.Screen name='Home' component={HomeScreen} />
+        <Tab.Screen name='Home'>
+            {() => <HomeScreen  region={region} 
+                                setRegion={setRegion}
+                                marker={marker}
+                                setMarker={setMarker}
+                                user={state}
+                                setUser={setState}
+                                charge={charge}
+                                setCharge={setCharge}
+                    />
+            }
+        </Tab.Screen>
+        <Tab.Screen name='Map'>
+            {() => <MapScreen   region={region}
+                                setRegion={setRegion}
+                                marker={marker}
+                                setMarker={setMarker}
+                                user={state}
+                                setUser={setState}
+                    />
+            }
+        </Tab.Screen>
     </Tab.Navigator>
     );
 }
