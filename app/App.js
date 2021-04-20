@@ -273,7 +273,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                             <Text>Update Location</Text>
                         </TouchableOpacity>
                         <Text style={{  alignSelf: 'center', padding: 5}}>
-                            {marker.latitude},{marker.longitude}
+                            {marker.latitude},{marker.longitude},{}
                         </Text>
                     </View>
                     <View style={   {marginTop: 35, 
@@ -374,7 +374,7 @@ function MyTabs() {
     
     //GSM Part
     const [state, setState] = useState({
-        sendFrom: "+18455311048",
+        sendFrom: "+17657725934",
         sendBody: "",
         minDate: "",
         maxDate: "",
