@@ -536,6 +536,12 @@ void sms_sendbattery()
 
 void bluetooth_sendweight()
 {
+	char category[2] = "W,";
+	for(int i = 0; i < 2; ++i)
+	{
+		USART_SendData(USART1,category[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
 	for(int i = 0; weight[i] != '\0'; ++i)
 	{
 		USART_SendData(USART1,weight[i]);
@@ -552,6 +558,13 @@ void bluetooth_sendbattery()
 {
 	uint16_t sob = soc(FILTERED);
 	itoa (sob, battery, 10);
+	char category[2] = "B,";
+	
+	for(int i = 0; i < 2; ++i)
+	{
+		USART_SendData(USART1,category[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
 	for(int i = 0; battery[i] != '\0'; ++i)
 	{
 		USART_SendData(USART1,battery[i]);
@@ -566,6 +579,12 @@ void bluetooth_sendbattery()
 
 void bluetooth_sendlocation(char * msg)
 {
+	char category[2] = "L,";
+	for(int i = 0; i < 2; ++i)
+	{
+		USART_SendData(USART1,category[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
 	for(int i = 0; msg[i] != '\0'; ++i)
 	{
 		USART_SendData(USART1,msg[i]);
