@@ -21,13 +21,14 @@ import SmsAndroid from 'react-native-get-sms-android'
 import {BACKGROUND} from './src/img';
 
 function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge, setCharge}) {
-    const [isconnected, setIsConnected] = useState(false);   //state variable to hold boolean value of whether any device is connected
+    const [isConnected, setIsConnected] = useState(false);   //state variable to hold boolean value of whether any device is connected
     const [weight,setWeight] = useState("5 kg");
     const peripherals = new Map();
     const [list, setList] = useState([]);             //state variable to hold all discovered peripherals(not connected)
     const [device, setDevice] = useState(null);       // state variable to hold current connected peripheral
     const [readdata, setreaddata] = useState("");     //state variable to hold current read message
-    
+    const [bltMessage, setBtlMessgae] = useState("");
+
     //Component to discover all unpaired devices within range
     const discoverUnpaired = () => {
         BluetoothSerial.discoverUnpairedDevices()
@@ -86,7 +87,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
     }
 
    const WriteMessage = (message) => {
-     if (!isconnected) {
+     if (!isConnected) {
        console.log('You must connect to device first');
      }
  
@@ -115,10 +116,22 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
     }
 
     const updateMarker = () => {
-        user.sendBody = "G";
+        user.sendBody = "L";
         sendSMS();
     };
 
+    const updateCharge = () => {
+        user.sendBody = "C";
+        sendSMS();
+    };
+
+    const updateWeight = () => {
+        WriteMessage("W");
+    }
+
+    const updateBltCharge = () => {
+        WriteMessage("C");
+    }
     React.useEffect(() => {
         console.log("checking permissions");
         try {
@@ -146,11 +159,18 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
             console.log("Delimiter has been set up ");
             BluetoothSerial.on('read', data => {
             setreaddata(data);
+            var weight = data.split(',');
+            if (weight[0] === "W") {
+                setWeight(parseFloat(weight[1], 10));
+            }
+            else if (weight[0] === "C") {
+                setCharge(parseFloat(weight[1], 10))
+            }
             //console.log(`DATA FROM BLUETOOTH: ${data.data}`);
             // console.log(data.data);
             });
         })
-    }, [])
+    }, []);
 
     return (
         <View style={{height: '100%', backgroundColor: '#ccc'}}>
@@ -224,7 +244,8 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                             onLongPress={BluetoothConnect}>
                             <Text>Backpack Connection</Text>
                         </TouchableOpacity>
-                        <Text style={{alignSelf: 'center', padding: 10}}>Connection Status</Text>
+
+                        {(isConnected === true) ? <Text style={{alignSelf: 'center', padding: 10}}>Connected</Text> : <Text style={{alignSelf: 'center', padding: 10}}>Disconnected</Text>}
                     </View>
                     <View style={   {marginTop: 35, 
                                     flexDirection: 'row',}}> 
@@ -234,8 +255,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                         backgroundColor: '#DDD',
                                                         padding: 10
                                                 }} 
-                                            onPress={GetWeight}
-                                            onLongPress={GetWeight}>
+                                            onPress={updateWeight}>
                             <Text>Backpack Weight</Text>
                         </TouchableOpacity>
                         <Text style={{  alignSelf: 'center',
@@ -249,8 +269,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                         backgroundColor: '#DDD',
                                                         padding: 10
                                                 }} 
-                                            onPress={GetWeight}
-                                            onLongPress={GetWeight}>
+                                            onPress={updateMarker}>
                             <Text>Update Location</Text>
                         </TouchableOpacity>
                         <Text style={{  alignSelf: 'center', padding: 5}}>
@@ -265,12 +284,11 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                         backgroundColor: '#DDD',
                                                         padding: 10
                                                 }} 
-                                            onPress={GetWeight}
-                                            onLongPress={GetWeight}>
+                                            onPress={isConnected ? updateBltCharge : updateCharge}>
                             <Text>Update Battery Status</Text>
                         </TouchableOpacity>
                         <Text style={{  alignSelf: 'center', padding: 5}}>
-                            70%
+                            {charge}
                         </Text>
                     </View>
                 </ScrollView>
@@ -307,9 +325,17 @@ function MapScreen({region, setRegion, marker, setMarker, user, setUser}) {
                 setUser({...user, smsList: arr });
                 //console.log(user.smsList[0].body);
                 var coords = arr[0].body.split(',');
-                var lati = parseFloat(coords[0], 10);
-                var longi = parseFloat(coords[1], 10);
-                setMarker({...marker, latitude: lati, longitude: longi});
+                if (coords[0] === "L") {
+                    if (coords[1] === "Not Available") {
+                        setMarker({...marker, fix: false});
+                    }
+                    else {
+                        var lati = (coords[2] === "N") ? parseFloat(coords[1], 10) : 0.0 - parseFloat(coords[1], 10);
+                        var longi = (coords[4] === "E") ? parseFloat(coords[3], 10) : 0.0 - parseFloat(coords[3], 10);
+                        setMarker({...marker, latitude: lati, longitude: longi, fix: true});       
+                    }
+                }
+                else if (coords[0] === "C") {}
             }
         );
     }
