@@ -36,7 +36,7 @@ char received_message3[200] = "";
 char phone_number[15] = "";
 char phone_index[5] = "";
 char sms_request[100] = "";
-char weight[50] = "20.5 Kg";
+char weight[50] = "20.5 Kg\r\n";
 int* weightOffset = 420;
 char battery[10];
 I2C_TypeDef * I2CPERIPHSEL;
@@ -327,7 +327,8 @@ void EXTI0_IRQHandler()
 //		bluetooth_sendlocation(msg);
 // 		bluetooth_sendbattery();
 		//sms_sendweight();
-		save_phone_number();
+		bluetooth_sendweight();
+		//save_phone_number();
 
 		EXTI_ClearITPendingBit(EXTI_Line0);
 	}
