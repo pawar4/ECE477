@@ -125,20 +125,20 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
     };
 
     const updateWeight = () => {
-        WriteMessage("W");
+        WriteMessage("W\r\n");
     }
 
     const tareWeight = () => {
-        WriteMessage("T")
+        WriteMessage("T\r\n")
     }
 
     const updateBltCharge = () => {
-        WriteMessage("B");
+        WriteMessage("B\r\n");
     }
 
     const sendNumber = () => {
         console.log(user.sendTo)
-        WriteMessage("N" + user.sendTo)
+        WriteMessage("N" + user.sendTo + "\r\n")
     }
 
     const listSMS = (marker) => {
