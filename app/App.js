@@ -120,7 +120,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
     };
 
     const updateCharge = () => {
-        user.sendBody = "C";
+        user.sendBody = "B";
         sendSMS();
     };
 
@@ -211,12 +211,11 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
     }, []);
 
     React.useEffect(() => {
-        console.log("reached here")
         BluetoothSerial.withDelimiter('\r\n').then((res) => {
-            console.log("Delimiter has been set up ");
             BluetoothSerial.on('read', data => {
             setreaddata(data);
-            var weight = data.split(',');
+            console.log(data.data);
+            var weight = data.data.split(',');
             if (weight[0] === "W") {
                 setWeight(parseFloat(weight[1], 10));
             }
