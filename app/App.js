@@ -405,7 +405,7 @@ function MyTabs() {
     //GSM Part
     const [state, setState] = useState({
         sendFrom: "+17657725934",
-        sendTo: "+17657725934",
+        sendTo: "+17657018549",
         sendBody: "",
         minDate: "",
         maxDate: "",
