@@ -128,12 +128,17 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
         WriteMessage("W");
     }
 
+    const tareWeight = () => {
+        WriteMessage("T")
+    }
+
     const updateBltCharge = () => {
-        WriteMessage("C");
+        WriteMessage("B");
     }
 
     const sendNumber = () => {
-        WriteMessage("NO," + user.sendFrom)
+        console.log(user.sendTo)
+        WriteMessage("N" + user.sendTo)
     }
 
     const listSMS = (marker) => {
@@ -215,7 +220,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
             if (weight[0] === "W") {
                 setWeight(parseFloat(weight[1], 10));
             }
-            else if (weight[0] === "C") {
+            else if (weight[0] === "B") {
                 setCharge(parseFloat(weight[1], 10))
             }
             //console.log(`DATA FROM BLUETOOTH: ${data.data}`);
@@ -283,9 +288,10 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                 borderWidth: 1,
                                                 marginLeft: 20,
                                                 color: '#000'}}
-                                    onChangeText={text => setUser({ sendTo: text })}
-                                    value={user.sendFrom}
-                                    keyboardType={"numeric"}/>
+                                    onChangeText={text1 => setUser({ sendTo: text1 })}
+                                    value={user.sendTo}
+                                    //keyboardType={"numeric"}
+                                    />
                     </View>
                     <View style={   {marginTop: 35, 
                                     flexDirection: 'row'}}>
@@ -305,9 +311,10 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                 borderWidth: 1,
                                                 marginLeft: 20,
                                                 color: '#000'}}
-                                    onChangeText={text => setUser({ sendTo: text })}
+                                    onChangeText={text2 => setUser({ sendFrom: text2 })}
                                     value={user.sendFrom}
-                                    keyboardType={"numeric"}/>
+                                    //keyboardType={"numeric"}
+                                    />
                     </View>
                     <View style={   {marginTop: 35, 
                                     flexDirection: 'row',}}> 
@@ -317,7 +324,8 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                         backgroundColor: '#DDD',
                                                         padding: 10
                                                 }} 
-                                            onPress={updateWeight}>
+                                            onPress={updateWeight}
+                                            onLongPress={tareWeight}>
                             <Text>Backpack Weight</Text>
                         </TouchableOpacity>
                         <Text style={{  alignSelf: 'center',
@@ -397,6 +405,7 @@ function MyTabs() {
     //GSM Part
     const [state, setState] = useState({
         sendFrom: "+17657725934",
+        sendTo: "+17657725934",
         sendBody: "",
         minDate: "",
         maxDate: "",
