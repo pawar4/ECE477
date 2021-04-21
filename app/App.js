@@ -17,7 +17,7 @@ import MapView, { Marker } from "react-native-maps";
 // import BleManager from 'react-native-ble-manager';
 import BluetoothSerial from 'react-native-bluetooth-serial'
 import SmsAndroid from 'react-native-get-sms-android'
-
+import SmsListener from 'react-native-android-sms-listener'
 import {BACKGROUND} from './src/img';
 
 function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge, setCharge}) {
@@ -27,7 +27,6 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
     const [list, setList] = useState([]);             //state variable to hold all discovered peripherals(not connected)
     const [device, setDevice] = useState(null);       // state variable to hold current connected peripheral
     const [readdata, setreaddata] = useState("");     //state variable to hold current read message
-    const [bltMessage, setBtlMessgae] = useState("");
 
     //Component to discover all unpaired devices within range
     const discoverUnpaired = () => {
@@ -132,173 +131,11 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
     const updateBltCharge = () => {
         WriteMessage("C");
     }
-    React.useEffect(() => {
-        console.log("checking permissions");
-        try {
-            PermissionsAndroid.requestMultiple([PermissionsAndroid.PERMISSIONS.SEND_SMS,
-                                                PermissionsAndroid.PERMISSIONS.READ_SMS,
-                                                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION]
-                                                ).then((result) => {
-                                                    if (result['android.permission.READ_SMS'] &&
-                                                        result['android.permission.SEND_SMS'] &&
-                                                        result['android.permission.ACCESS_FINE_LOCATION'] 
-                                                        === PermissionsAndroid.RESULTS.GRANTED) {
-                                                        console.log("Permission granted")
-                                                    }
-                                                    else {
-                                                        console.log("SMS Permission denied")
-                                                    }
-                                                })
-        } catch (e) {
-            console.error(e);
-        }
 
-        discoverPaired();       //automatically as app opens up, the app tries to connect to the backpack.
+    const sendNumber = () => {
+        WriteMessage("NO," + user.sendFrom)
+    }
 
-        BluetoothSerial.withDelimiter('\r\n').then((res) => {
-            console.log("Delimiter has been set up ");
-            BluetoothSerial.on('read', data => {
-            setreaddata(data);
-            var weight = data.split(',');
-            if (weight[0] === "W") {
-                setWeight(parseFloat(weight[1], 10));
-            }
-            else if (weight[0] === "C") {
-                setCharge(parseFloat(weight[1], 10))
-            }
-            //console.log(`DATA FROM BLUETOOTH: ${data.data}`);
-            // console.log(data.data);
-            });
-        })
-    }, []);
-
-    return (
-        <View style={{height: '100%', backgroundColor: '#ccc'}}>
-            <ImageBackground    source={BACKGROUND}
-                                style={{flex: 1, width: null, height: null}}>
-                <View style={{  height: 250, 
-                                backgroundColor:'#fff', 
-                                marginLeft: 10, 
-                                marginRight: 10,
-                                opacity: 0.6,
-                                alignItems: 'center'
-                                }}>
-                    <Text style={{color: '#000', fontSize: 60}}>The</Text>
-                    <Text style={{color: '#000', fontSize: 60}}>Smart</Text>
-                    <Text style={{color: '#000', fontSize: 60}}>Backpack</Text>
-                </View>
-                <ScrollView style={{ flex: 1}}>
-                <View style={   {marginTop: 35, 
-                                    flexDirection: 'row'}}>
-                        <TouchableOpacity   style={{    marginLeft: 10,
-                                                        width: '40%', 
-                                                        alignItems: 'center',
-                                                        backgroundColor: '#DDD',
-                                                        padding: 10,
-                                                }} 
-                                            onPress={checkconnection}>
-                            <Text>Send My Number</Text>
-                        </TouchableOpacity>
-                        <TextInput  style={{    width: '50%', 
-                                                borderRadius: 20, 
-                                                height: 40, 
-                                                borderColor: "gray", 
-                                                borderWidth: 1,
-                                                marginLeft: 20,
-                                                color: '#fff'}}
-                                    onChangeText={text => setUser({ sendTo: text })}
-                                    value={user.sendFrom}
-                                    keyboardType={"numeric"}/>
-                    </View>
-                    <View style={   {marginTop: 35, 
-                                    flexDirection: 'row'}}>
-                        <TouchableOpacity   style={{    marginLeft: 10,
-                                                        width: '40%', 
-                                                        alignItems: 'center',
-                                                        backgroundColor: '#DDD',
-                                                        padding: 10,
-                                                }} 
-                                            onPress={checkconnection}>
-                            <Text>Save Backpack Number</Text>
-                        </TouchableOpacity>
-                        <TextInput  style={{    width: '50%', 
-                                                borderRadius: 20, 
-                                                height: 40, 
-                                                borderColor: "gray", 
-                                                borderWidth: 1,
-                                                marginLeft: 20,
-                                                color: '#fff'}}
-                                    onChangeText={text => setUser({ sendTo: text })}
-                                    value={user.sendFrom}
-                                    keyboardType={"numeric"}/>
-                    </View>
-                    <View style={   {marginTop: 35, 
-                                    flexDirection: 'row'}}> 
-                        <TouchableOpacity   style={{    marginLeft: 10,
-                                                        width: 250, 
-                                                        alignItems: 'center',
-                                                        backgroundColor: '#DDD',
-                                                        padding: 10,
-                                                }} 
-                                            onPress={checkconnection}
-                                            onLongPress={BluetoothConnect}>
-                            <Text>Backpack Connection</Text>
-                        </TouchableOpacity>
-
-                        {(isConnected === true) ? <Text style={{alignSelf: 'center', padding: 10}}>Connected</Text> : <Text style={{alignSelf: 'center', padding: 10}}>Disconnected</Text>}
-                    </View>
-                    <View style={   {marginTop: 35, 
-                                    flexDirection: 'row',}}> 
-                        <TouchableOpacity   style={{    marginLeft: 10,
-                                                        width: 250, 
-                                                        alignItems: 'center',
-                                                        backgroundColor: '#DDD',
-                                                        padding: 10
-                                                }} 
-                                            onPress={updateWeight}>
-                            <Text>Backpack Weight</Text>
-                        </TouchableOpacity>
-                        <Text style={{  alignSelf: 'center',
-                                        padding: 10}}>{weight}</Text>
-                    </View>
-                    <View style={   {marginTop: 35, 
-                                    flexDirection: 'row',}}> 
-                        <TouchableOpacity   style={{    marginLeft: 10,
-                                                        width: 250, 
-                                                        alignItems: 'center',
-                                                        backgroundColor: '#DDD',
-                                                        padding: 10
-                                                }} 
-                                            onPress={updateMarker}>
-                            <Text>Update Location</Text>
-                        </TouchableOpacity>
-                        <Text style={{  alignSelf: 'center', padding: 5}}>
-                            {marker.latitude},{marker.longitude},{}
-                        </Text>
-                    </View>
-                    <View style={   {marginTop: 35, 
-                                    flexDirection: 'row',}}> 
-                        <TouchableOpacity   style={{    marginLeft: 10,
-                                                        width: 250, 
-                                                        alignItems: 'center',
-                                                        backgroundColor: '#DDD',
-                                                        padding: 10
-                                                }} 
-                                            onPress={isConnected ? updateBltCharge : updateCharge}>
-                            <Text>Update Battery Status</Text>
-                        </TouchableOpacity>
-                        <Text style={{  alignSelf: 'center', padding: 5}}>
-                            {charge}
-                        </Text>
-                    </View>
-                </ScrollView>
-            </ImageBackground>
-        </View>
-    );
-}
-
-function MapScreen({region, setRegion, marker, setMarker, user, setUser}) {
-    
     const listSMS = (marker) => {
         const {sendFrom, minDate, maxDate} = user
         var filter = {
@@ -335,17 +172,201 @@ function MapScreen({region, setRegion, marker, setMarker, user, setUser}) {
                         setMarker({...marker, latitude: lati, longitude: longi, fix: true});       
                     }
                 }
-                else if (coords[0] === "C") {}
+                else if (coords[0] === "C") {
+                    setCharge(parseInt(coords[1], 10))
+                }
             }
         );
     }
+
+    React.useEffect(() => {
+        console.log("checking permissions");
+        try {
+            PermissionsAndroid.requestMultiple([PermissionsAndroid.PERMISSIONS.SEND_SMS,
+                                                PermissionsAndroid.PERMISSIONS.READ_SMS,
+                                                PermissionsAndroid.PERMISSIONS.RECEIVE_SMS,
+                                                PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION]
+                                                ).then((result) => {
+                                                    if (result['android.permission.READ_SMS'] &&
+                                                        result['android.permission.SEND_SMS'] &&
+                                                        result['android.permission.RECEIVE_SMS'] &&
+                                                        result['android.permission.ACCESS_FINE_LOCATION']
+                                                        === PermissionsAndroid.RESULTS.GRANTED) {
+                                                        console.log("Permission granted")
+                                                    }
+                                                    else {
+                                                        console.log("SMS Permission denied")
+                                                    }
+                                                })
+        } catch (e) {
+            console.error(e);
+        }
+
+        discoverPaired();       //automatically as app opens up, the app tries to connect to the backpack.
+    }, []);
+
+    React.useEffect(() => {
+        console.log("reached here")
+        BluetoothSerial.withDelimiter('\r\n').then((res) => {
+            console.log("Delimiter has been set up ");
+            BluetoothSerial.on('read', data => {
+            setreaddata(data);
+            var weight = data.split(',');
+            if (weight[0] === "W") {
+                setWeight(parseFloat(weight[1], 10));
+            }
+            else if (weight[0] === "C") {
+                setCharge(parseFloat(weight[1], 10))
+            }
+            //console.log(`DATA FROM BLUETOOTH: ${data.data}`);
+            // console.log(data.data);
+            });
+        })
+
+        let smsSubcription = SmsListener.addListener(message => {
+            if (message.originatingAddress == user.sendFrom) {
+                console.log(message.originatingAddress)
+                listSMS()
+            }
+        }
+        );
+
+    }, [])
+
+    return (
+        <View style={{height: '100%', backgroundColor: '#ccc'}}>
+            <ImageBackground    source={BACKGROUND}
+                                style={{flex: 1, width: null, height: null}}>
+                <View style={{  height: 250, 
+                                backgroundColor:'#fff', 
+                                marginLeft: 10, 
+                                marginRight: 10,
+                                opacity: 0.6,
+                                alignItems: 'center'
+                                }}>
+                    <Text style={{color: '#000', fontSize: 60}}>The</Text>
+                    <Text style={{color: '#000', fontSize: 60}}>Smart</Text>
+                    <Text style={{color: '#000', fontSize: 60}}>Backpack</Text>
+                </View>
+                <ScrollView style={{ flex: 1}}>
+                    <View style={   {marginTop: 35, 
+                                        flexDirection: 'row'}}> 
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: 250, 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10,
+                                                }} 
+                                            onPress={checkconnection}
+                                            onLongPress={BluetoothConnect}>
+                            <Text>Backpack Connection</Text>
+                        </TouchableOpacity>
+
+                        {(isConnected === true) ?   <Text style={{alignSelf: 'center', padding: 10}}>Connected</Text> 
+                                                :   <Text style={{alignSelf: 'center', padding: 10}}>Disconnected</Text>}
+                    </View>
+                    <View style={   {marginTop: 35, 
+                                    flexDirection: 'row'}}>
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: '40%', 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10,
+                                                }} 
+                                            onPress={sendNumber}>
+                            <Text>Send My Number</Text>
+                        </TouchableOpacity>
+                        <TextInput  style={{    width: '50%', 
+                                                borderRadius: 20, 
+                                                height: 40, 
+                                                borderColor: "black", 
+                                                borderWidth: 1,
+                                                marginLeft: 20,
+                                                color: '#000'}}
+                                    onChangeText={text => setUser({ sendTo: text })}
+                                    value={user.sendFrom}
+                                    keyboardType={"numeric"}/>
+                    </View>
+                    <View style={   {marginTop: 35, 
+                                    flexDirection: 'row'}}>
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: '40%', 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10,
+                                                }} 
+                                            onPress={checkconnection}>
+                            <Text>Save Backpack Number</Text>
+                        </TouchableOpacity>
+                        <TextInput  style={{    width: '50%', 
+                                                borderRadius: 20, 
+                                                height: 40, 
+                                                borderColor: "black", 
+                                                borderWidth: 1,
+                                                marginLeft: 20,
+                                                color: '#000'}}
+                                    onChangeText={text => setUser({ sendTo: text })}
+                                    value={user.sendFrom}
+                                    keyboardType={"numeric"}/>
+                    </View>
+                    <View style={   {marginTop: 35, 
+                                    flexDirection: 'row',}}> 
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: 250, 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10
+                                                }} 
+                                            onPress={updateWeight}>
+                            <Text>Backpack Weight</Text>
+                        </TouchableOpacity>
+                        <Text style={{  alignSelf: 'center',
+                                        padding: 10}}>{weight}</Text>
+                    </View>
+                    <View style={   {marginTop: 35, 
+                                    flexDirection: 'row',}}> 
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: 250, 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10
+                                                }} 
+                                            onPress={updateMarker}>
+                            <Text>Update Location</Text>
+                        </TouchableOpacity>
+                            <Text style={{  alignSelf: 'center', padding: 5}}>
+                                        {marker.latitude},{marker.longitude}
+                            </Text>
+                    </View>
+                    <View style={   {marginTop: 35, 
+                                flexDirection: 'row',}}> 
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: 250, 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10
+                                                }} 
+                                            onPress={isConnected ? updateBltCharge : updateCharge}>
+                            <Text>Update Battery Status</Text>
+                        </TouchableOpacity>
+                        <Text style={{  alignSelf: 'center', padding: 10,}}>
+                            {charge}
+                        </Text>
+                    </View>
+                </ScrollView>
+            </ImageBackground>
+        </View>
+    );
+}
+
+function MapScreen({region, setRegion, marker, setMarker, user, setUser}) {
 
     return(
         <View style={{flex: 1}}>
             <MapView    style={{  height: '100%',  width: 400, alignSelf: 'center'}} 
                             region={region}
                             showsMyLocationButton={true}
-                            onRegionChangeComplete={region => {setRegion(region), listSMS()}}
+                            onRegionChangeComplete={region => {setRegion(region)}}
                             showsUserLocation={true}
                             followsUserLocation={true}
                 >
@@ -369,7 +390,8 @@ function MyTabs() {
     const [marker, setMarker] = useState({
         latitude: 50.5079145,
         longitude: -0.19,
-        title : "BackPack"
+        title : "BackPack",
+        fix: false,
     });
     
     //GSM Part
@@ -381,7 +403,7 @@ function MyTabs() {
         smsList: []
     });
 
-    const [charge, setCharge] = useState(-1);
+    const [charge, setCharge] = useState(0);
 
     return (
     <Tab.Navigator>
