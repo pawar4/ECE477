@@ -103,7 +103,7 @@ int HX711_Tare(int *offset)
 	return -1;
 }
 
-int getWeight(int offset)
+int HX711_GetWeight(int offset)
 {
 	return (((4.555e-4) * HX711_GetOffset()) - 3478) - offset;
 }

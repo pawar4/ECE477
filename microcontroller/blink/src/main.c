@@ -21,8 +21,11 @@
 
 static int cnt1 = 0;
 static int cnt3 = 0;
+static int ble_cnt = 0;
+static int ph_index = 0;
 int state1 = 0;
 int state0 = 0;
+int state2 = 0;
 int valid1 = 0;
 int valid3 = 0;
 int test_cmd = 0;
@@ -30,8 +33,11 @@ static int sms_cnt = 0;
 char delimiter[2] = "\r\n";
 char received_message1[200] = "";
 char received_message3[200] = "";
+char phone_number[15] = "";
+char phone_index[5] = "";
 char sms_request[100] = "";
 char weight[50] = "20.5 Kg";
+int *weightOffset = 420;
 char battery[10];
 I2C_TypeDef * I2CPERIPHSEL;
 
@@ -42,9 +48,11 @@ char receive_success[30] = "Message successfully received\r";
 
 volatile int UART1_received = 0;
 volatile int UART3_received = 0;
+volatile int ble = 0;
 
 void GSM_default();
 void GSM_powersave();
+void save_phone_number();
 void UART1_init();
 void UART3_init();
 void USART1_IRQHandler();
@@ -80,6 +88,10 @@ int main(void)
 			{
 				bluetooth_sendweight();
 			}
+			else if (received_message1[0] == 'T')
+			{
+				bluetooth_tareweight();
+			}
 			else if(received_message1[0] == 'B')   //send battery info via bluetooth
 			{
 				bluetooth_sendbattery();
@@ -89,7 +101,7 @@ int main(void)
 				bluetooth_sendlocation(createGPSmsg());
 			}
 			UART1_received = 0;
-			valid1 = 0;
+//			valid1 = 0;
 //			receivesuccessmsg();
 		}
 
@@ -108,7 +120,7 @@ int main(void)
 				sms_sendlocation(createGPSmsg());
 			}
 			UART3_received = 0;
-			valid3 = 0;
+//			valid3 = 0;
 
 		}
 	}
@@ -237,14 +249,48 @@ void USART1_IRQHandler()
 
 	    char temp = USART_ReceiveData(USART1);
 
-	    if( (temp != '\r') && (cnt1 < 200) ){
-	      received_message1[cnt1] = temp;
-	      cnt1++;
+	    if(ble == 1)
+	    {
+	    	if(ble_cnt < 12)
+	    	{
+	    		phone_number[ble_cnt] = temp;
+	    		received_message1[cnt1] = temp;
+	    		UART1_received = 0;
+	    	}
+
+    		ble_cnt += 1;
+    		cnt1 += 1;
+
+	    	if(ble_cnt == 14 && temp == '\n')
+	    	{
+	    		UART1_received = 1;
+	    		cnt1 = 0;
+	    		valid1 = 1;
+	    		ble = 0;
+	    		ble_cnt = 0;
+	    	}
+
 	    }
-	    else{
-	      UART1_received = 1;
-	      cnt1 = 0;
-	      valid1 = 1;
+
+	    else
+	    {
+			if((temp == '\n')){
+			  UART1_received = 1;
+			  cnt1 = 0;
+			  valid1 = 1;
+			}
+			else{
+			  if(cnt1 < 200)
+			  {
+				  received_message1[cnt1] = temp;
+				  cnt1++;
+			  }
+			}
+		}
+
+	    if(temp == 'N')
+	    {
+	    	ble = 1;
 	    }
 	  }
 
@@ -281,7 +327,8 @@ void EXTI0_IRQHandler()
 //		char * msg = createGPSmsg();
 //		bluetooth_sendlocation(msg);
 // 		bluetooth_sendbattery();
-		sms_sendweight();
+		//sms_sendweight();
+		save_phone_number();
 
 		EXTI_ClearITPendingBit(EXTI_Line0);
 	}
@@ -332,6 +379,26 @@ void UART3_init()
     USART_Cmd(USART3, ENABLE);    //Enable UART
 }
 
+
+void save_phone_number()
+{
+	char message1[40] = "AT+CMGW=\"091137880\"\r";
+
+	for(int i = 0; message1[i] != '\0'; ++i)
+	{
+		USART_SendData(USART3,message1[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+
+	for(int i = 0; i < 5000; ++i);
+
+	for(int i = 0; phone_number[i] != '\0'; ++i)
+	{
+		USART_SendData(USART3,phone_number[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+	USART_SendData(USART3,ctrl_z);
+}
 //Function called when UART channel 3 receive register contains unread values for GSM
 void USART3_IRQHandler()
 {
@@ -348,8 +415,8 @@ void USART3_IRQHandler()
                 cnt3 = 0;
                 sms_cnt = 0;
             }
-//            else if(cnt3 >= 48 && temp == '\r'){
-            else if(state0 == 2){        //finished reading
+
+            if(state0 == 2){        //finished reading
                 cnt3 = 0;
                 UART3_received = 1;
                 sms_cnt = 0;
@@ -359,14 +426,14 @@ void USART3_IRQHandler()
             else
             {
                 received_message3[cnt3] = temp;
-//                if(cnt3 >= 48 && ((temp == 'W')  (temp == 'B')  (temp == 'L')))
-                if((temp == 'W') || (temp == 'B') || (temp == 'L'))
+                cnt3++;
+
+                if((state0 == 1) && ((temp == 'W') || (temp == 'B') || (temp == 'L')))
                 {
                     sms_request[sms_cnt] = temp;
                     sms_cnt = 0;
                     state0 = 2;
                 }
-                cnt3++;
             }
           }
     }
@@ -409,15 +476,15 @@ void FG_Config(void)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C2, ENABLE);
 
 	//GPIO_StructInit(&GPIO_InitStructure);
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10 | GPIO_Pin_11;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_OD;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource10, GPIO_AF_I2C2);
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource11, GPIO_AF_I2C2);
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_I2C2);
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_I2C2);
 
 	I2C_InitStructure.I2C_Ack = I2C_Ack_Enable;
 	I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit;
@@ -455,71 +522,163 @@ void setup_ring_indicator_pin()
 
 void sms_sendweight()
 {
-    char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
-    for(int i = 0; i < strlen(send_message1); ++i)
+    //char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+	char send_message1[] = "AT+CMGS=\"";
+    char send_message2[] = "\"\r";
+    char category[2] = "W,";
+    if(phone_number[0] != '\0')
     {
-        USART_SendData(USART3,send_message1[i]);
-        while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-    }
+		for(int i = 0; i < strlen(send_message1); ++i)
+		{
+			USART_SendData(USART3,send_message1[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
 
-    for(int i= 0; i < 10000; ++i);     //when using while(UART3_received != 1) it doesnt work
+		for(int i = 0; phone_number[i] != '\0'; ++i)
+		{
+			USART_SendData(USART3,phone_number[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
 
-    for(int i = 0; weight[i] != '\0'; ++i)
-    {
-        USART_SendData(USART3,weight[i]);
-        while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		for(int i = 0; i < strlen(send_message2); ++i)
+		{
+			USART_SendData(USART3,send_message2[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
+
+		for(int i= 0; i < 5000; ++i);     //when using while(UART3_received != 1) it doesnt work
+
+		for(int i=0; i < 2; ++i)
+		{
+			USART_SendData(USART3,category[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
+
+		for(int i = 0; weight[i] != '\0'; ++i)
+		{
+			USART_SendData(USART3,weight[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
+		USART_SendData(USART3,ctrl_z);
     }
-    USART_SendData(USART3,ctrl_z);
 }
 
 void sms_sendlocation(char * msg)
 {
-	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
-	char category[2] = "L,";
-	for(int i = 0; i < strlen(send_message1); ++i)
-	{
-		USART_SendData(USART3,send_message1[i]);
-		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-	}
+	char send_message1[] = "AT+CMGS=\"";
+    char send_message2[] = "\"\r";
+    char category[2] = "L,";
 
-	for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
+    if(phone_number[0] != '\0')
+    {
+		for(int i = 0; i < strlen(send_message1); ++i)
+		{
+			USART_SendData(USART3,send_message1[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
 
-	for(int i=0; i < 2; ++i)
-	{
-		USART_SendData(USART3,category[i]);
-		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-	}
+		for(int i = 0; phone_number[i] != '\0'; ++i)
+		{
+			USART_SendData(USART3,phone_number[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
 
-	for(int i = 0; msg[i] != '\0'; ++i)
-	{
-		USART_SendData(USART3,msg[i]);
-		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-	}
-	USART_SendData(USART3,ctrl_z);
+		for(int i = 0; i < strlen(send_message2); ++i)
+		{
+			USART_SendData(USART3,send_message2[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
+
+		for(int i= 0; i < 5000; ++i);     //when using while(UART3_received != 1) it doesnt work
+
+		for(int i=0; i < 2; ++i)
+		{
+			USART_SendData(USART3,category[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
+
+		for(int i = 0; msg[i] != '\0'; ++i)
+		{
+			USART_SendData(USART3,msg[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
+		USART_SendData(USART3,ctrl_z);
+    }
 }
 
 void sms_sendbattery()
 {
-    char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
-    for(int i = 0; i < strlen(send_message1); ++i)
-    {
-        USART_SendData(USART3,send_message1[i]);
-        while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-    }
+	char send_message1[] = "AT+CMGS=\"";
+    char send_message2[] = "\"\r";
+    char category[2] = "B,";
 
-    for(int i= 0; i < 4000; ++i);     //when using while(UART3_received != 1) it doesnt work
+	uint16_t sob = soc(FILTERED);
+	itoa (sob, battery, 10);
 
-    for(int i = 0; weight[i] != '\0'; ++i)
-    {
-        USART_SendData(USART3,battery[i]);
-        while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
-    }
-    USART_SendData(USART3,ctrl_z);
+	if(phone_number[0] != '\0')
+	{
+		for(int i = 0; i < strlen(send_message1); ++i)
+		{
+			USART_SendData(USART3,send_message1[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
+
+		for(int i = 0; phone_number[i] != '\0'; ++i)
+		{
+			USART_SendData(USART3,phone_number[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
+
+		for(int i = 0; i < strlen(send_message2); ++i)
+		{
+			USART_SendData(USART3,send_message2[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
+
+		for(int i= 0; i < 5000; ++i);     //when using while(UART3_received != 1) it doesnt work
+
+		for(int i=0; i < 2; ++i)
+		{
+			USART_SendData(USART3,category[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
+
+		for(int i = 0; battery[i] != '\0'; ++i)
+		{
+			USART_SendData(USART3,battery[i]);
+			while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+		}
+		USART_SendData(USART3,ctrl_z);
+	}
 }
 
 void bluetooth_sendweight()
 {
 	char category[2] = "W,";
+	int temp = HX711_GetWeight(*weightOffset);
+	itoa (temp, weight, 10);
+	for(int i = 0; i < 2; ++i)
+	{
+		USART_SendData(USART1,category[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
+	for(int i = 0; weight[i] != '\0'; ++i)
+	{
+		USART_SendData(USART1,weight[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
+	for(int i=0; i < strlen(delimiter); ++i)
+	{
+		USART_SendData(USART1,delimiter[i]);
+		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+	}
+}
+
+void bluetooth_tareweight()
+{
+	char category[2] = "W,";
+	int temp = HX711_Tare(weightOffset);
+	itoa (temp, weight, 10);
 	for(int i = 0; i < 2; ++i)
 	{
 		USART_SendData(USART1,category[i]);
@@ -542,7 +701,7 @@ void bluetooth_sendbattery()
 	uint16_t sob = soc(FILTERED);
 	itoa (sob, battery, 10);
 	char category[2] = "B,";
-	
+
 	for(int i = 0; i < 2; ++i)
 	{
 		USART_SendData(USART1,category[i]);
