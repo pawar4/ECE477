@@ -37,7 +37,7 @@ char phone_number[15] = "";
 char phone_index[5] = "";
 char sms_request[100] = "";
 char weight[50] = "20.5 Kg";
-int *weightOffset = 420;
+int* weightOffset = 420;
 char battery[10];
 I2C_TypeDef * I2CPERIPHSEL;
 
@@ -102,7 +102,6 @@ int main(void)
 			}
 			UART1_received = 0;
 //			valid1 = 0;
-//			receivesuccessmsg();
 		}
 
 		if((UART3_received == 1))
@@ -261,7 +260,7 @@ void USART1_IRQHandler()
     		ble_cnt += 1;
     		cnt1 += 1;
 
-	    	if(ble_cnt == 14 && temp == '\n')
+	    	if(temp == '\n')
 	    	{
 	    		UART1_received = 1;
 	    		cnt1 = 0;
@@ -656,21 +655,21 @@ void bluetooth_sendweight()
 {
 	char category[2] = "W,";
 	int temp = HX711_GetWeight(*weightOffset);
-	itoa (temp, weight, 10);
-	for(int i = 0; i < 2; ++i)
+	itoa(temp, weight, 10);
+	for (int i = 0; i < 2; ++i)
 	{
-		USART_SendData(USART1,category[i]);
-		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+		USART_SendData(USART1, category[i]);
+		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
 	}
-	for(int i = 0; weight[i] != '\0'; ++i)
+	for (int i = 0; weight[i] != '\0'; ++i)
 	{
-		USART_SendData(USART1,weight[i]);
-		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+		USART_SendData(USART1, weight[i]);
+		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
 	}
-	for(int i=0; i < strlen(delimiter); ++i)
+	for (int i = 0; i < strlen(delimiter); ++i)
 	{
-		USART_SendData(USART1,delimiter[i]);
-		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+		USART_SendData(USART1, delimiter[i]);
+		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
 	}
 }
 
@@ -678,21 +677,21 @@ void bluetooth_tareweight()
 {
 	char category[2] = "W,";
 	int temp = HX711_Tare(weightOffset);
-	itoa (temp, weight, 10);
-	for(int i = 0; i < 2; ++i)
+	itoa(temp, weight, 10);
+	for (int i = 0; i < 2; ++i)
 	{
-		USART_SendData(USART1,category[i]);
-		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+		USART_SendData(USART1, category[i]);
+		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
 	}
-	for(int i = 0; weight[i] != '\0'; ++i)
+	for (int i = 0; weight[i] != '\0'; ++i)
 	{
-		USART_SendData(USART1,weight[i]);
-		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+		USART_SendData(USART1, weight[i]);
+		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
 	}
-	for(int i=0; i < strlen(delimiter); ++i)
+	for (int i = 0; i < strlen(delimiter); ++i)
 	{
-		USART_SendData(USART1,delimiter[i]);
-		while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
+		USART_SendData(USART1, delimiter[i]);
+		while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);
 	}
 }
 
