@@ -132,6 +132,11 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
     const updateBltCharge = () => {
         WriteMessage("C");
     }
+
+    const sendNumber = () => {
+        WriteMessage("NO," + user.sendFrom)
+    }
+
     React.useEffect(() => {
         console.log("checking permissions");
         try {
@@ -188,7 +193,23 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                     <Text style={{color: '#000', fontSize: 60}}>Backpack</Text>
                 </View>
                 <ScrollView style={{ flex: 1}}>
-                <View style={   {marginTop: 35, 
+                    <View style={   {marginTop: 35, 
+                                        flexDirection: 'row'}}> 
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: 250, 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10,
+                                                }} 
+                                            onPress={checkconnection}
+                                            onLongPress={BluetoothConnect}>
+                            <Text>Backpack Connection</Text>
+                        </TouchableOpacity>
+
+                        {(isConnected === true) ?   <Text style={{alignSelf: 'center', padding: 10}}>Connected</Text> 
+                                                :   <Text style={{alignSelf: 'center', padding: 10}}>Disconnected</Text>}
+                    </View>
+                    <View style={   {marginTop: 35, 
                                     flexDirection: 'row'}}>
                         <TouchableOpacity   style={{    marginLeft: 10,
                                                         width: '40%', 
@@ -196,7 +217,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                         backgroundColor: '#DDD',
                                                         padding: 10,
                                                 }} 
-                                            onPress={checkconnection}>
+                                            onPress={sendNumber}>
                             <Text>Send My Number</Text>
                         </TouchableOpacity>
                         <TextInput  style={{    width: '50%', 
@@ -205,7 +226,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                 borderColor: "gray", 
                                                 borderWidth: 1,
                                                 marginLeft: 20,
-                                                color: '#fff'}}
+                                                color: '#000'}}
                                     onChangeText={text => setUser({ sendTo: text })}
                                     value={user.sendFrom}
                                     keyboardType={"numeric"}/>
@@ -227,25 +248,10 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                 borderColor: "gray", 
                                                 borderWidth: 1,
                                                 marginLeft: 20,
-                                                color: '#fff'}}
+                                                color: '#000'}}
                                     onChangeText={text => setUser({ sendTo: text })}
                                     value={user.sendFrom}
                                     keyboardType={"numeric"}/>
-                    </View>
-                    <View style={   {marginTop: 35, 
-                                    flexDirection: 'row'}}> 
-                        <TouchableOpacity   style={{    marginLeft: 10,
-                                                        width: 250, 
-                                                        alignItems: 'center',
-                                                        backgroundColor: '#DDD',
-                                                        padding: 10,
-                                                }} 
-                                            onPress={checkconnection}
-                                            onLongPress={BluetoothConnect}>
-                            <Text>Backpack Connection</Text>
-                        </TouchableOpacity>
-
-                        {(isConnected === true) ? <Text style={{alignSelf: 'center', padding: 10}}>Connected</Text> : <Text style={{alignSelf: 'center', padding: 10}}>Disconnected</Text>}
                     </View>
                     <View style={   {marginTop: 35, 
                                     flexDirection: 'row',}}> 
@@ -272,12 +278,12 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                             onPress={updateMarker}>
                             <Text>Update Location</Text>
                         </TouchableOpacity>
-                        <Text style={{  alignSelf: 'center', padding: 5}}>
-                            {marker.latitude},{marker.longitude}
-                        </Text>
+                            <Text style={{  alignSelf: 'center', padding: 5}}>
+                                        {marker.latitude},{marker.longitude}
+                            </Text>
                     </View>
                     <View style={   {marginTop: 35, 
-                                    flexDirection: 'row',}}> 
+                                flexDirection: 'row',}}> 
                         <TouchableOpacity   style={{    marginLeft: 10,
                                                         width: 250, 
                                                         alignItems: 'center',
@@ -287,7 +293,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                             onPress={isConnected ? updateBltCharge : updateCharge}>
                             <Text>Update Battery Status</Text>
                         </TouchableOpacity>
-                        <Text style={{  alignSelf: 'center', padding: 5}}>
+                        <Text style={{  alignSelf: 'center', padding: 10,}}>
                             {charge}
                         </Text>
                     </View>
@@ -345,7 +351,7 @@ function MapScreen({region, setRegion, marker, setMarker, user, setUser}) {
             <MapView    style={{  height: '100%',  width: 400, alignSelf: 'center'}} 
                             region={region}
                             showsMyLocationButton={true}
-                            onRegionChangeComplete={region => {setRegion(region), listSMS()}}
+                            onRegionChangeComplete={region => {setRegion(region)}}
                             showsUserLocation={true}
                             followsUserLocation={true}
                 >
@@ -369,7 +375,8 @@ function MyTabs() {
     const [marker, setMarker] = useState({
         latitude: 50.5079145,
         longitude: -0.19,
-        title : "BackPack"
+        title : "BackPack",
+        fix: false,
     });
     
     //GSM Part
