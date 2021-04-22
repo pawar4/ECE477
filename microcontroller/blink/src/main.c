@@ -18,6 +18,7 @@
 #include "nmea.h"
 #include "SparkFunBQ27441.h"
 #include "stm32l1xx_i2c.h"
+#include "HX711.h"
 
 static int cnt1 = 0;
 static int cnt3 = 0;
@@ -36,8 +37,8 @@ char received_message3[200] = "";
 char phone_number[15] = "";
 char phone_index[5] = "";
 char sms_request[100] = "";
-char weight[50] = "20.5 Kg\r\n";
-int* weightOffset = 420;
+char weight[50] = "";
+int weightOffset = 420;
 char battery[10];
 I2C_TypeDef * I2CPERIPHSEL;
 
@@ -65,9 +66,11 @@ void sms_sendweight();
 void sms_sendlocation(char * msg);
 void sms_sendbattery();
 void bluetooth_sendweight();
+void bluetooth_tareweight();
 void bluetooth_sendlocation(char * msg);
 void bluetooth_sendbattery();
 void FG_Config(void);
+int offset = 0;
 
 int main(void)
 {
@@ -79,6 +82,7 @@ int main(void)
 	initParsedMessage();
 	initUART2();
 	initTimer2();
+	HX711_init();
 	//GSM_powersave();
 	while(1)
 	{
@@ -119,7 +123,7 @@ int main(void)
 				sms_sendlocation(createGPSmsg());
 			}
 			UART3_received = 0;
-//			valid3 = 0;
+			valid3 = 0;
 
 		}
 	}
@@ -655,7 +659,7 @@ void sms_sendbattery()
 void bluetooth_sendweight()
 {
 	char category[2] = "W,";
-	int temp = HX711_GetWeight(*weightOffset);
+	int temp = HX711_GetWeight(weightOffset);
 	itoa(temp, weight, 10);
 	for (int i = 0; i < 2; ++i)
 	{
@@ -677,7 +681,7 @@ void bluetooth_sendweight()
 void bluetooth_tareweight()
 {
 	char category[2] = "W,";
-	int temp = HX711_Tare(weightOffset);
+	int temp = HX711_Tare(&weightOffset);
 	itoa(temp, weight, 10);
 	for (int i = 0; i < 2; ++i)
 	{
