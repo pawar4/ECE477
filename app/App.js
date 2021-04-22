@@ -141,6 +141,11 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
         WriteMessage("N" + user.sendTo + "\r\n")
     }
 
+    const updateBltMarker = () => {
+        WriteMessage("L\r\n");
+
+    }
+
     const listSMS = (marker) => {
         const {sendFrom, minDate, maxDate} = user
         var filter = {
@@ -215,15 +220,23 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
             BluetoothSerial.on('read', data => {
             setreaddata(data);
             console.log(data.data);
-            var weight = data.data.split(',');
-            if (weight[0] === "W") {
-                setWeight(parseFloat(weight[1], 10));
+            var parsed = data.data.split(',');
+            if (parsed[0] === "W") {
+                setWeight(parseFloat(parsed[1], 10));
             }
-            else if (weight[0] === "B") {
-                setCharge(parseFloat(weight[1], 10))
+            else if (parsed[0] === "B") {
+                setCharge(parseFloat(parsed[1], 10))
             }
-            //console.log(`DATA FROM BLUETOOTH: ${data.data}`);
-            // console.log(data.data);
+            else if (parsed[0] === "L") {
+                if (parsed[1] === "Not Available") {
+                    setMarker({...marker, fix: false});
+                }
+                else {
+                    var lati = (parsed[2] === "N") ? parseFloat(parsed[1], 10) : 0.0 - parseFloat(parsed[1], 10);
+                    var longi = (parsed[4] === "E") ? parseFloat(parsed[3], 10) : 0.0 - parseFloat(parsed[3], 10);
+                    setMarker({...marker, latitude: lati, longitude: longi, fix: true});       
+                }
+            }
             });
         })
 
@@ -341,9 +354,13 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                             onPress={updateMarker}>
                             <Text>Update Location</Text>
                         </TouchableOpacity>
-                            <Text style={{  alignSelf: 'center', padding: 5}}>
-                                        {marker.latitude},{marker.longitude}
-                            </Text>
+                            {(marker.fix)   ?   <Text style={{  alignSelf: 'center', padding: 5}}>
+                                                    {marker.latitude},{marker.longitude}
+                                                </Text> 
+                                            :   <Text style={{  alignSelf: 'center', padding: 5}}>
+                                                    No Fix
+                                                </Text>      
+                            }
                     </View>
                     <View style={   {marginTop: 35, 
                                 flexDirection: 'row',}}> 
