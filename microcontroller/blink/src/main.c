@@ -38,6 +38,7 @@ char phone_number[15] = "";
 char phone_index[5] = "";
 char sms_request[100] = "";
 char weight[50] = "";
+char test[20] = "20.5Kg";
 int weightOffset = 420;
 char battery[10];
 I2C_TypeDef * I2CPERIPHSEL;
@@ -53,6 +54,7 @@ volatile int ble = 0;
 
 void GSM_default();
 void GSM_powersave();
+void testGSM();
 void save_phone_number();
 void UART1_init();
 void UART3_init();
@@ -148,6 +150,31 @@ void GSM_default()
 	}
 }
 
+void testGSM()
+{
+	char send_message1[] = "AT+CMGS=\"+18455311048\"\r";
+    char category[2] = "W,";
+	for(int i = 0; i < strlen(send_message1); ++i)
+	{
+		USART_SendData(USART3,send_message1[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+
+	for(int i= 0; i < 5000; ++i);     //when using while(UART3_received != 1) it doesnt work
+
+	for(int i=0; i < 2; ++i)
+	{
+		USART_SendData(USART3,category[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+
+	for(int i = 0; test[i] != '\0'; ++i)
+	{
+		USART_SendData(USART3,test[i]);
+		while(USART_GetFlagStatus(USART3,USART_FLAG_TXE) == RESET);
+	}
+	USART_SendData(USART3,ctrl_z);
+}
 void GSM_powersave()
 {
 	char send_message1[] = "AT+UPSV=1\r\n";
@@ -331,7 +358,8 @@ void EXTI0_IRQHandler()
 //		bluetooth_sendlocation(msg);
 // 		bluetooth_sendbattery();
 		//sms_sendweight();
-		bluetooth_sendweight();
+		//bluetooth_sendweight();
+		testGSM();
 		//save_phone_number();
 
 		EXTI_ClearITPendingBit(EXTI_Line0);

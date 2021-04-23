@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "HX711.h"
 
 #define DOUT_Pin GPIO_Pin_10
 #define PD_SCK_Pin GPIO_Pin_11
