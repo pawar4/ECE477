@@ -36,6 +36,8 @@ void HX711_init()
 	Delay(100000);
 	GPIO_WriteBit(GPIOC, PD_SCK_Pin, Bit_RESET);
 	Delay(1000);
+
+	HX711_Read();
 }
 
 int HX711_Read(void)
@@ -67,7 +69,7 @@ int HX711_GetOffset(void)
 	for (int i = 0; i < 10; i++)
 	{
 		offset += HX711_Read();
-		Delay(1000);
+		//Delay(10);
 	}
 
 	return offset / 10;
@@ -76,19 +78,19 @@ int HX711_GetOffset(void)
 int HX711_Tare(int *weightOffset)
 {
 	int weight = -1;
-	*weightOffset = 420;
+	*weightOffset = 0;
 	int idx = 0;
 
 	for (int i = 0; i <= 15; i++)
 	{
 		int temp = HX711_GetOffset();
-		weight = (((4.555e-4) * temp) - 3478) - *weightOffset;
+		weight = (((4.555e-3) * temp) - 34780) - *weightOffset;
 		if (i % 5 == 0)
 		{
 			*weightOffset += weight;
 		}
 
-		if (weight > -2 && weight < 2)
+		if (weight > -10 && weight < 10)
 		{
 			if (idx == 1)
 				return 0;
@@ -106,7 +108,8 @@ int HX711_Tare(int *weightOffset)
 
 int HX711_GetWeight(int weightOffset)
 {
-	int temp = HX711_GetOffset();
+	for (int i = 0; i < 10; i++) HX711_GetOffset();
+
 	int weight = (((4.555e-3) * HX711_GetOffset()) - 34780) - weightOffset;
 	return weight;
 }
