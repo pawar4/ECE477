@@ -8,7 +8,6 @@
   ******************************************************************************
 */
 
-
 #include "stm32l1xx.h"
 #include "stm32l_discovery_lcd.h"
 #include "stm32l1xx_gpio.h"
@@ -23,19 +22,18 @@
 static int cnt1 = 0;
 static int cnt3 = 0;
 static int ble_cnt = 0;
-static int ph_index = 0;
 int state1 = 0;
 int state0 = 0;
 int state2 = 0;
 int valid1 = 0;
-int valid3 = 0;
+int phone_index = 0;
+int retreive_phone_no = 0;
 int test_cmd = 0;
 static int sms_cnt = 0;
 char delimiter[2] = "\r\n";
 char received_message1[200] = "";
 char received_message3[200] = "";
 char phone_number[15] = "";
-char phone_index[5] = "";
 char sms_request[100] = "";
 char weight[50] = "";
 char test[20] = "20.5Kg";
@@ -125,7 +123,7 @@ int main(void)
 				sms_sendlocation(createGPSmsg());
 			}
 			UART3_received = 0;
-			valid3 = 0;
+//			valid3 = 0;
 
 		}
 	}
@@ -448,17 +446,37 @@ void USART3_IRQHandler()
                 sms_cnt = 0;
             }
 
+            if((state0 == 1) && (temp == '+') && (phone_number[0] == '\0'))
+            {
+            	retreive_phone_no = 1;
+            }
+
             if(state0 == 2){        //finished reading
                 cnt3 = 0;
                 UART3_received = 1;
                 sms_cnt = 0;
-                valid3 = 1;
+//                valid3 = 1;
                 state0 = 0;
             }
             else
             {
                 received_message3[cnt3] = temp;
                 cnt3++;
+
+                if(retreive_phone_no == 1)
+                {
+                	if(phone_index == 11)
+                	{
+                		retreive_phone_no = 0;
+                		phone_number[phone_index] = temp;
+                		phone_index = 0;
+                	}
+                	else
+                	{
+						phone_number[phone_index] = temp;
+						phone_index += 1;
+                	}
+                }
 
                 if((state0 == 1) && ((temp == 'W') || (temp == 'B') || (temp == 'L')))
                 {
@@ -485,7 +503,7 @@ void USART3_IRQHandler()
                 cnt3 = 0;
                 UART3_received = 1;
                 state1 = 0;
-                valid3 = 1;
+//                valid3 = 1;
             }
             else if(state1 == 0 && cnt3 < 200)
             {
