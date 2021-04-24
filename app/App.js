@@ -9,11 +9,14 @@ import {
     TextInput,
     TouchableOpacity,
     Touchable,
-    ImageBackground, } from 'react-native';
-import { Text, View, Button } from 'react-native';
+    ImageBackground,
+    Text,
+    View,
+    Button} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MapView, { Marker } from "react-native-maps";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import BleManager from 'react-native-ble-manager';
 import BluetoothSerial from 'react-native-bluetooth-serial'
 import SmsAndroid from 'react-native-get-sms-android'
@@ -60,7 +63,6 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
     const BluetoothConnect = () => {
         BluetoothSerial.connect(device.id).then((res) => {
             console.log("Connected to device:",device.name);
-            setIsConnected(true);
           }).catch(err => {console.error(err);});
         // setDevice(device);
         //BluetoothSerial.pairDevice(device);
@@ -146,6 +148,28 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
 
     }
 
+    const storeData = async () => {
+        try {
+            await AsyncStorage.setItem(
+                key='Backpack', value=user.sendFrom
+            );
+            console.log("Phone Number saved");
+        } catch (error) {
+            Alert.alert("Error: {error}")
+        }
+    }
+
+    const loadData = async () => {
+        try {
+            var fone = await AsyncStorage.getItem('Backpack');
+            if (value !== null) {
+                setUser({sendFrom : value})
+            }
+        } catch (error) {
+
+        }
+    }
+
     const listSMS = (marker) => {
         const {sendFrom, minDate, maxDate} = user
         var filter = {
@@ -228,7 +252,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                 setCharge(parseFloat(parsed[1], 10))
             }
             else if (parsed[0] === "L") {
-                if (parsed[1] === "Not Available") {
+                if (parsed[1] === "Location Unavailable") {
                     setMarker({...marker, fix: false});
                 }
                 else {
@@ -238,6 +262,14 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                 }
             }
             });
+        })
+
+        BluetoothSerial.on('connectionLost', () => {
+            setIsConnected(false);
+        })
+
+        BluetoothSerial.on('connectionSuccess', () => {
+            setIsConnected(true);
         })
 
         let smsSubcription = SmsListener.addListener(message => {
@@ -274,8 +306,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                         backgroundColor: '#DDD',
                                                         padding: 10,
                                                 }} 
-                                            onPress={checkconnection}
-                                            onLongPress={BluetoothConnect}>
+                                            onPress={BluetoothConnect}>
                             <Text>Backpack Connection</Text>
                         </TouchableOpacity>
 
@@ -285,7 +316,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                     <View style={   {marginTop: 35, 
                                     flexDirection: 'row'}}>
                         <TouchableOpacity   style={{    marginLeft: 10,
-                                                        width: '40%', 
+                                                        width: 250, 
                                                         alignItems: 'center',
                                                         backgroundColor: '#DDD',
                                                         padding: 10,
@@ -293,7 +324,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                             onPress={sendNumber}>
                             <Text>Send My Number</Text>
                         </TouchableOpacity>
-                        <TextInput  style={{    width: '50%', 
+                        <TextInput  style={{    width: 125, 
                                                 borderRadius: 20, 
                                                 height: 40, 
                                                 borderColor: "black", 
@@ -308,15 +339,24 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                     <View style={   {marginTop: 35, 
                                     flexDirection: 'row'}}>
                         <TouchableOpacity   style={{    marginLeft: 10,
-                                                        width: '40%', 
+                                                        width: 120, 
                                                         alignItems: 'center',
                                                         backgroundColor: '#DDD',
                                                         padding: 10,
                                                 }} 
-                                            onPress={checkconnection}>
+                                            onPress={loadData}>
+                            <Text>Load Backpack Number</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: 120, 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10,
+                                                }} 
+                                            onPress={storeData}>
                             <Text>Save Backpack Number</Text>
                         </TouchableOpacity>
-                        <TextInput  style={{    width: '50%', 
+                        <TextInput  style={{    width: 125, 
                                                 borderRadius: 20, 
                                                 height: 40, 
                                                 borderColor: "black", 
@@ -331,14 +371,22 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                     <View style={   {marginTop: 35, 
                                     flexDirection: 'row',}}> 
                         <TouchableOpacity   style={{    marginLeft: 10,
-                                                        width: 250, 
+                                                        width: 120, 
                                                         alignItems: 'center',
                                                         backgroundColor: '#DDD',
                                                         padding: 10
                                                 }} 
-                                            onPress={updateWeight}
-                                            onLongPress={tareWeight}>
-                            <Text>Backpack Weight</Text>
+                                            onPress={tareWeight}>
+                            <Text>Tare Weight</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity   style={{    marginLeft: 10,
+                                                        width: 120, 
+                                                        alignItems: 'center',
+                                                        backgroundColor: '#DDD',
+                                                        padding: 10
+                                                }} 
+                                            onPress={updateWeight}>
+                            <Text>Get Weight</Text>
                         </TouchableOpacity>
                         <Text style={{  alignSelf: 'center',
                                         padding: 10}}>{weight}</Text>
