@@ -389,7 +389,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                             <Text>Get Weight</Text>
                         </TouchableOpacity>
                         <Text style={{  alignSelf: 'center',
-                                        padding: 10}}>{weight}</Text>
+                                        padding: 10}}>{weight}kg</Text>
                     </View>
                     <View style={   {marginTop: 35, 
                                     flexDirection: 'row',}}> 
@@ -422,7 +422,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                             <Text>Update Battery Status</Text>
                         </TouchableOpacity>
                         <Text style={{  alignSelf: 'center', padding: 10,}}>
-                            {charge}
+                            {charge}%
                         </Text>
                     </View>
                 </ScrollView>
