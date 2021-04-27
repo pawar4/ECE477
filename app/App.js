@@ -239,6 +239,13 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
             console.log(data.data);
             var parsed = data.data.split(',');
             if (parsed[0] === "W") {
+                //var tmpWeight = (parseFloat(parsed[1], 10) * -1.69 -261) / 1000;
+                //var tmpWeight = ((parseFloat(parsed[1], 10) / -0.584) + 721) / 1000;
+                //tmpWeight = tmpWeight.toFixed(3);
+                setWeight(parseFloat(parsed[1], 10));
+            }
+            else if (parsed[0] === "T") {
+                //var tmpWeight = (parseFloat(parsed[1], 10) + 721) / (-0.584);
                 setWeight(parseFloat(parsed[1], 10));
             }
             else if (parsed[0] === "B") {
@@ -300,7 +307,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                         backgroundColor: '#DDD',
                                                         padding: 10,
                                                 }} 
-                                            onPress={BluetoothConnect}>
+                                            onPress={!isConnected ? BluetoothConnect : BluetoothDisconnect}>
                             <Text>Backpack Connection</Text>
                         </TouchableOpacity>
 
