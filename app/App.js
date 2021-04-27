@@ -101,8 +101,6 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
    }
 
    const sendSMS = () => {
-        console.log(user.sendFrom);
-        console.log(user.sendBody);
         SmsAndroid.autoSend(
             user.sendFrom,
             user.sendBody,
@@ -139,7 +137,6 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
     }
 
     const sendNumber = () => {
-        console.log(user.sendTo)
         WriteMessage("N" + user.sendTo + "\r\n")
     }
 
@@ -155,7 +152,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
             );
             console.log("Phone Number saved");
         } catch (error) {
-            Alert.alert("Error: {error}")
+            Alert.alert("Error:",error)
         }
     }
 
@@ -206,7 +203,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                         setMarker({...marker, latitude: lati, longitude: longi, fix: true});       
                     }
                 }
-                else if (coords[0] === "C") {
+                else if (coords[0] === "B") {
                     setCharge(parseInt(coords[1], 10))
                 }
             }
@@ -273,8 +270,9 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
         })
 
         let smsSubcription = SmsListener.addListener(message => {
-            if (message.originatingAddress == user.sendFrom) {
-                console.log(message.originatingAddress)
+            console.log("orignating address:",message.originatingAddress, "  number: ", user.sendFrom)
+            if (message.originatingAddress === user.sendFrom) {
+                //console.log(message.originatingAddress)
                 listSMS()
             }
         }
@@ -331,7 +329,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                 borderWidth: 1,
                                                 marginLeft: 20,
                                                 color: '#000'}}
-                                    onChangeText={text1 => setUser({ sendTo: text1 })}
+                                    onChangeText={text => setUser({...user, sendTo: text })}
                                     value={user.sendTo}
                                     //keyboardType={"numeric"}
                                     />
@@ -363,7 +361,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                                                 borderWidth: 1,
                                                 marginLeft: 20,
                                                 color: '#000'}}
-                                    onChangeText={text2 => setUser({ sendFrom: text2 })}
+                                    onChangeText={text => setUser({...user, sendFrom: text })}
                                     value={user.sendFrom}
                                     //keyboardType={"numeric"}
                                     />
@@ -468,7 +466,7 @@ function MyTabs() {
     
     //GSM Part
     const [state, setState] = useState({
-        sendFrom: "+17657725934",
+        sendFrom: "+17654098225",
         sendTo: "+17657018549",
         sendBody: "",
         minDate: "",
