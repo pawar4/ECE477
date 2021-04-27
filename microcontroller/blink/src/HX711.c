@@ -78,20 +78,22 @@ int HX711_GetOffset(void)
 
 int HX711_Tare(int *weightOffset)
 {
-	int weight = -1;
+	float weight = -1;
 	*weightOffset = 0;
+	float finalWeight = 0;
 	int idx = 0;
 
 	for (int i = 0; i <= 15; i++)
 	{
 		int temp = HX711_GetOffset();
-		weight = (((4.555e-3) * temp) - 34780) - *weightOffset;
+		weight = (((4.555e-3) * temp) - 34780);
+		finalWeight = ((weight + 721) / -0.584) - *weightOffset;
 		if (i % 5 == 0)
 		{
-			*weightOffset += weight;
+			*weightOffset += finalWeight;
 		}
 
-		if (weight > -10 && weight < 10)
+		if (finalWeight > -1 && finalWeight < 1)
 		{
 			if (idx == 1)
 				return 0;
@@ -107,10 +109,11 @@ int HX711_Tare(int *weightOffset)
 	return -1;
 }
 
-int HX711_GetWeight(int weightOffset)
+float HX711_GetWeight(int weightOffset)
 {
 	for (int i = 0; i < 10; i++) HX711_GetOffset();
 
-	int weight = (((4.555e-3) * HX711_GetOffset()) - 34780) - weightOffset;
-	return weight;
+	float weight = (((4.555e-3) * HX711_GetOffset()) - 34780) - weightOffset;
+	float finalweight = ((weight + 721) / -0.584) - weightOffset;
+	return finalweight;
 }

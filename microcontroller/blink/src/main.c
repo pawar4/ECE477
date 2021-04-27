@@ -710,8 +710,8 @@ void sms_sendbattery()
 void bluetooth_sendweight()
 {
 	char category[2] = "W,";
-	int temp = HX711_GetWeight(weightOffset);
-	itoa(temp, weight, 10);
+	float temp = HX711_GetWeight(weightOffset);
+	ftoa(temp, weight, 3);
 	for (int i = 0; i < 2; ++i)
 	{
 		USART_SendData(USART1, category[i]);
@@ -731,9 +731,10 @@ void bluetooth_sendweight()
 
 void bluetooth_tareweight()
 {
-	char category[2] = "W,";
+	char category[2] = "T,";
 	int temp = HX711_Tare(&weightOffset);
 	itoa(temp, weight, 10);
+	//ftoa(temp, weight, 3);
 	for (int i = 0; i < 2; ++i)
 	{
 		USART_SendData(USART1, category[i]);
