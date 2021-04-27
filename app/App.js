@@ -25,12 +25,12 @@ import {BACKGROUND} from './src/img';
 
 function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge, setCharge}) {
     const [isConnected, setIsConnected] = useState(false);   //state variable to hold boolean value of whether any device is connected
-    const [weight,setWeight] = useState("5 kg");
+    const [weight,setWeight] = useState("");
     const peripherals = new Map();
     const [list, setList] = useState([]);             //state variable to hold all discovered peripherals(not connected)
     const [device, setDevice] = useState(null);       // state variable to hold current connected peripheral
     const [readdata, setreaddata] = useState("");     //state variable to hold current read message
-
+    var phNum = "";
     //Component to discover all unpaired devices within range
     const discoverUnpaired = () => {
         BluetoothSerial.discoverUnpairedDevices()
@@ -82,14 +82,10 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
             console.log(res)
         }).catch(err => {console.error(err);});
     }
-    
-    const GetWeight = () => {
-        setWeight("500 kg");
-    }
 
    const WriteMessage = (message) => {
      if (!isConnected) {
-       console.log('You must connect to device first');
+       Alert.alert('You must connect to device first');
      }
  
      BluetoothSerial.write(message)
@@ -160,7 +156,8 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
         try {
             var fone = await AsyncStorage.getItem('Backpack');
             if (value !== null) {
-                setUser({sendFrom : value})
+                setUser({...user, sendFrom : value});
+                phNum = value;
             }
         } catch (error) {
 
@@ -191,7 +188,6 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
             (count, smsList) => {
                 var arr = JSON.parse(smsList);
                 setUser({...user, smsList: arr });
-                //console.log(user.smsList[0].body);
                 var coords = arr[0].body.split(',');
                 if (coords[0] === "L") {
                     if (coords[1] === "Not Available") {
@@ -270,7 +266,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
         })
 
         let smsSubcription = SmsListener.addListener(message => {
-            console.log("orignating address:",message.originatingAddress, "  number: ", user.sendFrom)
+            //console.log(user.sendFrom)
             if (message.originatingAddress === user.sendFrom) {
                 //console.log(message.originatingAddress)
                 listSMS()
@@ -295,7 +291,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                     <Text style={{color: '#000', fontSize: 60}}>Smart</Text>
                     <Text style={{color: '#000', fontSize: 60}}>Backpack</Text>
                 </View>
-                <ScrollView style={{ flex: 1}}>
+                <View style={{ flex: 1}}>
                     <View style={   {marginTop: 35, 
                                         flexDirection: 'row'}}> 
                         <TouchableOpacity   style={{    marginLeft: 10,
@@ -423,7 +419,7 @@ function HomeScreen({region, setRegion, marker, setMarker, user, setUser, charge
                             {charge}%
                         </Text>
                     </View>
-                </ScrollView>
+                </View>
             </ImageBackground>
         </View>
     );
@@ -467,7 +463,7 @@ function MyTabs() {
     //GSM Part
     const [state, setState] = useState({
         sendFrom: "+17654098225",
-        sendTo: "+17657018549",
+        sendTo: "",
         sendBody: "",
         minDate: "",
         maxDate: "",
